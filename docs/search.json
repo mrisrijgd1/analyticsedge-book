@@ -4,6 +4,6 @@
     "href": "index.html",
     "title": "analyticsedge",
     "section": "",
-    "text": "There are two main types of crimes: violent crimes, and property crimes. In this problem, we’ll focus on one specific type of property crime, called “motor vehicle theft” (sometimes referred to as grand theft auto). This is the act of stealing, or attempting to steal, a car. In this problem, we’ll use some basic data analysis in R to understand the motor vehicle thefts in Chicago.\nTo download this data, click: mvtWeek1.csv\nStart:\nRead the dataset mvtWeek1.csv into R, using the read.csv function, and call the data frame “mvt”.\n\nmvt <- read.csv(\"mvtWeek1.csv\")\n\n**1.1"
+    "text": "There are two main types of crimes: violent crimes, and property crimes. In this problem, we’ll focus on one specific type of property crime, called “motor vehicle theft” (sometimes referred to as grand theft auto). This is the act of stealing, or attempting to steal, a car. In this problem, we’ll use some basic data analysis in R to understand the motor vehicle thefts in Chicago.\nTo download this data, click: mvtWeek1.csv\nStart:\nRead the dataset mvtWeek1.csv into R, using the read.csv function, and call the data frame “mvt”.\n\nmvt <- read.csv(\"mvtWeek1.csv\")\n\n1.1: How many rows of data (observations) are in this dataset?\n\nnrow(mvt)\n\n[1] 191641\n\n\n1.2: How many variables are in this dataset?\n\nncol(mvt)\n\n[1] 11"
   }
 ]

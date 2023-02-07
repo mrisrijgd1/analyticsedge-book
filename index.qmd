@@ -13,4 +13,12 @@ Read the dataset mvtWeek1.csv into R, using the read.csv function, and call the 
 mvt <- read.csv("mvtWeek1.csv")
 ```
 
-**1.1
+**1.1: How many rows of data (observations) are in this dataset?**
+```{r}
+nrow(mvt)
+```
+**1.2: How many variables are in this dataset?**
+```{r}
+ncol(mvt)
+```
+
