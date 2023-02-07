@@ -1,0 +1,18 @@
+{
+  "hash": "95bde3fefc89213833d116019eb28e22",
+  "result": {
+    "markdown": "# Assignment 1 Answers {.unnumbered}\n\n## An Analytical Detective\n\nThere are two main types of crimes: violent crimes, and property crimes. In this problem, we'll focus on one specific type of property crime, called \"motor vehicle theft\" (sometimes referred to as grand theft auto). This is the act of stealing, or attempting to steal, a car. In this problem, we'll use some basic data analysis in R to understand the motor vehicle thefts in Chicago.\n\nTo download this data, click: [mvtWeek1.csv](https://courses.edx.org/assets/courseware/v1/96f9b8f751467da3a4b8a5be33e32905/asset-v1:MITx+15.071x+2T2020+type@asset+block/mvtWeek1.csv)\n\n***Start:***\\\nRead the dataset mvtWeek1.csv into R, using the read.csv function, and call the data frame \"mvt\".\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\nmvt <- read.csv(\"mvtWeek1.csv\")\n```\n:::\n\n\n\n**1.1\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {
+      "knitr": [
+        "{\"type\":\"list\",\"attributes\":{},\"value\":[]}"
+      ]
+    },
+    "preserve": null,
+    "postProcess": false
+  }
+}
