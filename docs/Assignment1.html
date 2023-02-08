@@ -1,0 +1,886 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.1.251">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>analyticsedge - Assignment 1 Answers</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./intro.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title">Assignment 1 Answers</h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">analyticsedge</a> 
+    </div>
+      </div>
+      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">index.html</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./intro.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Introduction</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Assignment1.html" class="sidebar-item-text sidebar-link active">Assignment 1 Answers</a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#an-analytical-detective" id="toc-an-analytical-detective" class="nav-link active" data-scroll-target="#an-analytical-detective">An Analytical Detective</a></li>
+  <li><a href="#stock-dynamics" id="toc-stock-dynamics" class="nav-link" data-scroll-target="#stock-dynamics">Stock Dynamics</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title d-none d-lg-block">Assignment 1 Answers</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+    
+  </div>
+  
+
+</header>
+
+<section id="an-analytical-detective" class="level2">
+<h2 class="anchored" data-anchor-id="an-analytical-detective">An Analytical Detective</h2>
+<p>There are two main types of crimes: violent crimes, and property crimes. In this problem, we’ll focus on one specific type of property crime, called “motor vehicle theft” (sometimes referred to as grand theft auto). This is the act of stealing, or attempting to steal, a car. In this problem, we’ll use some basic data analysis in R to understand the motor vehicle thefts in Chicago.</p>
+<p>Please download the file <a href="https://courses.edx.org/assets/courseware/v1/96f9b8f751467da3a4b8a5be33e32905/asset-v1:MITx+15.071x+2T2020+type@asset+block/mvtWeek1.csv">mvtWeek1.csv</a> for this problem (do not open this file in any spreadsheet software before completing this problem because it might change the format of the Date field).</p>
+<p><strong><em>Start:</em></strong><br>
+Read the dataset mvtWeek1.csv into R, using the read.csv function, and call the data frame “mvt”.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>mvt <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"mvtWeek1.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>1.1: How many rows of data (observations) are in this dataset?</strong><br>
+Answer: 191641</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(mvt)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 191641</code></pre>
+</div>
+</div>
+<p><strong>1.2: How many variables are in this dataset?</strong><br>
+Answer: 11</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ncol</span>(mvt)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 11</code></pre>
+</div>
+</div>
+<p><strong>1.3: Using the “max” function, what is the maximum value of the variable “ID”?</strong><br>
+Answer: 9181151</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">max</span>(mvt<span class="sc">$</span>ID)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 9181151</code></pre>
+</div>
+</div>
+<p><strong>1.4: What is the minimum value of the variable “Beat”?</strong><br>
+Answer: 111</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">min</span>(mvt<span class="sc">$</span>Beat)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 111</code></pre>
+</div>
+</div>
+<p><strong>1.5: How many observations have value TRUE in the Arrest variable (this is the number of crimes for which an arrest was made)?</strong><br>
+Answer: 15536</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(mvt<span class="sc">$</span>Arrest)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 15536</code></pre>
+</div>
+</div>
+<p><strong>1.6: How many observations have a LocationDescription value of ALLEY?</strong><br>
+Answer: 2308</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(mvt<span class="sc">$</span>LocationDescription <span class="sc">==</span> <span class="st">"ALLEY"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2308</code></pre>
+</div>
+</div>
+<p><strong>2.1: In what format are the entries in the variable Date?</strong><br>
+Answer: Month/Day/Year Hour:Minute</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>mvt<span class="sc">$</span>Date[<span class="dv">1</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "12/31/12 23:15"</code></pre>
+</div>
+</div>
+<p><strong>2.2: What is the month and year of the median date in our dataset? Enter your answer as “Month Year”, without the quotes.</strong><br>
+Answer: May 2006</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>DateConvert <span class="ot">=</span> <span class="fu">as.Date</span>(<span class="fu">strptime</span>(mvt<span class="sc">$</span>Date, <span class="st">"%m/%d/%y %H:%M"</span>))</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="co">#summary(DateConvert)</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="fu">median</span>(DateConvert)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "2006-05-21"</code></pre>
+</div>
+</div>
+<p><strong>2.3: In which month did the fewest motor vehicle thefts occur?</strong><br>
+Answer: February</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>mvt<span class="sc">$</span>Month <span class="ot">=</span> <span class="fu">months</span>(DateConvert)</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>mvt<span class="sc">$</span>Weekday <span class="ot">=</span> <span class="fu">weekdays</span>(DateConvert)</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>mvt<span class="sc">$</span>Date <span class="ot">=</span> DateConvert</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(mvt<span class="sc">$</span>Month)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    April    August  December  February   January      July      June     March 
+    15280     16572     16426     13511     16047     16801     16002     15758 
+      May  November   October September 
+    16035     16063     17086     16060 </code></pre>
+</div>
+</div>
+<p><strong>2.4: On which weekday did the most motor vehicle thefts occur?</strong><br>
+Answer: Friday</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(mvt<span class="sc">$</span>Weekday)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+   Friday    Monday  Saturday    Sunday  Thursday   Tuesday Wednesday 
+    29284     27397     27118     26316     27319     26791     27416 </code></pre>
+</div>
+</div>
+<p><strong>2.5: Which month has the largest number of motor vehicle thefts for which an arrest was made?</strong><br>
+Answer: January</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(mvt<span class="sc">$</span>Month, mvt<span class="sc">$</span>Arrest)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>           
+            FALSE  TRUE
+  April     14028  1252
+  August    15243  1329
+  December  15029  1397
+  February  12273  1238
+  January   14612  1435
+  July      15477  1324
+  June      14772  1230
+  March     14460  1298
+  May       14848  1187
+  November  14807  1256
+  October   15744  1342
+  September 14812  1248</code></pre>
+</div>
+</div>
+<p><strong>3.1.1: In general, does it look like crime increases or decreases from 2002 - 2012?</strong><br>
+Answer: Decreases</p>
+<p><strong>3.1.2: In general, does it look like crime increases or decreases from 2005 - 2008?</strong><br>
+Answer: Decreases</p>
+<p><strong>3.1.3: In general, does it look like crime increases or decreases from 2009 - 2011?</strong><br>
+Answer: Increases</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(mvt<span class="sc">$</span>Date, <span class="at">breaks=</span><span class="dv">100</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Assignment1_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p><strong>3.2: Does it look like there were more crimes for which arrests were made in the first half of the time period or the second half of the time period?</strong><br>
+Answer: First half</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(Date <span class="sc">~</span> Arrest, <span class="at">data =</span> mvt)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Assignment1_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p><strong>3.3: For what proportion of motor vehicle thefts in 2001 was an arrest made?</strong><br>
+Answer: 0.1041173</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(mvt<span class="sc">$</span>Year, mvt<span class="sc">$</span>Arrest)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>      
+       FALSE  TRUE
+  2001 18517  2152
+  2002 16638  2115
+  2003 14859  1798
+  2004 15169  1693
+  2005 14956  1528
+  2006 14796  1302
+  2007 13068  1212
+  2008 13425  1020
+  2009 11327   840
+  2010 14796   701
+  2011 15012   625
+  2012 13542   550</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="dv">2152</span><span class="sc">/</span>(<span class="dv">18517</span><span class="sc">+</span><span class="dv">2152</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.1041173</code></pre>
+</div>
+</div>
+<p><strong>3.4: For what proportion of motor vehicle thefts in 2007 was an arrest made?</strong><br>
+Answer: 0.08487395</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(mvt<span class="sc">$</span>Year, mvt<span class="sc">$</span>Arrest)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>      
+       FALSE  TRUE
+  2001 18517  2152
+  2002 16638  2115
+  2003 14859  1798
+  2004 15169  1693
+  2005 14956  1528
+  2006 14796  1302
+  2007 13068  1212
+  2008 13425  1020
+  2009 11327   840
+  2010 14796   701
+  2011 15012   625
+  2012 13542   550</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1212</span><span class="sc">/</span>(<span class="dv">13068</span><span class="sc">+</span><span class="dv">1212</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.08487395</code></pre>
+</div>
+</div>
+<p><strong>3.5: For what proportion of motor vehicle thefts in 2012 was an arrest made?</strong><br>
+Answer: 0.03902924</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(mvt<span class="sc">$</span>Year, mvt<span class="sc">$</span>Arrest)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>      
+       FALSE  TRUE
+  2001 18517  2152
+  2002 16638  2115
+  2003 14859  1798
+  2004 15169  1693
+  2005 14956  1528
+  2006 14796  1302
+  2007 13068  1212
+  2008 13425  1020
+  2009 11327   840
+  2010 14796   701
+  2011 15012   625
+  2012 13542   550</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="dv">550</span><span class="sc">/</span>(<span class="dv">13542</span><span class="sc">+</span><span class="dv">550</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.03902924</code></pre>
+</div>
+</div>
+<p><strong>4.1: Which locations are the top five locations for motor vehicle thefts, excluding the “Other” category?</strong><br>
+Answer: STREET, PARKING LOT/GARAGE(NON.RESID.), ALLEY, GAS STATION, DRIVEWAY - RESIDENTIAL</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sort</span>(<span class="fu">table</span>(mvt<span class="sc">$</span>LocationDescription), <span class="at">decreasing =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+                                         STREET 
+                                         156564 
+                 PARKING LOT/GARAGE(NON.RESID.) 
+                                          14852 
+                                          OTHER 
+                                           4573 
+                                          ALLEY 
+                                           2308 
+                                    GAS STATION 
+                                           2111 
+                         DRIVEWAY - RESIDENTIAL 
+                                           1675 
+                  RESIDENTIAL YARD (FRONT/BACK) 
+                                           1536 
+                                      RESIDENCE 
+                                           1302 
+                               RESIDENCE-GARAGE 
+                                           1176 
+                                VACANT LOT/LAND 
+                                            985 
+                         VEHICLE NON-COMMERCIAL 
+                                            817 
+                                       SIDEWALK 
+                                            462 
+                        CHA PARKING LOT/GROUNDS 
+                                            405 
+                               AIRPORT/AIRCRAFT 
+                                            363 
+                POLICE FACILITY/VEH PARKING LOT 
+                                            266 
+                                  PARK PROPERTY 
+                                            255 
+                        SCHOOL, PUBLIC, GROUNDS 
+                                            206 
+                                      APARTMENT 
+                                            184 
+                           SPORTS ARENA/STADIUM 
+                                            166 
+                    CTA GARAGE / OTHER PROPERTY 
+                                            148 
+                   COMMERCIAL / BUSINESS OFFICE 
+                                            126 
+                                    HOTEL/MOTEL 
+                                            124 
+                       SCHOOL, PUBLIC, BUILDING 
+                                            114 
+                      HOSPITAL BUILDING/GROUNDS 
+                                            101 
+                             GROCERY FOOD STORE 
+                                             80 
+              CHURCH/SYNAGOGUE/PLACE OF WORSHIP 
+                                             56 
+                                     RESTAURANT 
+                                             49 
+                   GOVERNMENT BUILDING/PROPERTY 
+                                             48 
+                     COLLEGE/UNIVERSITY GROUNDS 
+                                             47 
+                                       CAR WASH 
+                                             44 
+                              CONSTRUCTION SITE 
+                                             35 
+                             SMALL RETAIL STORE 
+                                             33 
+              OTHER RAILROAD PROP / TRAIN DEPOT 
+                                             28 
+             AIRPORT EXTERIOR - NON-SECURE AREA 
+                                             24 
+                       SCHOOL, PRIVATE, GROUNDS 
+                                             23 
+                             VEHICLE-COMMERCIAL 
+                                             23 
+                               DEPARTMENT STORE 
+                                             22 
+                             HIGHWAY/EXPRESSWAY 
+                                             22 
+                   NURSING HOME/RETIREMENT HOME 
+                                             21 
+                                        TAXICAB 
+                                             21 
+                            MOVIE HOUSE/THEATER 
+                                             18 
+                        RESIDENCE PORCH/HALLWAY 
+                                             18 
+                                  BAR OR TAVERN 
+                                             17 
+                                      WAREHOUSE 
+                                             17 
+                 FACTORY/MANUFACTURING BUILDING 
+                                             16 
+                      SCHOOL, PRIVATE, BUILDING 
+                                             14 
+                            TAVERN/LIQUOR STORE 
+                                             14 
+                            AIRPORT PARKING LOT 
+                                             11 
+                  AIRPORT VENDING ESTABLISHMENT 
+                                             10 
+                                  ATHLETIC CLUB 
+                                              9 
+                                     DRUG STORE 
+                                              8 
+                OTHER COMMERCIAL TRANSPORTATION 
+                                              8 
+                                           BANK 
+                                              7 
+                              CONVENIENCE STORE 
+                                              7 
+                                FOREST PRESERVE 
+                                              6 
+ AIRPORT TERMINAL UPPER LEVEL - NON-SECURE AREA 
+                                              5 
+                                  CHA APARTMENT 
+                                              5 
+                                DAY CARE CENTER 
+                                              5 
+                                   FIRE STATION 
+                                              5 
+                             ABANDONED BUILDING 
+                                              4 
+AIRPORT BUILDING NON-TERMINAL - NON-SECURE AREA 
+                                              4 
+                                     BARBERSHOP 
+                                              4 
+                 LAKEFRONT/WATERFRONT/RIVERBANK 
+                                              4 
+                                        LIBRARY 
+                                              4 
+                               SAVINGS AND LOAN 
+                                              4 
+                                  BOWLING ALLEY 
+                                              3 
+                                 CLEANING STORE 
+                                              3 
+                          MEDICAL/DENTAL OFFICE 
+                                              3 
+                                         BRIDGE 
+                                              2 
+              COLLEGE/UNIVERSITY RESIDENCE HALL 
+                                              2 
+                              CURRENCY EXCHANGE 
+                                              2 
+    AIRPORT BUILDING NON-TERMINAL - SECURE AREA 
+                                              1 
+                 AIRPORT EXTERIOR - SECURE AREA 
+                                              1 
+                                ANIMAL HOSPITAL 
+                                              1 
+                                APPLIANCE STORE 
+                                              1 
+                                      CTA TRAIN 
+                                              1 
+                        JAIL / LOCK-UP FACILITY 
+                                              1 
+                                      NEWSSTAND 
+                                              1 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co">#only show top 6?</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>Create a subset of your data, only taking observations for which the theft happened in one of these five locations, and call this new data set “Top5”.</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>Top5 <span class="ot">&lt;-</span> <span class="fu">subset</span>(mvt, mvt<span class="sc">$</span>LocationDescription <span class="sc">==</span> <span class="st">"STREET"</span></span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>       <span class="sc">|</span> mvt<span class="sc">$</span>LocationDescription <span class="sc">==</span> <span class="st">"PARKING LOT/GARAGE(NON.RESID.)"</span> </span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>       <span class="sc">|</span> mvt<span class="sc">$</span>LocationDescription <span class="sc">==</span> <span class="st">"ALLEY"</span></span>
+<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a>       <span class="sc">|</span> mvt<span class="sc">$</span>LocationDescription <span class="sc">==</span> <span class="st">"GAS STATION"</span></span>
+<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a>       <span class="sc">|</span> mvt<span class="sc">$</span>LocationDescription <span class="sc">==</span> <span class="st">"DRIVEWAY - RESIDENTIAL"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>4.2: How many observations are in Top5?</strong><br>
+Answer: 177510</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(Top5)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 177510</code></pre>
+</div>
+</div>
+<p><strong>4.3: One of the locations has a much higher arrest rate than the other locations. Which is it?</strong><br>
+Answer: Gas Station (Check percentages)</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>Top5<span class="sc">$</span>LocationDescription <span class="ot">=</span> <span class="fu">factor</span>(Top5<span class="sc">$</span>LocationDescription)</span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(Top5<span class="sc">$</span>LocationDescription, Top5<span class="sc">$</span>Arrest)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                                
+                                  FALSE   TRUE
+  ALLEY                            2059    249
+  DRIVEWAY - RESIDENTIAL           1543    132
+  GAS STATION                      1672    439
+  PARKING LOT/GARAGE(NON.RESID.)  13249   1603
+  STREET                         144969  11595</code></pre>
+</div>
+</div>
+<p><strong>4.4: On which day of the week do the most motor vehicle thefts at gas stations happen?</strong><br>
+Answer: Saturday</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(Top5<span class="sc">$</span>LocationDescription <span class="sc">==</span> <span class="st">"GAS STATION"</span>, Top5<span class="sc">$</span>Weekday)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>       
+        Friday Monday Saturday Sunday Thursday Tuesday Wednesday
+  FALSE  26746  25008    24917  24220    24956   24527     25025
+  TRUE     332    280      338    336      282     270       273</code></pre>
+</div>
+</div>
+<p><strong>4.5: On which day of the week do the fewest motor vehicle thefts in residential driveways happen?</strong><br>
+Answer: Saturday</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(Top5<span class="sc">$</span>LocationDescription <span class="sc">==</span> <span class="st">"DRIVEWAY - RESIDENTIAL"</span>, Top5<span class="sc">$</span>Weekday)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>       
+        Friday Monday Saturday Sunday Thursday Tuesday Wednesday
+  FALSE  26821  25033    25053  24335    24975   24554     25064
+  TRUE     257    255      202    221      263     243       234</code></pre>
+</div>
+</div>
+</section>
+<section id="stock-dynamics" class="level2">
+<h2 class="anchored" data-anchor-id="stock-dynamics">Stock Dynamics</h2>
+<p>A stock market is where buyers and sellers trade shares of a company, and is one of the most popular ways for individuals and companies to invest money. The size of the world stock market is now estimated to be in the trillions. The largest stock market in the world is the New York Stock Exchange (NYSE), located in New York City. About 2,800 companies are listed on the NYSE. In this problem, we’ll look at the monthly stock prices of five of these companies: IBM, General Electric (GE), Procter and Gamble, Coca Cola, and Boeing. The data used in this problem comes from Infochimps.</p>
+<p>Please download the following files: <a href="https://courses.edx.org/assets/courseware/v1/4fc08d10f171aacf2ef61c6b4b5bb4d8/asset-v1:MITx+15.071x+2T2020+type@asset+block/IBMStock.csv">IBMStock.csv</a>, <a href="https://courses.edx.org/assets/courseware/v1/448b8be4693d913c2b5153be0c0e25d6/asset-v1:MITx+15.071x+2T2020+type@asset+block/GEStock.csv">GEStock.csv</a>, <a href="https://courses.edx.org/assets/courseware/v1/bb6ed54230b5b2e29fb66819ed535da0/asset-v1:MITx+15.071x+2T2020+type@asset+block/ProcterGambleStock.csv">ProcterGambleStock.csv</a>, <a href="https://courses.edx.org/assets/courseware/v1/4c30fd7f4f55e537989ca13a6db36289/asset-v1:MITx+15.071x+2T2020+type@asset+block/CocaColaStock.csv">CocaColaStock.csv</a>, <a href="https://courses.edx.org/assets/courseware/v1/2e8c9fb294db48e5a999c747b317722d/asset-v1:MITx+15.071x+2T2020+type@asset+block/BoeingStock.csv">BoeingStock.csv</a> (do not open these files in any spreadsheet software before completing this problem because it might change the format of the Date field).</p>
+<p><strong>Start:</strong><br>
+1. Read the datasets into R, using the read.csv function, and call the data frames “IBM”, “GE”, “ProcterGamble”, “CocaCola”, and “Boeing”, respectively.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>IBM <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"IBMStock.csv"</span>)</span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>GE <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"GEStock.csv"</span>)</span>
+<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a>ProcterGamble <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"ProcterGambleStock.csv"</span>)</span>
+<span id="cb50-4"><a href="#cb50-4" aria-hidden="true" tabindex="-1"></a>CocaCola <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"CocaColaStock.csv"</span>)</span>
+<span id="cb50-5"><a href="#cb50-5" aria-hidden="true" tabindex="-1"></a>Boeing <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"BoeingStock.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ol start="2" type="1">
+<li>Before working with these data sets, we need to convert the dates into a format that R can understand. Take a look at the structure of one of the datasets using the str function. Right now, the date variable is stored as a factor. We can convert this to a “Date” object in R by using the following five commands (one for each data set):</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>IBM<span class="sc">$</span>Date <span class="ot">=</span> <span class="fu">as.Date</span>(IBM<span class="sc">$</span>Date, <span class="st">"%m/%d/%y"</span>)</span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>GE<span class="sc">$</span>Date <span class="ot">=</span> <span class="fu">as.Date</span>(GE<span class="sc">$</span>Date, <span class="st">"%m/%d/%y"</span>)</span>
+<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a>CocaCola<span class="sc">$</span>Date <span class="ot">=</span> <span class="fu">as.Date</span>(CocaCola<span class="sc">$</span>Date, <span class="st">"%m/%d/%y"</span>)</span>
+<span id="cb51-4"><a href="#cb51-4" aria-hidden="true" tabindex="-1"></a>ProcterGamble<span class="sc">$</span>Date <span class="ot">=</span> <span class="fu">as.Date</span>(ProcterGamble<span class="sc">$</span>Date, <span class="st">"%m/%d/%y"</span>)</span>
+<span id="cb51-5"><a href="#cb51-5" aria-hidden="true" tabindex="-1"></a>Boeing<span class="sc">$</span>Date <span class="ot">=</span> <span class="fu">as.Date</span>(Boeing<span class="sc">$</span>Date, <span class="st">"%m/%d/%y"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>1.1: Our five datasets all have the same number of observations. How many observations are there in each data set?</strong><br>
+Answer: 480</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(IBM)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 480</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="co"># According to the assignment, use: str(IBM)</span></span>
+<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a><span class="co"># We only need to use the command for one of the datasets, since they all have the same number of obs.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>1.2: What is the earliest year in our datasets?</strong><br>
+Answer: 1970</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="fu">min</span>(IBM<span class="sc">$</span>Date)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "1970-01-01"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="co"># According to the assignment, use: summary(IBM$Date)</span></span>
+<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Again, we only need to use the command for one of the datsets, since the observations started on the same date.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>1.3: What is the latest year in our datasets?</strong><br>
+Answer: 2009</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="fu">max</span>(IBM<span class="sc">$</span>Date)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "2009-12-01"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="co"># According to the assignment, use: summary(IBM$Date)</span></span>
+<span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Again, we only need to use the command for one of the datsets, since the observations ended on the same date.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>1.4: What is the mean stock price of IBM over this time period?</strong><br>
+Answer: 144.375</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(IBM<span class="sc">$</span>StockPrice)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 144.375</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="co"># According to the assignment, use: summary(IBM$StockPrice)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>1.5: </strong><br>
+Answer: 9.293636</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="fu">min</span>(GE<span class="sc">$</span>StockPrice)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 9.293636</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="co"># According to the assignment, use: summary(GE$StockPrice)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>1.6: </strong><br>
+Answer: 146.5843</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb67"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a><span class="fu">max</span>(CocaCola<span class="sc">$</span>StockPrice)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 146.5843</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb69"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a><span class="co"># According to the assignment, use: summary(CocaCola$StockPrice)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>1.7: </strong><br>
+Answer:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a><span class="fu">median</span>(Boeing<span class="sc">$</span>StockPrice)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 44.8834</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb72"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a><span class="co"># According to the assignment, use: summary(Boeing$StockPrice)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>1.8: </strong><br>
+Answer: 18.19414</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb73"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(ProcterGamble<span class="sc">$</span>StockPrice)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 18.19414</code></pre>
+</div>
+</div>
+<p>Side note: According to the assignment, questions 1.2 - 1.7 should’ve been solved using the summary function. However, I used commands that would give more accurate answer. Along with the commands I used, I also wrote how the assignment could be solved using the summary function.</p>
+<p><strong>2.1.1: Around what year did Coca-Cola has its highest stock price in this time period?</strong><br>
+Answer: 1973</p>
+<p><strong>2.1.2: Around what year did Coca-Cola has its lowest stock price in this time period?</strong><br>
+Answer: 1980</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb75"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb75-1"><a href="#cb75-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(CocaCola<span class="sc">$</span>Date, CocaCola<span class="sc">$</span>StockPrice, <span class="st">"l"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Assignment1_files/figure-html/unnamed-chunk-34-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p><strong>2.2: In March of 2000, the technology bubble burst, and a stock market crash occurred. According to this plot, which company’s stock dropped more?</strong><br>
+Answer: Procter and Gamble</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb76"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(CocaCola<span class="sc">$</span>Date, CocaCola<span class="sc">$</span>StockPrice, <span class="st">"l"</span>, <span class="at">col =</span> <span class="st">"red"</span>)</span>
+<span id="cb76-2"><a href="#cb76-2" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(ProcterGamble<span class="sc">$</span>Date, ProcterGamble<span class="sc">$</span>StockPrice, <span class="at">col =</span> <span class="st">"blue"</span>)</span>
+<span id="cb76-3"><a href="#cb76-3" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v=</span><span class="fu">as.Date</span>(<span class="fu">c</span>(<span class="st">"2000-03-01"</span>)), <span class="at">lwd=</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Assignment1_files/figure-html/unnamed-chunk-35-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p><strong>2.3.1: Around 1983, the stock for one of these companies (Coca-Cola or Procter and Gamble) was going up, while the other was going down. Which one was going up?</strong><br>
+Answer: CocaCola</p>
+<p><strong>2.3.1: In the time period shown in the plot, which stock generally has lower values?</strong><br>
+Answer: CocaCola</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb77"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb77-1"><a href="#cb77-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(CocaCola<span class="sc">$</span>Date, CocaCola<span class="sc">$</span>StockPrice, <span class="st">"l"</span>, <span class="at">col =</span> <span class="st">"red"</span>)</span>
+<span id="cb77-2"><a href="#cb77-2" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(ProcterGamble<span class="sc">$</span>Date, ProcterGamble<span class="sc">$</span>StockPrice, <span class="at">col =</span> <span class="st">"blue"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Assignment1_files/figure-html/unnamed-chunk-36-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./intro.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Introduction</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+</body></html>

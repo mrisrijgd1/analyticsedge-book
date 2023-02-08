@@ -8,6 +8,8 @@ book:
   date: "07/02/2023"
   chapters:
     - index.qmd
+    - intro.qmd
+    - Assignment1.qmd
 
 bibliography: references.bib
 
