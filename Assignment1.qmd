@@ -127,7 +127,6 @@ table(mvt$Year, mvt$Arrest)
 Answer: STREET, PARKING LOT/GARAGE(NON.RESID.), ALLEY, GAS STATION, DRIVEWAY - RESIDENTIAL
 ```{r}
 sort(table(mvt$LocationDescription), decreasing = TRUE)
-#only show top 6?
 ```
 
 **Create a subset of your data, only taking observations for which the theft happened in one of these five locations, and call this new data set "Top5".**
