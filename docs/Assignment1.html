@@ -176,6 +176,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <ul>
   <li><a href="#an-analytical-detective" id="toc-an-analytical-detective" class="nav-link active" data-scroll-target="#an-analytical-detective">An Analytical Detective</a></li>
   <li><a href="#stock-dynamics" id="toc-stock-dynamics" class="nav-link" data-scroll-target="#stock-dynamics">Stock Dynamics</a></li>
+  <li><a href="#demographics-and-employment-in-the-united-states" id="toc-demographics-and-employment-in-the-united-states" class="nav-link" data-scroll-target="#demographics-and-employment-in-the-united-states">Demographics and Employment in the United States</a></li>
   </ul>
 </nav>
     </div>
@@ -577,20 +578,19 @@ AIRPORT BUILDING NON-TERMINAL - NON-SECURE AREA
                                       NEWSSTAND 
                                               1 </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co">#only show top 6?</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><strong>Create a subset of your data, only taking observations for which the theft happened in one of these five locations, and call this new data set “Top5”.</strong></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>Top5 <span class="ot">&lt;-</span> <span class="fu">subset</span>(mvt, mvt<span class="sc">$</span>LocationDescription <span class="sc">==</span> <span class="st">"STREET"</span></span>
-<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>       <span class="sc">|</span> mvt<span class="sc">$</span>LocationDescription <span class="sc">==</span> <span class="st">"PARKING LOT/GARAGE(NON.RESID.)"</span> </span>
-<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>       <span class="sc">|</span> mvt<span class="sc">$</span>LocationDescription <span class="sc">==</span> <span class="st">"ALLEY"</span></span>
-<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a>       <span class="sc">|</span> mvt<span class="sc">$</span>LocationDescription <span class="sc">==</span> <span class="st">"GAS STATION"</span></span>
-<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a>       <span class="sc">|</span> mvt<span class="sc">$</span>LocationDescription <span class="sc">==</span> <span class="st">"DRIVEWAY - RESIDENTIAL"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>Top5 <span class="ot">&lt;-</span> <span class="fu">subset</span>(mvt, mvt<span class="sc">$</span>LocationDescription <span class="sc">==</span> <span class="st">"STREET"</span></span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>       <span class="sc">|</span> mvt<span class="sc">$</span>LocationDescription <span class="sc">==</span> <span class="st">"PARKING LOT/GARAGE(NON.RESID.)"</span> </span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>       <span class="sc">|</span> mvt<span class="sc">$</span>LocationDescription <span class="sc">==</span> <span class="st">"ALLEY"</span></span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a>       <span class="sc">|</span> mvt<span class="sc">$</span>LocationDescription <span class="sc">==</span> <span class="st">"GAS STATION"</span></span>
+<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a>       <span class="sc">|</span> mvt<span class="sc">$</span>LocationDescription <span class="sc">==</span> <span class="st">"DRIVEWAY - RESIDENTIAL"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><strong>4.2: How many observations are in Top5?</strong><br>
 Answer: 177510</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(Top5)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(Top5)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 177510</code></pre>
 </div>
@@ -598,8 +598,8 @@ Answer: 177510</p>
 <p><strong>4.3: One of the locations has a much higher arrest rate than the other locations. Which is it?</strong><br>
 Answer: Gas Station (Check percentages)</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>Top5<span class="sc">$</span>LocationDescription <span class="ot">=</span> <span class="fu">factor</span>(Top5<span class="sc">$</span>LocationDescription)</span>
-<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(Top5<span class="sc">$</span>LocationDescription, Top5<span class="sc">$</span>Arrest)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>Top5<span class="sc">$</span>LocationDescription <span class="ot">=</span> <span class="fu">factor</span>(Top5<span class="sc">$</span>LocationDescription)</span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(Top5<span class="sc">$</span>LocationDescription, Top5<span class="sc">$</span>Arrest)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>                                
                                   FALSE   TRUE
@@ -613,7 +613,7 @@ Answer: Gas Station (Check percentages)</p>
 <p><strong>4.4: On which day of the week do the most motor vehicle thefts at gas stations happen?</strong><br>
 Answer: Saturday</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(Top5<span class="sc">$</span>LocationDescription <span class="sc">==</span> <span class="st">"GAS STATION"</span>, Top5<span class="sc">$</span>Weekday)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(Top5<span class="sc">$</span>LocationDescription <span class="sc">==</span> <span class="st">"GAS STATION"</span>, Top5<span class="sc">$</span>Weekday)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>       
         Friday Monday Saturday Sunday Thursday Tuesday Wednesday
@@ -624,7 +624,7 @@ Answer: Saturday</p>
 <p><strong>4.5: On which day of the week do the fewest motor vehicle thefts in residential driveways happen?</strong><br>
 Answer: Saturday</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(Top5<span class="sc">$</span>LocationDescription <span class="sc">==</span> <span class="st">"DRIVEWAY - RESIDENTIAL"</span>, Top5<span class="sc">$</span>Weekday)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(Top5<span class="sc">$</span>LocationDescription <span class="sc">==</span> <span class="st">"DRIVEWAY - RESIDENTIAL"</span>, Top5<span class="sc">$</span>Weekday)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>       
         Friday Monday Saturday Sunday Thursday Tuesday Wednesday
@@ -640,92 +640,90 @@ Answer: Saturday</p>
 <p><strong>Start:</strong><br>
 1. Read the datasets into R, using the read.csv function, and call the data frames “IBM”, “GE”, “ProcterGamble”, “CocaCola”, and “Boeing”, respectively.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>IBM <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"IBMStock.csv"</span>)</span>
-<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>GE <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"GEStock.csv"</span>)</span>
-<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a>ProcterGamble <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"ProcterGambleStock.csv"</span>)</span>
-<span id="cb50-4"><a href="#cb50-4" aria-hidden="true" tabindex="-1"></a>CocaCola <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"CocaColaStock.csv"</span>)</span>
-<span id="cb50-5"><a href="#cb50-5" aria-hidden="true" tabindex="-1"></a>Boeing <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"BoeingStock.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>IBM <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"IBMStock.csv"</span>)</span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>GE <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"GEStock.csv"</span>)</span>
+<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a>ProcterGamble <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"ProcterGambleStock.csv"</span>)</span>
+<span id="cb49-4"><a href="#cb49-4" aria-hidden="true" tabindex="-1"></a>CocaCola <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"CocaColaStock.csv"</span>)</span>
+<span id="cb49-5"><a href="#cb49-5" aria-hidden="true" tabindex="-1"></a>Boeing <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"BoeingStock.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<ol start="2" type="1">
-<li>Before working with these data sets, we need to convert the dates into a format that R can understand. Take a look at the structure of one of the datasets using the str function. Right now, the date variable is stored as a factor. We can convert this to a “Date” object in R by using the following five commands (one for each data set):</li>
-</ol>
+<p>2. Before working with these data sets, we need to convert the dates into a format that R can understand. Take a look at the structure of one of the datasets using the str function. Right now, the date variable is stored as a factor. We can convert this to a “Date” object in R by using the following five commands (one for each data set):</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>IBM<span class="sc">$</span>Date <span class="ot">=</span> <span class="fu">as.Date</span>(IBM<span class="sc">$</span>Date, <span class="st">"%m/%d/%y"</span>)</span>
-<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>GE<span class="sc">$</span>Date <span class="ot">=</span> <span class="fu">as.Date</span>(GE<span class="sc">$</span>Date, <span class="st">"%m/%d/%y"</span>)</span>
-<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a>CocaCola<span class="sc">$</span>Date <span class="ot">=</span> <span class="fu">as.Date</span>(CocaCola<span class="sc">$</span>Date, <span class="st">"%m/%d/%y"</span>)</span>
-<span id="cb51-4"><a href="#cb51-4" aria-hidden="true" tabindex="-1"></a>ProcterGamble<span class="sc">$</span>Date <span class="ot">=</span> <span class="fu">as.Date</span>(ProcterGamble<span class="sc">$</span>Date, <span class="st">"%m/%d/%y"</span>)</span>
-<span id="cb51-5"><a href="#cb51-5" aria-hidden="true" tabindex="-1"></a>Boeing<span class="sc">$</span>Date <span class="ot">=</span> <span class="fu">as.Date</span>(Boeing<span class="sc">$</span>Date, <span class="st">"%m/%d/%y"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>IBM<span class="sc">$</span>Date <span class="ot">=</span> <span class="fu">as.Date</span>(IBM<span class="sc">$</span>Date, <span class="st">"%m/%d/%y"</span>)</span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>GE<span class="sc">$</span>Date <span class="ot">=</span> <span class="fu">as.Date</span>(GE<span class="sc">$</span>Date, <span class="st">"%m/%d/%y"</span>)</span>
+<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a>CocaCola<span class="sc">$</span>Date <span class="ot">=</span> <span class="fu">as.Date</span>(CocaCola<span class="sc">$</span>Date, <span class="st">"%m/%d/%y"</span>)</span>
+<span id="cb50-4"><a href="#cb50-4" aria-hidden="true" tabindex="-1"></a>ProcterGamble<span class="sc">$</span>Date <span class="ot">=</span> <span class="fu">as.Date</span>(ProcterGamble<span class="sc">$</span>Date, <span class="st">"%m/%d/%y"</span>)</span>
+<span id="cb50-5"><a href="#cb50-5" aria-hidden="true" tabindex="-1"></a>Boeing<span class="sc">$</span>Date <span class="ot">=</span> <span class="fu">as.Date</span>(Boeing<span class="sc">$</span>Date, <span class="st">"%m/%d/%y"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><strong>1.1: Our five datasets all have the same number of observations. How many observations are there in each data set?</strong><br>
 Answer: 480</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(IBM)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(IBM)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 480</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="co"># According to the assignment, use: str(IBM)</span></span>
-<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a><span class="co"># We only need to use the command for one of the datasets, since they all have the same number of obs.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="co"># According to the assignment, use: str(IBM)</span></span>
+<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a><span class="co"># We only need to use the command for one of the datasets, since they all have the same number of obs.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><strong>1.2: What is the earliest year in our datasets?</strong><br>
 Answer: 1970</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="fu">min</span>(IBM<span class="sc">$</span>Date)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="fu">min</span>(IBM<span class="sc">$</span>Date)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "1970-01-01"</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="co"># According to the assignment, use: summary(IBM$Date)</span></span>
-<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Again, we only need to use the command for one of the datsets, since the observations started on the same date.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="co"># According to the assignment, use: summary(IBM$Date)</span></span>
+<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Again, we only need to use the command for one of the datsets, since the observations started on the same date.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><strong>1.3: What is the latest year in our datasets?</strong><br>
 Answer: 2009</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="fu">max</span>(IBM<span class="sc">$</span>Date)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="fu">max</span>(IBM<span class="sc">$</span>Date)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "2009-12-01"</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="co"># According to the assignment, use: summary(IBM$Date)</span></span>
-<span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Again, we only need to use the command for one of the datsets, since the observations ended on the same date.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="co"># According to the assignment, use: summary(IBM$Date)</span></span>
+<span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Again, we only need to use the command for one of the datsets, since the observations ended on the same date.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><strong>1.4: What is the mean stock price of IBM over this time period?</strong><br>
 Answer: 144.375</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(IBM<span class="sc">$</span>StockPrice)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(IBM<span class="sc">$</span>StockPrice)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 144.375</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="co"># According to the assignment, use: summary(IBM$StockPrice)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="co"># According to the assignment, use: summary(IBM$StockPrice)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p><strong>1.5: </strong><br>
+<p><strong>1.5: What is the minimum stock price of General Electric (GE) over this time period?</strong><br>
 Answer: 9.293636</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="fu">min</span>(GE<span class="sc">$</span>StockPrice)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="fu">min</span>(GE<span class="sc">$</span>StockPrice)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 9.293636</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="co"># According to the assignment, use: summary(GE$StockPrice)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="co"># According to the assignment, use: summary(GE$StockPrice)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p><strong>1.6: </strong><br>
+<p><strong>1.6: What is the maximum stock price of Coca-Cola over this time period?</strong><br>
 Answer: 146.5843</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb67"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a><span class="fu">max</span>(CocaCola<span class="sc">$</span>StockPrice)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="fu">max</span>(CocaCola<span class="sc">$</span>StockPrice)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 146.5843</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb69"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a><span class="co"># According to the assignment, use: summary(CocaCola$StockPrice)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="co"># According to the assignment, use: summary(CocaCola$StockPrice)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p><strong>1.7: </strong><br>
+<p><strong>1.7: What is the median stock price of Boeing over this time period?</strong><br>
 Answer:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a><span class="fu">median</span>(Boeing<span class="sc">$</span>StockPrice)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb69"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a><span class="fu">median</span>(Boeing<span class="sc">$</span>StockPrice)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 44.8834</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb72"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a><span class="co"># According to the assignment, use: summary(Boeing$StockPrice)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb71"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a><span class="co"># According to the assignment, use: summary(Boeing$StockPrice)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p><strong>1.8: </strong><br>
+<p><strong>1.8: What is the standard deviation of the stock price of Procter &amp; Gamble over this time period?</strong><br>
 Answer: 18.19414</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb73"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(ProcterGamble<span class="sc">$</span>StockPrice)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb72"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(ProcterGamble<span class="sc">$</span>StockPrice)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 18.19414</code></pre>
 </div>
@@ -736,7 +734,7 @@ Answer: 1973</p>
 <p><strong>2.1.2: Around what year did Coca-Cola has its lowest stock price in this time period?</strong><br>
 Answer: 1980</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb75"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb75-1"><a href="#cb75-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(CocaCola<span class="sc">$</span>Date, CocaCola<span class="sc">$</span>StockPrice, <span class="st">"l"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb74"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(CocaCola<span class="sc">$</span>Date, CocaCola<span class="sc">$</span>StockPrice, <span class="st">"l"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="Assignment1_files/figure-html/unnamed-chunk-34-1.png" class="img-fluid" width="672"></p>
 </div>
@@ -744,9 +742,9 @@ Answer: 1980</p>
 <p><strong>2.2: In March of 2000, the technology bubble burst, and a stock market crash occurred. According to this plot, which company’s stock dropped more?</strong><br>
 Answer: Procter and Gamble</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb76"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(CocaCola<span class="sc">$</span>Date, CocaCola<span class="sc">$</span>StockPrice, <span class="st">"l"</span>, <span class="at">col =</span> <span class="st">"red"</span>)</span>
-<span id="cb76-2"><a href="#cb76-2" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(ProcterGamble<span class="sc">$</span>Date, ProcterGamble<span class="sc">$</span>StockPrice, <span class="at">col =</span> <span class="st">"blue"</span>)</span>
-<span id="cb76-3"><a href="#cb76-3" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v=</span><span class="fu">as.Date</span>(<span class="fu">c</span>(<span class="st">"2000-03-01"</span>)), <span class="at">lwd=</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb75"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb75-1"><a href="#cb75-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(CocaCola<span class="sc">$</span>Date, CocaCola<span class="sc">$</span>StockPrice, <span class="st">"l"</span>, <span class="at">col =</span> <span class="st">"red"</span>)</span>
+<span id="cb75-2"><a href="#cb75-2" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(ProcterGamble<span class="sc">$</span>Date, ProcterGamble<span class="sc">$</span>StockPrice, <span class="at">col =</span> <span class="st">"blue"</span>)</span>
+<span id="cb75-3"><a href="#cb75-3" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v=</span><span class="fu">as.Date</span>(<span class="fu">c</span>(<span class="st">"2000-03-01"</span>)), <span class="at">lwd=</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="Assignment1_files/figure-html/unnamed-chunk-35-1.png" class="img-fluid" width="672"></p>
 </div>
@@ -756,12 +754,91 @@ Answer: CocaCola</p>
 <p><strong>2.3.1: In the time period shown in the plot, which stock generally has lower values?</strong><br>
 Answer: CocaCola</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb77"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb77-1"><a href="#cb77-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(CocaCola<span class="sc">$</span>Date, CocaCola<span class="sc">$</span>StockPrice, <span class="st">"l"</span>, <span class="at">col =</span> <span class="st">"red"</span>)</span>
-<span id="cb77-2"><a href="#cb77-2" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(ProcterGamble<span class="sc">$</span>Date, ProcterGamble<span class="sc">$</span>StockPrice, <span class="at">col =</span> <span class="st">"blue"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb76"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(CocaCola<span class="sc">$</span>Date, CocaCola<span class="sc">$</span>StockPrice, <span class="st">"l"</span>, <span class="at">col =</span> <span class="st">"red"</span>)</span>
+<span id="cb76-2"><a href="#cb76-2" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(ProcterGamble<span class="sc">$</span>Date, ProcterGamble<span class="sc">$</span>StockPrice, <span class="at">col =</span> <span class="st">"blue"</span>)</span>
+<span id="cb76-3"><a href="#cb76-3" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v=</span><span class="fu">as.Date</span>(<span class="fu">c</span>(<span class="st">"1983-01-01"</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="Assignment1_files/figure-html/unnamed-chunk-36-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
+<p><strong>Plot to answer the following questions:</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb77"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb77-1"><a href="#cb77-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(CocaCola<span class="sc">$</span>Date[<span class="dv">301</span><span class="sc">:</span><span class="dv">432</span>], CocaCola<span class="sc">$</span>StockPrice[<span class="dv">301</span><span class="sc">:</span><span class="dv">432</span>], <span class="at">type=</span><span class="st">"l"</span>, <span class="at">col=</span><span class="st">"red"</span>, <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">210</span>))</span>
+<span id="cb77-2"><a href="#cb77-2" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(ProcterGamble<span class="sc">$</span>Date[<span class="dv">301</span><span class="sc">:</span><span class="dv">432</span>], ProcterGamble<span class="sc">$</span>StockPrice[<span class="dv">301</span><span class="sc">:</span><span class="dv">432</span>], <span class="at">col =</span> <span class="st">"blue"</span>)</span>
+<span id="cb77-3"><a href="#cb77-3" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(IBM<span class="sc">$</span>Date[<span class="dv">301</span><span class="sc">:</span><span class="dv">432</span>], IBM<span class="sc">$</span>StockPrice[<span class="dv">301</span><span class="sc">:</span><span class="dv">432</span>], <span class="at">col =</span> <span class="st">"green"</span>)</span>
+<span id="cb77-4"><a href="#cb77-4" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(GE<span class="sc">$</span>Date[<span class="dv">301</span><span class="sc">:</span><span class="dv">432</span>], GE<span class="sc">$</span>StockPrice[<span class="dv">301</span><span class="sc">:</span><span class="dv">432</span>], <span class="at">col =</span> <span class="st">"purple"</span>)</span>
+<span id="cb77-5"><a href="#cb77-5" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(Boeing<span class="sc">$</span>Date[<span class="dv">301</span><span class="sc">:</span><span class="dv">432</span>], Boeing<span class="sc">$</span>StockPrice[<span class="dv">301</span><span class="sc">:</span><span class="dv">432</span>], <span class="at">col =</span> <span class="st">"orange"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Assignment1_files/figure-html/unnamed-chunk-37-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p><strong>3.1: Which stock fell the most right after the technology bubble burst in March 2000?</strong><br>
+Answer: General Electric (GE)</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb78"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb78-1"><a href="#cb78-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(CocaCola<span class="sc">$</span>Date[<span class="dv">301</span><span class="sc">:</span><span class="dv">432</span>], CocaCola<span class="sc">$</span>StockPrice[<span class="dv">301</span><span class="sc">:</span><span class="dv">432</span>], <span class="at">type=</span><span class="st">"l"</span>, <span class="at">col=</span><span class="st">"red"</span>, <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">210</span>))</span>
+<span id="cb78-2"><a href="#cb78-2" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(ProcterGamble<span class="sc">$</span>Date[<span class="dv">301</span><span class="sc">:</span><span class="dv">432</span>], ProcterGamble<span class="sc">$</span>StockPrice[<span class="dv">301</span><span class="sc">:</span><span class="dv">432</span>], <span class="at">col =</span> <span class="st">"blue"</span>)</span>
+<span id="cb78-3"><a href="#cb78-3" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(IBM<span class="sc">$</span>Date[<span class="dv">301</span><span class="sc">:</span><span class="dv">432</span>], IBM<span class="sc">$</span>StockPrice[<span class="dv">301</span><span class="sc">:</span><span class="dv">432</span>], <span class="at">col =</span> <span class="st">"green"</span>)</span>
+<span id="cb78-4"><a href="#cb78-4" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(GE<span class="sc">$</span>Date[<span class="dv">301</span><span class="sc">:</span><span class="dv">432</span>], GE<span class="sc">$</span>StockPrice[<span class="dv">301</span><span class="sc">:</span><span class="dv">432</span>], <span class="at">col =</span> <span class="st">"purple"</span>)</span>
+<span id="cb78-5"><a href="#cb78-5" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(Boeing<span class="sc">$</span>Date[<span class="dv">301</span><span class="sc">:</span><span class="dv">432</span>], Boeing<span class="sc">$</span>StockPrice[<span class="dv">301</span><span class="sc">:</span><span class="dv">432</span>], <span class="at">col =</span> <span class="st">"orange"</span>)</span>
+<span id="cb78-6"><a href="#cb78-6" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> <span class="fu">as.Date</span>(<span class="fu">c</span>(<span class="st">"2000-03-01"</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Assignment1_files/figure-html/unnamed-chunk-38-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p><strong>3.2: Which stock reaches the highest value in the time period 1995-2005?</strong><br>
+Answer: IBM</p>
+<p><strong>3.3: Comparing September 1997 to November 1997, which companies saw a decreasing trend in their stock price?</strong><br>
+Answer: Procer and Gamble, Boeing</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb79"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb79-1"><a href="#cb79-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(CocaCola<span class="sc">$</span>Date[<span class="dv">301</span><span class="sc">:</span><span class="dv">432</span>], CocaCola<span class="sc">$</span>StockPrice[<span class="dv">301</span><span class="sc">:</span><span class="dv">432</span>], <span class="at">type=</span><span class="st">"l"</span>, <span class="at">col=</span><span class="st">"red"</span>, <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">210</span>))</span>
+<span id="cb79-2"><a href="#cb79-2" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(ProcterGamble<span class="sc">$</span>Date[<span class="dv">301</span><span class="sc">:</span><span class="dv">432</span>], ProcterGamble<span class="sc">$</span>StockPrice[<span class="dv">301</span><span class="sc">:</span><span class="dv">432</span>], <span class="at">col =</span> <span class="st">"blue"</span>)</span>
+<span id="cb79-3"><a href="#cb79-3" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(IBM<span class="sc">$</span>Date[<span class="dv">301</span><span class="sc">:</span><span class="dv">432</span>], IBM<span class="sc">$</span>StockPrice[<span class="dv">301</span><span class="sc">:</span><span class="dv">432</span>], <span class="at">col =</span> <span class="st">"green"</span>)</span>
+<span id="cb79-4"><a href="#cb79-4" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(GE<span class="sc">$</span>Date[<span class="dv">301</span><span class="sc">:</span><span class="dv">432</span>], GE<span class="sc">$</span>StockPrice[<span class="dv">301</span><span class="sc">:</span><span class="dv">432</span>], <span class="at">col =</span> <span class="st">"purple"</span>)</span>
+<span id="cb79-5"><a href="#cb79-5" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(Boeing<span class="sc">$</span>Date[<span class="dv">301</span><span class="sc">:</span><span class="dv">432</span>], Boeing<span class="sc">$</span>StockPrice[<span class="dv">301</span><span class="sc">:</span><span class="dv">432</span>], <span class="at">col =</span> <span class="st">"orange"</span>)</span>
+<span id="cb79-6"><a href="#cb79-6" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> <span class="fu">as.Date</span>(<span class="fu">c</span>(<span class="st">"1997-09-1"</span>)))</span>
+<span id="cb79-7"><a href="#cb79-7" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> <span class="fu">as.Date</span>(<span class="fu">c</span>(<span class="st">"1997-11-1"</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Assignment1_files/figure-html/unnamed-chunk-39-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p><strong>3.4: In the last two years of this time period (2004 and 2005) which stock seems to be performing the best, in terms of increasing stock price?</strong><br>
+Answer: Boeing</p>
+<p><strong>4.1: In which months has IBM historically had a higher stock price (on average)?</strong><br>
+Answer: January, February, March, April, May</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb80"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb80-1"><a href="#cb80-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tapply</span>(IBM<span class="sc">$</span>StockPrice, <span class="fu">months</span>(IBM<span class="sc">$</span>Date), mean) <span class="sc">&gt;</span> <span class="fu">mean</span>(IBM<span class="sc">$</span>StockPrice)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>    April    August  December  February   January      July      June     March 
+     TRUE     FALSE     FALSE      TRUE      TRUE     FALSE     FALSE      TRUE 
+      May  November   October September 
+     TRUE     FALSE     FALSE     FALSE </code></pre>
+</div>
+</div>
+<p><strong>4.2: General Electric and Coca-Cola both have their highest average stock price in the same month. Which month is this?</strong><br>
+Answer: April</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb82"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb82-1"><a href="#cb82-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tapply</span>(GE<span class="sc">$</span>StockPrice, <span class="fu">months</span>(GE<span class="sc">$</span>Date), mean) <span class="sc">==</span> <span class="fu">max</span>(<span class="fu">tapply</span>(GE<span class="sc">$</span>StockPrice, <span class="fu">months</span>(GE<span class="sc">$</span>Date), mean))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>    April    August  December  February   January      July      June     March 
+     TRUE     FALSE     FALSE     FALSE     FALSE     FALSE     FALSE     FALSE 
+      May  November   October September 
+    FALSE     FALSE     FALSE     FALSE </code></pre>
+</div>
+</div>
+<p><strong>4.3: For the months of December and January, every company’s average stock is higher in one month and lower in the other. In which month are the stock prices lower?</strong><br>
+Answer: December</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb84"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb84-1"><a href="#cb84-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tapply</span>(GE<span class="sc">$</span>StockPrice, <span class="fu">months</span>(GE<span class="sc">$</span>Date), mean)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>    April    August  December  February   January      July      June     March 
+ 64.48009  56.50315  59.10217  62.52080  62.04511  56.73349  56.46844  63.15055 
+      May  November   October September 
+ 60.87135  57.28879  56.23897  56.23913 </code></pre>
+</div>
+</div>
+</section>
+<section id="demographics-and-employment-in-the-united-states" class="level2">
+<h2 class="anchored" data-anchor-id="demographics-and-employment-in-the-united-states">Demographics and Employment in the United States</h2>
 
 
 </section>
