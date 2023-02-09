@@ -177,6 +177,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <li><a href="#an-analytical-detective" id="toc-an-analytical-detective" class="nav-link active" data-scroll-target="#an-analytical-detective">An Analytical Detective</a></li>
   <li><a href="#stock-dynamics" id="toc-stock-dynamics" class="nav-link" data-scroll-target="#stock-dynamics">Stock Dynamics</a></li>
   <li><a href="#demographics-and-employment-in-the-united-states" id="toc-demographics-and-employment-in-the-united-states" class="nav-link" data-scroll-target="#demographics-and-employment-in-the-united-states">Demographics and Employment in the United States</a></li>
+  <li><a href="#internet-privacy-poll-optional" id="toc-internet-privacy-poll-optional" class="nav-link" data-scroll-target="#internet-privacy-poll-optional">Internet Privacy Poll (OPTIONAL)</a></li>
   </ul>
 </nav>
     </div>
@@ -343,82 +344,40 @@ Answer: First half</p>
 <p><strong>3.3: For what proportion of motor vehicle thefts in 2001 was an arrest made?</strong><br>
 Answer: 0.1041173</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(mvt<span class="sc">$</span>Year, mvt<span class="sc">$</span>Arrest)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tapply</span>(mvt<span class="sc">$</span>Arrest, mvt<span class="sc">$</span>Year, mean)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>      
-       FALSE  TRUE
-  2001 18517  2152
-  2002 16638  2115
-  2003 14859  1798
-  2004 15169  1693
-  2005 14956  1528
-  2006 14796  1302
-  2007 13068  1212
-  2008 13425  1020
-  2009 11327   840
-  2010 14796   701
-  2011 15012   625
-  2012 13542   550</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="dv">2152</span><span class="sc">/</span>(<span class="dv">18517</span><span class="sc">+</span><span class="dv">2152</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.1041173</code></pre>
+<pre><code>      2001       2002       2003       2004       2005       2006       2007 
+0.10411728 0.11278195 0.10794261 0.10040327 0.09269595 0.08087961 0.08487395 
+      2008       2009       2010       2011       2012 
+0.07061267 0.06903920 0.04523456 0.03996930 0.03902924 </code></pre>
 </div>
 </div>
 <p><strong>3.4: For what proportion of motor vehicle thefts in 2007 was an arrest made?</strong><br>
 Answer: 0.08487395</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(mvt<span class="sc">$</span>Year, mvt<span class="sc">$</span>Arrest)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tapply</span>(mvt<span class="sc">$</span>Arrest, mvt<span class="sc">$</span>Year, mean)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>      
-       FALSE  TRUE
-  2001 18517  2152
-  2002 16638  2115
-  2003 14859  1798
-  2004 15169  1693
-  2005 14956  1528
-  2006 14796  1302
-  2007 13068  1212
-  2008 13425  1020
-  2009 11327   840
-  2010 14796   701
-  2011 15012   625
-  2012 13542   550</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1212</span><span class="sc">/</span>(<span class="dv">13068</span><span class="sc">+</span><span class="dv">1212</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.08487395</code></pre>
+<pre><code>      2001       2002       2003       2004       2005       2006       2007 
+0.10411728 0.11278195 0.10794261 0.10040327 0.09269595 0.08087961 0.08487395 
+      2008       2009       2010       2011       2012 
+0.07061267 0.06903920 0.04523456 0.03996930 0.03902924 </code></pre>
 </div>
 </div>
 <p><strong>3.5: For what proportion of motor vehicle thefts in 2012 was an arrest made?</strong><br>
 Answer: 0.03902924</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(mvt<span class="sc">$</span>Year, mvt<span class="sc">$</span>Arrest)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tapply</span>(mvt<span class="sc">$</span>Arrest, mvt<span class="sc">$</span>Year, mean)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>      
-       FALSE  TRUE
-  2001 18517  2152
-  2002 16638  2115
-  2003 14859  1798
-  2004 15169  1693
-  2005 14956  1528
-  2006 14796  1302
-  2007 13068  1212
-  2008 13425  1020
-  2009 11327   840
-  2010 14796   701
-  2011 15012   625
-  2012 13542   550</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="dv">550</span><span class="sc">/</span>(<span class="dv">13542</span><span class="sc">+</span><span class="dv">550</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.03902924</code></pre>
+<pre><code>      2001       2002       2003       2004       2005       2006       2007 
+0.10411728 0.11278195 0.10794261 0.10040327 0.09269595 0.08087961 0.08487395 
+      2008       2009       2010       2011       2012 
+0.07061267 0.06903920 0.04523456 0.03996930 0.03902924 </code></pre>
 </div>
 </div>
 <p><strong>4.1: Which locations are the top five locations for motor vehicle thefts, excluding the “Other” category?</strong><br>
 Answer: STREET, PARKING LOT/GARAGE(NON.RESID.), ALLEY, GAS STATION, DRIVEWAY - RESIDENTIAL</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sort</span>(<span class="fu">table</span>(mvt<span class="sc">$</span>LocationDescription), <span class="at">decreasing =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sort</span>(<span class="fu">table</span>(mvt<span class="sc">$</span>LocationDescription), <span class="at">decreasing =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
                                          STREET 
@@ -581,16 +540,16 @@ AIRPORT BUILDING NON-TERMINAL - NON-SECURE AREA
 </div>
 <p><strong>Create a subset of your data, only taking observations for which the theft happened in one of these five locations, and call this new data set “Top5”.</strong></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>Top5 <span class="ot">&lt;-</span> <span class="fu">subset</span>(mvt, mvt<span class="sc">$</span>LocationDescription <span class="sc">==</span> <span class="st">"STREET"</span></span>
-<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>       <span class="sc">|</span> mvt<span class="sc">$</span>LocationDescription <span class="sc">==</span> <span class="st">"PARKING LOT/GARAGE(NON.RESID.)"</span> </span>
-<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>       <span class="sc">|</span> mvt<span class="sc">$</span>LocationDescription <span class="sc">==</span> <span class="st">"ALLEY"</span></span>
-<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a>       <span class="sc">|</span> mvt<span class="sc">$</span>LocationDescription <span class="sc">==</span> <span class="st">"GAS STATION"</span></span>
-<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a>       <span class="sc">|</span> mvt<span class="sc">$</span>LocationDescription <span class="sc">==</span> <span class="st">"DRIVEWAY - RESIDENTIAL"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>Top5 <span class="ot">&lt;-</span> <span class="fu">subset</span>(mvt, mvt<span class="sc">$</span>LocationDescription <span class="sc">==</span> <span class="st">"STREET"</span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>       <span class="sc">|</span> mvt<span class="sc">$</span>LocationDescription <span class="sc">==</span> <span class="st">"PARKING LOT/GARAGE(NON.RESID.)"</span> </span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>       <span class="sc">|</span> mvt<span class="sc">$</span>LocationDescription <span class="sc">==</span> <span class="st">"ALLEY"</span></span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>       <span class="sc">|</span> mvt<span class="sc">$</span>LocationDescription <span class="sc">==</span> <span class="st">"GAS STATION"</span></span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a>       <span class="sc">|</span> mvt<span class="sc">$</span>LocationDescription <span class="sc">==</span> <span class="st">"DRIVEWAY - RESIDENTIAL"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><strong>4.2: How many observations are in Top5?</strong><br>
 Answer: 177510</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(Top5)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(Top5)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 177510</code></pre>
 </div>
@@ -598,8 +557,8 @@ Answer: 177510</p>
 <p><strong>4.3: One of the locations has a much higher arrest rate than the other locations. Which is it?</strong><br>
 Answer: Gas Station (Check percentages)</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>Top5<span class="sc">$</span>LocationDescription <span class="ot">=</span> <span class="fu">factor</span>(Top5<span class="sc">$</span>LocationDescription)</span>
-<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(Top5<span class="sc">$</span>LocationDescription, Top5<span class="sc">$</span>Arrest)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>Top5<span class="sc">$</span>LocationDescription <span class="ot">=</span> <span class="fu">factor</span>(Top5<span class="sc">$</span>LocationDescription)</span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(Top5<span class="sc">$</span>LocationDescription, Top5<span class="sc">$</span>Arrest)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>                                
                                   FALSE   TRUE
@@ -613,7 +572,7 @@ Answer: Gas Station (Check percentages)</p>
 <p><strong>4.4: On which day of the week do the most motor vehicle thefts at gas stations happen?</strong><br>
 Answer: Saturday</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(Top5<span class="sc">$</span>LocationDescription <span class="sc">==</span> <span class="st">"GAS STATION"</span>, Top5<span class="sc">$</span>Weekday)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(Top5<span class="sc">$</span>LocationDescription <span class="sc">==</span> <span class="st">"GAS STATION"</span>, Top5<span class="sc">$</span>Weekday)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>       
         Friday Monday Saturday Sunday Thursday Tuesday Wednesday
@@ -624,7 +583,7 @@ Answer: Saturday</p>
 <p><strong>4.5: On which day of the week do the fewest motor vehicle thefts in residential driveways happen?</strong><br>
 Answer: Saturday</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(Top5<span class="sc">$</span>LocationDescription <span class="sc">==</span> <span class="st">"DRIVEWAY - RESIDENTIAL"</span>, Top5<span class="sc">$</span>Weekday)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(Top5<span class="sc">$</span>LocationDescription <span class="sc">==</span> <span class="st">"DRIVEWAY - RESIDENTIAL"</span>, Top5<span class="sc">$</span>Weekday)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>       
         Friday Monday Saturday Sunday Thursday Tuesday Wednesday
@@ -640,90 +599,90 @@ Answer: Saturday</p>
 <p><strong>Start:</strong><br>
 1. Read the datasets into R, using the read.csv function, and call the data frames “IBM”, “GE”, “ProcterGamble”, “CocaCola”, and “Boeing”, respectively.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>IBM <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"IBMStock.csv"</span>)</span>
-<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>GE <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"GEStock.csv"</span>)</span>
-<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a>ProcterGamble <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"ProcterGambleStock.csv"</span>)</span>
-<span id="cb49-4"><a href="#cb49-4" aria-hidden="true" tabindex="-1"></a>CocaCola <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"CocaColaStock.csv"</span>)</span>
-<span id="cb49-5"><a href="#cb49-5" aria-hidden="true" tabindex="-1"></a>Boeing <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"BoeingStock.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>IBM <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"IBMStock.csv"</span>)</span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>GE <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"GEStock.csv"</span>)</span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>ProcterGamble <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"ProcterGambleStock.csv"</span>)</span>
+<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a>CocaCola <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"CocaColaStock.csv"</span>)</span>
+<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a>Boeing <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"BoeingStock.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>2. Before working with these data sets, we need to convert the dates into a format that R can understand. Take a look at the structure of one of the datasets using the str function. Right now, the date variable is stored as a factor. We can convert this to a “Date” object in R by using the following five commands (one for each data set):</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>IBM<span class="sc">$</span>Date <span class="ot">=</span> <span class="fu">as.Date</span>(IBM<span class="sc">$</span>Date, <span class="st">"%m/%d/%y"</span>)</span>
-<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>GE<span class="sc">$</span>Date <span class="ot">=</span> <span class="fu">as.Date</span>(GE<span class="sc">$</span>Date, <span class="st">"%m/%d/%y"</span>)</span>
-<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a>CocaCola<span class="sc">$</span>Date <span class="ot">=</span> <span class="fu">as.Date</span>(CocaCola<span class="sc">$</span>Date, <span class="st">"%m/%d/%y"</span>)</span>
-<span id="cb50-4"><a href="#cb50-4" aria-hidden="true" tabindex="-1"></a>ProcterGamble<span class="sc">$</span>Date <span class="ot">=</span> <span class="fu">as.Date</span>(ProcterGamble<span class="sc">$</span>Date, <span class="st">"%m/%d/%y"</span>)</span>
-<span id="cb50-5"><a href="#cb50-5" aria-hidden="true" tabindex="-1"></a>Boeing<span class="sc">$</span>Date <span class="ot">=</span> <span class="fu">as.Date</span>(Boeing<span class="sc">$</span>Date, <span class="st">"%m/%d/%y"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>IBM<span class="sc">$</span>Date <span class="ot">=</span> <span class="fu">as.Date</span>(IBM<span class="sc">$</span>Date, <span class="st">"%m/%d/%y"</span>)</span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>GE<span class="sc">$</span>Date <span class="ot">=</span> <span class="fu">as.Date</span>(GE<span class="sc">$</span>Date, <span class="st">"%m/%d/%y"</span>)</span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>CocaCola<span class="sc">$</span>Date <span class="ot">=</span> <span class="fu">as.Date</span>(CocaCola<span class="sc">$</span>Date, <span class="st">"%m/%d/%y"</span>)</span>
+<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a>ProcterGamble<span class="sc">$</span>Date <span class="ot">=</span> <span class="fu">as.Date</span>(ProcterGamble<span class="sc">$</span>Date, <span class="st">"%m/%d/%y"</span>)</span>
+<span id="cb44-5"><a href="#cb44-5" aria-hidden="true" tabindex="-1"></a>Boeing<span class="sc">$</span>Date <span class="ot">=</span> <span class="fu">as.Date</span>(Boeing<span class="sc">$</span>Date, <span class="st">"%m/%d/%y"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><strong>1.1: Our five datasets all have the same number of observations. How many observations are there in each data set?</strong><br>
 Answer: 480</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(IBM)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(IBM)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 480</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="co"># According to the assignment, use: str(IBM)</span></span>
-<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a><span class="co"># We only need to use the command for one of the datasets, since they all have the same number of obs.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="co"># According to the assignment, use: str(IBM)</span></span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a><span class="co"># We only need to use the command for one of the datasets, since they all have the same number of obs.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><strong>1.2: What is the earliest year in our datasets?</strong><br>
 Answer: 1970</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="fu">min</span>(IBM<span class="sc">$</span>Date)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="fu">min</span>(IBM<span class="sc">$</span>Date)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "1970-01-01"</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="co"># According to the assignment, use: summary(IBM$Date)</span></span>
-<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Again, we only need to use the command for one of the datsets, since the observations started on the same date.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="co"># According to the assignment, use: summary(IBM$Date)</span></span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Again, we only need to use the command for one of the datsets, since the observations started on the same date.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><strong>1.3: What is the latest year in our datasets?</strong><br>
 Answer: 2009</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="fu">max</span>(IBM<span class="sc">$</span>Date)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="fu">max</span>(IBM<span class="sc">$</span>Date)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "2009-12-01"</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="co"># According to the assignment, use: summary(IBM$Date)</span></span>
-<span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Again, we only need to use the command for one of the datsets, since the observations ended on the same date.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="co"># According to the assignment, use: summary(IBM$Date)</span></span>
+<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Again, we only need to use the command for one of the datsets, since the observations ended on the same date.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><strong>1.4: What is the mean stock price of IBM over this time period?</strong><br>
 Answer: 144.375</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(IBM<span class="sc">$</span>StockPrice)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(IBM<span class="sc">$</span>StockPrice)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 144.375</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="co"># According to the assignment, use: summary(IBM$StockPrice)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="co"># According to the assignment, use: summary(IBM$StockPrice)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><strong>1.5: What is the minimum stock price of General Electric (GE) over this time period?</strong><br>
 Answer: 9.293636</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="fu">min</span>(GE<span class="sc">$</span>StockPrice)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="fu">min</span>(GE<span class="sc">$</span>StockPrice)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 9.293636</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="co"># According to the assignment, use: summary(GE$StockPrice)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="co"># According to the assignment, use: summary(GE$StockPrice)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><strong>1.6: What is the maximum stock price of Coca-Cola over this time period?</strong><br>
 Answer: 146.5843</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="fu">max</span>(CocaCola<span class="sc">$</span>StockPrice)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="fu">max</span>(CocaCola<span class="sc">$</span>StockPrice)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 146.5843</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="co"># According to the assignment, use: summary(CocaCola$StockPrice)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="co"># According to the assignment, use: summary(CocaCola$StockPrice)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><strong>1.7: What is the median stock price of Boeing over this time period?</strong><br>
 Answer:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb69"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a><span class="fu">median</span>(Boeing<span class="sc">$</span>StockPrice)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="fu">median</span>(Boeing<span class="sc">$</span>StockPrice)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 44.8834</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb71"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a><span class="co"># According to the assignment, use: summary(Boeing$StockPrice)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="co"># According to the assignment, use: summary(Boeing$StockPrice)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><strong>1.8: What is the standard deviation of the stock price of Procter &amp; Gamble over this time period?</strong><br>
 Answer: 18.19414</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb72"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(ProcterGamble<span class="sc">$</span>StockPrice)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(ProcterGamble<span class="sc">$</span>StockPrice)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 18.19414</code></pre>
 </div>
@@ -734,7 +693,7 @@ Answer: 1973</p>
 <p><strong>2.1.2: Around what year did Coca-Cola has its lowest stock price in this time period?</strong><br>
 Answer: 1980</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb74"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(CocaCola<span class="sc">$</span>Date, CocaCola<span class="sc">$</span>StockPrice, <span class="st">"l"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(CocaCola<span class="sc">$</span>Date, CocaCola<span class="sc">$</span>StockPrice, <span class="st">"l"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="Assignment1_files/figure-html/unnamed-chunk-34-1.png" class="img-fluid" width="672"></p>
 </div>
@@ -742,9 +701,9 @@ Answer: 1980</p>
 <p><strong>2.2: In March of 2000, the technology bubble burst, and a stock market crash occurred. According to this plot, which company’s stock dropped more?</strong><br>
 Answer: Procter and Gamble</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb75"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb75-1"><a href="#cb75-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(CocaCola<span class="sc">$</span>Date, CocaCola<span class="sc">$</span>StockPrice, <span class="st">"l"</span>, <span class="at">col =</span> <span class="st">"red"</span>)</span>
-<span id="cb75-2"><a href="#cb75-2" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(ProcterGamble<span class="sc">$</span>Date, ProcterGamble<span class="sc">$</span>StockPrice, <span class="at">col =</span> <span class="st">"blue"</span>)</span>
-<span id="cb75-3"><a href="#cb75-3" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v=</span><span class="fu">as.Date</span>(<span class="fu">c</span>(<span class="st">"2000-03-01"</span>)), <span class="at">lwd=</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb69"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(CocaCola<span class="sc">$</span>Date, CocaCola<span class="sc">$</span>StockPrice, <span class="st">"l"</span>, <span class="at">col =</span> <span class="st">"red"</span>)</span>
+<span id="cb69-2"><a href="#cb69-2" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(ProcterGamble<span class="sc">$</span>Date, ProcterGamble<span class="sc">$</span>StockPrice, <span class="at">col =</span> <span class="st">"blue"</span>)</span>
+<span id="cb69-3"><a href="#cb69-3" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v=</span><span class="fu">as.Date</span>(<span class="fu">c</span>(<span class="st">"2000-03-01"</span>)), <span class="at">lwd=</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="Assignment1_files/figure-html/unnamed-chunk-35-1.png" class="img-fluid" width="672"></p>
 </div>
@@ -754,20 +713,20 @@ Answer: CocaCola</p>
 <p><strong>2.3.1: In the time period shown in the plot, which stock generally has lower values?</strong><br>
 Answer: CocaCola</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb76"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(CocaCola<span class="sc">$</span>Date, CocaCola<span class="sc">$</span>StockPrice, <span class="st">"l"</span>, <span class="at">col =</span> <span class="st">"red"</span>)</span>
-<span id="cb76-2"><a href="#cb76-2" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(ProcterGamble<span class="sc">$</span>Date, ProcterGamble<span class="sc">$</span>StockPrice, <span class="at">col =</span> <span class="st">"blue"</span>)</span>
-<span id="cb76-3"><a href="#cb76-3" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v=</span><span class="fu">as.Date</span>(<span class="fu">c</span>(<span class="st">"1983-01-01"</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(CocaCola<span class="sc">$</span>Date, CocaCola<span class="sc">$</span>StockPrice, <span class="st">"l"</span>, <span class="at">col =</span> <span class="st">"red"</span>)</span>
+<span id="cb70-2"><a href="#cb70-2" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(ProcterGamble<span class="sc">$</span>Date, ProcterGamble<span class="sc">$</span>StockPrice, <span class="at">col =</span> <span class="st">"blue"</span>)</span>
+<span id="cb70-3"><a href="#cb70-3" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v=</span><span class="fu">as.Date</span>(<span class="fu">c</span>(<span class="st">"1983-01-01"</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="Assignment1_files/figure-html/unnamed-chunk-36-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <p><strong>Plot to answer the following questions:</strong></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb77"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb77-1"><a href="#cb77-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(CocaCola<span class="sc">$</span>Date[<span class="dv">301</span><span class="sc">:</span><span class="dv">432</span>], CocaCola<span class="sc">$</span>StockPrice[<span class="dv">301</span><span class="sc">:</span><span class="dv">432</span>], <span class="at">type=</span><span class="st">"l"</span>, <span class="at">col=</span><span class="st">"red"</span>, <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">210</span>))</span>
-<span id="cb77-2"><a href="#cb77-2" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(ProcterGamble<span class="sc">$</span>Date[<span class="dv">301</span><span class="sc">:</span><span class="dv">432</span>], ProcterGamble<span class="sc">$</span>StockPrice[<span class="dv">301</span><span class="sc">:</span><span class="dv">432</span>], <span class="at">col =</span> <span class="st">"blue"</span>)</span>
-<span id="cb77-3"><a href="#cb77-3" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(IBM<span class="sc">$</span>Date[<span class="dv">301</span><span class="sc">:</span><span class="dv">432</span>], IBM<span class="sc">$</span>StockPrice[<span class="dv">301</span><span class="sc">:</span><span class="dv">432</span>], <span class="at">col =</span> <span class="st">"green"</span>)</span>
-<span id="cb77-4"><a href="#cb77-4" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(GE<span class="sc">$</span>Date[<span class="dv">301</span><span class="sc">:</span><span class="dv">432</span>], GE<span class="sc">$</span>StockPrice[<span class="dv">301</span><span class="sc">:</span><span class="dv">432</span>], <span class="at">col =</span> <span class="st">"purple"</span>)</span>
-<span id="cb77-5"><a href="#cb77-5" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(Boeing<span class="sc">$</span>Date[<span class="dv">301</span><span class="sc">:</span><span class="dv">432</span>], Boeing<span class="sc">$</span>StockPrice[<span class="dv">301</span><span class="sc">:</span><span class="dv">432</span>], <span class="at">col =</span> <span class="st">"orange"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb71"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(CocaCola<span class="sc">$</span>Date[<span class="dv">301</span><span class="sc">:</span><span class="dv">432</span>], CocaCola<span class="sc">$</span>StockPrice[<span class="dv">301</span><span class="sc">:</span><span class="dv">432</span>], <span class="at">type=</span><span class="st">"l"</span>, <span class="at">col=</span><span class="st">"red"</span>, <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">210</span>))</span>
+<span id="cb71-2"><a href="#cb71-2" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(ProcterGamble<span class="sc">$</span>Date[<span class="dv">301</span><span class="sc">:</span><span class="dv">432</span>], ProcterGamble<span class="sc">$</span>StockPrice[<span class="dv">301</span><span class="sc">:</span><span class="dv">432</span>], <span class="at">col =</span> <span class="st">"blue"</span>)</span>
+<span id="cb71-3"><a href="#cb71-3" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(IBM<span class="sc">$</span>Date[<span class="dv">301</span><span class="sc">:</span><span class="dv">432</span>], IBM<span class="sc">$</span>StockPrice[<span class="dv">301</span><span class="sc">:</span><span class="dv">432</span>], <span class="at">col =</span> <span class="st">"green"</span>)</span>
+<span id="cb71-4"><a href="#cb71-4" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(GE<span class="sc">$</span>Date[<span class="dv">301</span><span class="sc">:</span><span class="dv">432</span>], GE<span class="sc">$</span>StockPrice[<span class="dv">301</span><span class="sc">:</span><span class="dv">432</span>], <span class="at">col =</span> <span class="st">"purple"</span>)</span>
+<span id="cb71-5"><a href="#cb71-5" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(Boeing<span class="sc">$</span>Date[<span class="dv">301</span><span class="sc">:</span><span class="dv">432</span>], Boeing<span class="sc">$</span>StockPrice[<span class="dv">301</span><span class="sc">:</span><span class="dv">432</span>], <span class="at">col =</span> <span class="st">"orange"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="Assignment1_files/figure-html/unnamed-chunk-37-1.png" class="img-fluid" width="672"></p>
 </div>
@@ -775,12 +734,12 @@ Answer: CocaCola</p>
 <p><strong>3.1: Which stock fell the most right after the technology bubble burst in March 2000?</strong><br>
 Answer: General Electric (GE)</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb78"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb78-1"><a href="#cb78-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(CocaCola<span class="sc">$</span>Date[<span class="dv">301</span><span class="sc">:</span><span class="dv">432</span>], CocaCola<span class="sc">$</span>StockPrice[<span class="dv">301</span><span class="sc">:</span><span class="dv">432</span>], <span class="at">type=</span><span class="st">"l"</span>, <span class="at">col=</span><span class="st">"red"</span>, <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">210</span>))</span>
-<span id="cb78-2"><a href="#cb78-2" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(ProcterGamble<span class="sc">$</span>Date[<span class="dv">301</span><span class="sc">:</span><span class="dv">432</span>], ProcterGamble<span class="sc">$</span>StockPrice[<span class="dv">301</span><span class="sc">:</span><span class="dv">432</span>], <span class="at">col =</span> <span class="st">"blue"</span>)</span>
-<span id="cb78-3"><a href="#cb78-3" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(IBM<span class="sc">$</span>Date[<span class="dv">301</span><span class="sc">:</span><span class="dv">432</span>], IBM<span class="sc">$</span>StockPrice[<span class="dv">301</span><span class="sc">:</span><span class="dv">432</span>], <span class="at">col =</span> <span class="st">"green"</span>)</span>
-<span id="cb78-4"><a href="#cb78-4" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(GE<span class="sc">$</span>Date[<span class="dv">301</span><span class="sc">:</span><span class="dv">432</span>], GE<span class="sc">$</span>StockPrice[<span class="dv">301</span><span class="sc">:</span><span class="dv">432</span>], <span class="at">col =</span> <span class="st">"purple"</span>)</span>
-<span id="cb78-5"><a href="#cb78-5" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(Boeing<span class="sc">$</span>Date[<span class="dv">301</span><span class="sc">:</span><span class="dv">432</span>], Boeing<span class="sc">$</span>StockPrice[<span class="dv">301</span><span class="sc">:</span><span class="dv">432</span>], <span class="at">col =</span> <span class="st">"orange"</span>)</span>
-<span id="cb78-6"><a href="#cb78-6" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> <span class="fu">as.Date</span>(<span class="fu">c</span>(<span class="st">"2000-03-01"</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb72"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(CocaCola<span class="sc">$</span>Date[<span class="dv">301</span><span class="sc">:</span><span class="dv">432</span>], CocaCola<span class="sc">$</span>StockPrice[<span class="dv">301</span><span class="sc">:</span><span class="dv">432</span>], <span class="at">type=</span><span class="st">"l"</span>, <span class="at">col=</span><span class="st">"red"</span>, <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">210</span>))</span>
+<span id="cb72-2"><a href="#cb72-2" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(ProcterGamble<span class="sc">$</span>Date[<span class="dv">301</span><span class="sc">:</span><span class="dv">432</span>], ProcterGamble<span class="sc">$</span>StockPrice[<span class="dv">301</span><span class="sc">:</span><span class="dv">432</span>], <span class="at">col =</span> <span class="st">"blue"</span>)</span>
+<span id="cb72-3"><a href="#cb72-3" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(IBM<span class="sc">$</span>Date[<span class="dv">301</span><span class="sc">:</span><span class="dv">432</span>], IBM<span class="sc">$</span>StockPrice[<span class="dv">301</span><span class="sc">:</span><span class="dv">432</span>], <span class="at">col =</span> <span class="st">"green"</span>)</span>
+<span id="cb72-4"><a href="#cb72-4" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(GE<span class="sc">$</span>Date[<span class="dv">301</span><span class="sc">:</span><span class="dv">432</span>], GE<span class="sc">$</span>StockPrice[<span class="dv">301</span><span class="sc">:</span><span class="dv">432</span>], <span class="at">col =</span> <span class="st">"purple"</span>)</span>
+<span id="cb72-5"><a href="#cb72-5" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(Boeing<span class="sc">$</span>Date[<span class="dv">301</span><span class="sc">:</span><span class="dv">432</span>], Boeing<span class="sc">$</span>StockPrice[<span class="dv">301</span><span class="sc">:</span><span class="dv">432</span>], <span class="at">col =</span> <span class="st">"orange"</span>)</span>
+<span id="cb72-6"><a href="#cb72-6" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> <span class="fu">as.Date</span>(<span class="fu">c</span>(<span class="st">"2000-03-01"</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="Assignment1_files/figure-html/unnamed-chunk-38-1.png" class="img-fluid" width="672"></p>
 </div>
@@ -790,13 +749,13 @@ Answer: IBM</p>
 <p><strong>3.3: Comparing September 1997 to November 1997, which companies saw a decreasing trend in their stock price?</strong><br>
 Answer: Procer and Gamble, Boeing</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb79"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb79-1"><a href="#cb79-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(CocaCola<span class="sc">$</span>Date[<span class="dv">301</span><span class="sc">:</span><span class="dv">432</span>], CocaCola<span class="sc">$</span>StockPrice[<span class="dv">301</span><span class="sc">:</span><span class="dv">432</span>], <span class="at">type=</span><span class="st">"l"</span>, <span class="at">col=</span><span class="st">"red"</span>, <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">210</span>))</span>
-<span id="cb79-2"><a href="#cb79-2" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(ProcterGamble<span class="sc">$</span>Date[<span class="dv">301</span><span class="sc">:</span><span class="dv">432</span>], ProcterGamble<span class="sc">$</span>StockPrice[<span class="dv">301</span><span class="sc">:</span><span class="dv">432</span>], <span class="at">col =</span> <span class="st">"blue"</span>)</span>
-<span id="cb79-3"><a href="#cb79-3" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(IBM<span class="sc">$</span>Date[<span class="dv">301</span><span class="sc">:</span><span class="dv">432</span>], IBM<span class="sc">$</span>StockPrice[<span class="dv">301</span><span class="sc">:</span><span class="dv">432</span>], <span class="at">col =</span> <span class="st">"green"</span>)</span>
-<span id="cb79-4"><a href="#cb79-4" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(GE<span class="sc">$</span>Date[<span class="dv">301</span><span class="sc">:</span><span class="dv">432</span>], GE<span class="sc">$</span>StockPrice[<span class="dv">301</span><span class="sc">:</span><span class="dv">432</span>], <span class="at">col =</span> <span class="st">"purple"</span>)</span>
-<span id="cb79-5"><a href="#cb79-5" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(Boeing<span class="sc">$</span>Date[<span class="dv">301</span><span class="sc">:</span><span class="dv">432</span>], Boeing<span class="sc">$</span>StockPrice[<span class="dv">301</span><span class="sc">:</span><span class="dv">432</span>], <span class="at">col =</span> <span class="st">"orange"</span>)</span>
-<span id="cb79-6"><a href="#cb79-6" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> <span class="fu">as.Date</span>(<span class="fu">c</span>(<span class="st">"1997-09-1"</span>)))</span>
-<span id="cb79-7"><a href="#cb79-7" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> <span class="fu">as.Date</span>(<span class="fu">c</span>(<span class="st">"1997-11-1"</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb73"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(CocaCola<span class="sc">$</span>Date[<span class="dv">301</span><span class="sc">:</span><span class="dv">432</span>], CocaCola<span class="sc">$</span>StockPrice[<span class="dv">301</span><span class="sc">:</span><span class="dv">432</span>], <span class="at">type=</span><span class="st">"l"</span>, <span class="at">col=</span><span class="st">"red"</span>, <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">210</span>))</span>
+<span id="cb73-2"><a href="#cb73-2" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(ProcterGamble<span class="sc">$</span>Date[<span class="dv">301</span><span class="sc">:</span><span class="dv">432</span>], ProcterGamble<span class="sc">$</span>StockPrice[<span class="dv">301</span><span class="sc">:</span><span class="dv">432</span>], <span class="at">col =</span> <span class="st">"blue"</span>)</span>
+<span id="cb73-3"><a href="#cb73-3" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(IBM<span class="sc">$</span>Date[<span class="dv">301</span><span class="sc">:</span><span class="dv">432</span>], IBM<span class="sc">$</span>StockPrice[<span class="dv">301</span><span class="sc">:</span><span class="dv">432</span>], <span class="at">col =</span> <span class="st">"green"</span>)</span>
+<span id="cb73-4"><a href="#cb73-4" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(GE<span class="sc">$</span>Date[<span class="dv">301</span><span class="sc">:</span><span class="dv">432</span>], GE<span class="sc">$</span>StockPrice[<span class="dv">301</span><span class="sc">:</span><span class="dv">432</span>], <span class="at">col =</span> <span class="st">"purple"</span>)</span>
+<span id="cb73-5"><a href="#cb73-5" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(Boeing<span class="sc">$</span>Date[<span class="dv">301</span><span class="sc">:</span><span class="dv">432</span>], Boeing<span class="sc">$</span>StockPrice[<span class="dv">301</span><span class="sc">:</span><span class="dv">432</span>], <span class="at">col =</span> <span class="st">"orange"</span>)</span>
+<span id="cb73-6"><a href="#cb73-6" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> <span class="fu">as.Date</span>(<span class="fu">c</span>(<span class="st">"1997-09-1"</span>)))</span>
+<span id="cb73-7"><a href="#cb73-7" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> <span class="fu">as.Date</span>(<span class="fu">c</span>(<span class="st">"1997-11-1"</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="Assignment1_files/figure-html/unnamed-chunk-39-1.png" class="img-fluid" width="672"></p>
 </div>
@@ -806,7 +765,7 @@ Answer: Boeing</p>
 <p><strong>4.1: In which months has IBM historically had a higher stock price (on average)?</strong><br>
 Answer: January, February, March, April, May</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb80"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb80-1"><a href="#cb80-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tapply</span>(IBM<span class="sc">$</span>StockPrice, <span class="fu">months</span>(IBM<span class="sc">$</span>Date), mean) <span class="sc">&gt;</span> <span class="fu">mean</span>(IBM<span class="sc">$</span>StockPrice)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb74"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tapply</span>(IBM<span class="sc">$</span>StockPrice, <span class="fu">months</span>(IBM<span class="sc">$</span>Date), mean) <span class="sc">&gt;</span> <span class="fu">mean</span>(IBM<span class="sc">$</span>StockPrice)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>    April    August  December  February   January      July      June     March 
      TRUE     FALSE     FALSE      TRUE      TRUE     FALSE     FALSE      TRUE 
@@ -817,7 +776,7 @@ Answer: January, February, March, April, May</p>
 <p><strong>4.2: General Electric and Coca-Cola both have their highest average stock price in the same month. Which month is this?</strong><br>
 Answer: April</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb82"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb82-1"><a href="#cb82-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tapply</span>(GE<span class="sc">$</span>StockPrice, <span class="fu">months</span>(GE<span class="sc">$</span>Date), mean) <span class="sc">==</span> <span class="fu">max</span>(<span class="fu">tapply</span>(GE<span class="sc">$</span>StockPrice, <span class="fu">months</span>(GE<span class="sc">$</span>Date), mean))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb76"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tapply</span>(GE<span class="sc">$</span>StockPrice, <span class="fu">months</span>(GE<span class="sc">$</span>Date), mean) <span class="sc">==</span> <span class="fu">max</span>(<span class="fu">tapply</span>(GE<span class="sc">$</span>StockPrice, <span class="fu">months</span>(GE<span class="sc">$</span>Date), mean))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>    April    August  December  February   January      July      June     March 
      TRUE     FALSE     FALSE     FALSE     FALSE     FALSE     FALSE     FALSE 
@@ -828,7 +787,7 @@ Answer: April</p>
 <p><strong>4.3: For the months of December and January, every company’s average stock is higher in one month and lower in the other. In which month are the stock prices lower?</strong><br>
 Answer: December</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb84"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb84-1"><a href="#cb84-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tapply</span>(GE<span class="sc">$</span>StockPrice, <span class="fu">months</span>(GE<span class="sc">$</span>Date), mean)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb78"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb78-1"><a href="#cb78-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tapply</span>(GE<span class="sc">$</span>StockPrice, <span class="fu">months</span>(GE<span class="sc">$</span>Date), mean)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>    April    August  December  February   January      July      June     March 
  64.48009  56.50315  59.10217  62.52080  62.04511  56.73349  56.46844  63.15055 
@@ -839,6 +798,1078 @@ Answer: December</p>
 </section>
 <section id="demographics-and-employment-in-the-united-states" class="level2">
 <h2 class="anchored" data-anchor-id="demographics-and-employment-in-the-united-states">Demographics and Employment in the United States</h2>
+<p>In the wake of the Great Recession of 2009, there has been a good deal of focus on employment statistics, one of the most important metrics policymakers use to gauge the overall strength of the economy. In the United States, the government measures unemployment using the Current Population Survey (CPS), which collects demographic and employment information from a wide range of Americans each month. In this exercise, we will employ the topics reviewed in the lectures as well as a few new techniques using the September 2013 version of this rich, nationally representative dataset (available online).</p>
+<p>The observations in the dataset represent people surveyed in the September 2013 CPS who actually completed a survey. While the full dataset has 385 variables, in this exercise we will use a more compact version of the dataset.</p>
+<p>Please dowload the following file: <a href="https://courses.edx.org/assets/courseware/v1/f041f6c100061fc06bc3b6320e6512fa/asset-v1:MITx+15.071x+2T2020+type@asset+block/CPSData.csv">CPSData.csv</a></p>
+<p><strong><em>Start:</em></strong><br>
+Load the dataset from CPSData.csv into a data frame called CPS.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb80"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb80-1"><a href="#cb80-1" aria-hidden="true" tabindex="-1"></a>CPS <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"CPSData.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>1.1: How many interviewees are in the dataset?</strong><br>
+Answer: 131302</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb81"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb81-1"><a href="#cb81-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(CPS)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 131302</code></pre>
+</div>
+</div>
+<p><strong>1.2: Among the interviewees with a value reported for the Industry variable, what is the most common industry of employment?</strong><br>
+Answer: Educational and health services</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb83"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb83-1"><a href="#cb83-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">sort</span>(<span class="fu">table</span>(CPS<span class="sc">$</span>Industry), <span class="at">decreasing =</span> <span class="cn">TRUE</span>), <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Educational and health services 
+                          15017 </code></pre>
+</div>
+</div>
+<p><strong>1.3.1: Which state has the fewest interviewees?</strong><br>
+Answer: New Mexico</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb85"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb85-1"><a href="#cb85-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tail</span>(<span class="fu">sort</span>(<span class="fu">table</span>(CPS<span class="sc">$</span>State), <span class="at">decreasing =</span> <span class="cn">TRUE</span>), <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+New Mexico 
+      1102 </code></pre>
+</div>
+</div>
+<p><strong>1.3.2: Which state has the largest number of interviewees?</strong><br>
+Answer: California</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb87"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb87-1"><a href="#cb87-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">sort</span>(<span class="fu">table</span>(CPS<span class="sc">$</span>State), <span class="at">decreasing =</span> <span class="cn">TRUE</span>), <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+California 
+     11570 </code></pre>
+</div>
+</div>
+<p><strong>1.4: What proportion of interviewees are citizens of the United States?</strong><br>
+Answer: 0.9421943</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb89"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb89-1"><a href="#cb89-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(CPS<span class="sc">$</span>Citizenship)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+     Citizen, Native Citizen, Naturalized          Non-Citizen 
+              116639                 7073                 7590 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb91"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb91-1"><a href="#cb91-1" aria-hidden="true" tabindex="-1"></a>(<span class="dv">116639</span><span class="sc">+</span><span class="dv">7073</span>)<span class="sc">/</span><span class="fu">nrow</span>(CPS)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.9421943</code></pre>
+</div>
+</div>
+<p><strong>1.5: For which races are there at least 250 interviewees in the CPS dataset of Hispanic ethnicity?</strong><br>
+Answer: American Indian, Black, Multiracial, White</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb93"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb93-1"><a href="#cb93-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(CPS<span class="sc">$</span>Race, CPS<span class="sc">$</span>Hispanic) <span class="sc">&gt;</span> <span class="dv">250</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                  
+                      0     1
+  American Indian  TRUE  TRUE
+  Asian            TRUE FALSE
+  Black            TRUE  TRUE
+  Multiracial      TRUE  TRUE
+  Pacific Islander TRUE FALSE
+  White            TRUE  TRUE</code></pre>
+</div>
+</div>
+<p><strong>2.1: Which variables have at least one interviewee with a missing (NA) value?</strong><br>
+Answer: MetroAreaCode, Married, Education, EmploymentStatus, Industry</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb95"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb95-1"><a href="#cb95-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(CPS<span class="sc">$</span>PeopleInHousehold)) <span class="sc">&gt;</span> <span class="dv">0</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] FALSE</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb97"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb97-1"><a href="#cb97-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(CPS<span class="sc">$</span>Region)) <span class="sc">&gt;</span> <span class="dv">0</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] FALSE</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb99"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb99-1"><a href="#cb99-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(CPS<span class="sc">$</span>State)) <span class="sc">&gt;</span> <span class="dv">0</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] FALSE</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb101"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb101-1"><a href="#cb101-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(CPS<span class="sc">$</span>MetroAreaCode)) <span class="sc">&gt;</span> <span class="dv">0</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] TRUE</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb103"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb103-1"><a href="#cb103-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(CPS<span class="sc">$</span>Age)) <span class="sc">&gt;</span> <span class="dv">0</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] FALSE</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb105"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb105-1"><a href="#cb105-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(CPS<span class="sc">$</span>Married)) <span class="sc">&gt;</span> <span class="dv">0</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] TRUE</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb107"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb107-1"><a href="#cb107-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(CPS<span class="sc">$</span>Sex)) <span class="sc">&gt;</span> <span class="dv">0</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] FALSE</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb109"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb109-1"><a href="#cb109-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(CPS<span class="sc">$</span>Education)) <span class="sc">&gt;</span> <span class="dv">0</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] TRUE</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb111"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb111-1"><a href="#cb111-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(CPS<span class="sc">$</span>Race)) <span class="sc">&gt;</span> <span class="dv">0</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] FALSE</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb113"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb113-1"><a href="#cb113-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(CPS<span class="sc">$</span>Hispanic)) <span class="sc">&gt;</span> <span class="dv">0</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] FALSE</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb115"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb115-1"><a href="#cb115-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(CPS<span class="sc">$</span>CountryOfBirthCode)) <span class="sc">&gt;</span> <span class="dv">0</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] FALSE</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb117"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb117-1"><a href="#cb117-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(CPS<span class="sc">$</span>Citizenship)) <span class="sc">&gt;</span> <span class="dv">0</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] FALSE</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb119"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb119-1"><a href="#cb119-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(CPS<span class="sc">$</span>EmploymentStatus)) <span class="sc">&gt;</span> <span class="dv">0</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] TRUE</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb121"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb121-1"><a href="#cb121-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(CPS<span class="sc">$</span>Industry)) <span class="sc">&gt;</span> <span class="dv">0</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] TRUE</code></pre>
+</div>
+</div>
+<p><strong>2.2: We will try to determine if there is a pattern in the missing values of the Married variable.</strong><br>
+Answer: The Married variable being missing is related to the Age value for the interviewee.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb123"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb123-1"><a href="#cb123-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(CPS<span class="sc">$</span>Region, <span class="fu">is.na</span>(CPS<span class="sc">$</span>Married))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>           
+            FALSE  TRUE
+  Midwest   24609  6075
+  Northeast 21432  4507
+  South     33535  7967
+  West      26388  6789</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb125"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb125-1"><a href="#cb125-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(CPS<span class="sc">$</span>Sex, <span class="fu">is.na</span>(CPS<span class="sc">$</span>Married))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>        
+         FALSE  TRUE
+  Female 55264 12217
+  Male   50700 13121</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb127"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb127-1"><a href="#cb127-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(CPS<span class="sc">$</span>Age, <span class="fu">is.na</span>(CPS<span class="sc">$</span>Married))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>    
+     FALSE TRUE
+  0      0 1283
+  1      0 1559
+  2      0 1574
+  3      0 1693
+  4      0 1695
+  5      0 1795
+  6      0 1721
+  7      0 1681
+  8      0 1729
+  9      0 1748
+  10     0 1750
+  11     0 1721
+  12     0 1797
+  13     0 1802
+  14     0 1790
+  15  1795    0
+  16  1751    0
+  17  1764    0
+  18  1596    0
+  19  1517    0
+  20  1398    0
+  21  1525    0
+  22  1536    0
+  23  1638    0
+  24  1627    0
+  25  1604    0
+  26  1643    0
+  27  1657    0
+  28  1736    0
+  29  1645    0
+  30  1854    0
+  31  1762    0
+  32  1790    0
+  33  1804    0
+  34  1653    0
+  35  1716    0
+  36  1663    0
+  37  1531    0
+  38  1530    0
+  39  1542    0
+  40  1571    0
+  41  1673    0
+  42  1711    0
+  43  1819    0
+  44  1764    0
+  45  1749    0
+  46  1665    0
+  47  1647    0
+  48  1791    0
+  49  1989    0
+  50  1966    0
+  51  1931    0
+  52  1935    0
+  53  1994    0
+  54  1912    0
+  55  1895    0
+  56  1935    0
+  57  1827    0
+  58  1874    0
+  59  1758    0
+  60  1746    0
+  61  1735    0
+  62  1595    0
+  63  1596    0
+  64  1519    0
+  65  1569    0
+  66  1577    0
+  67  1227    0
+  68  1130    0
+  69  1062    0
+  70  1195    0
+  71  1031    0
+  72   941    0
+  73   896    0
+  74   842    0
+  75   763    0
+  76   729    0
+  77   698    0
+  78   659    0
+  79   661    0
+  80  2664    0
+  85  2446    0</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb129"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb129-1"><a href="#cb129-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(CPS<span class="sc">$</span>Citizenship, <span class="fu">is.na</span>(CPS<span class="sc">$</span>Married))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                      
+                       FALSE  TRUE
+  Citizen, Native      91956 24683
+  Citizen, Naturalized  6910   163
+  Non-Citizen           7098   492</code></pre>
+</div>
+</div>
+<p><strong>2.3.1: How many states had all interviewees living in a non-metropolitan area (aka they have a missing MetroAreaCode value)? For this question, treat the District of Columbia as a state (even though it is not technically a state).</strong><br>
+Answer: 2</p>
+<p><strong>2.3.2: How many states had all interviewees living in a metropolitan area? Again, treat the District of Columbia as a state.</strong><br>
+Answer: 3</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb131"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb131-1"><a href="#cb131-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(CPS<span class="sc">$</span>State, <span class="fu">is.na</span>(CPS<span class="sc">$</span>MetroAreaCode))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                      
+                       FALSE  TRUE
+  Alabama               1020   356
+  Alaska                   0  1590
+  Arizona               1327   201
+  Arkansas               724   697
+  California           11333   237
+  Colorado              2545   380
+  Connecticut           2593   243
+  Delaware              1696   518
+  District of Columbia  1791     0
+  Florida               4947   202
+  Georgia               2250   557
+  Hawaii                1576   523
+  Idaho                  761   757
+  Illinois              3473   439
+  Indiana               1420   584
+  Iowa                  1297  1231
+  Kansas                1234   701
+  Kentucky               908   933
+  Louisiana             1216   234
+  Maine                  909  1354
+  Maryland              2978   222
+  Massachusetts         1858   129
+  Michigan              2517   546
+  Minnesota             2150   989
+  Mississippi            376   854
+  Missouri              1440   705
+  Montana                199  1015
+  Nebraska               816  1133
+  Nevada                1609   247
+  New Hampshire         1148  1514
+  New Jersey            2567     0
+  New Mexico             832   270
+  New York              5144   451
+  North Carolina        1642   977
+  North Dakota           432  1213
+  Ohio                  2754   924
+  Oklahoma              1024   499
+  Oregon                1519   424
+  Pennsylvania          3245   685
+  Rhode Island          2209     0
+  South Carolina        1139   519
+  South Dakota           595  1405
+  Tennessee             1149   635
+  Texas                 6060  1017
+  Utah                  1455   387
+  Vermont                657  1233
+  Virginia              2367   586
+  Washington            1937   429
+  West Virginia          344  1065
+  Wisconsin             1882   804
+  Wyoming                  0  1624</code></pre>
+</div>
+</div>
+<p><strong>2.4: Which region of the United States has the largest proportion of interviewees living in a non-metropolitan area?</strong><br>
+Answer: Midwest</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb133"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb133-1"><a href="#cb133-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(CPS<span class="sc">$</span>Region, <span class="fu">is.na</span>(CPS<span class="sc">$</span>MetroAreaCode))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>           
+            FALSE  TRUE
+  Midwest   20010 10674
+  Northeast 20330  5609
+  South     31631  9871
+  West      25093  8084</code></pre>
+</div>
+</div>
+<p><strong>2.5.1: </strong><br>
+Answer: Wisconsin</p>
+<p><strong>2.5.2: </strong><br>
+Answer: Montana</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb135"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb135-1"><a href="#cb135-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sort</span>(<span class="fu">tapply</span>(<span class="fu">is.na</span>(CPS<span class="sc">$</span>MetroAreaCode), CPS<span class="sc">$</span>State, mean))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>District of Columbia           New Jersey         Rhode Island 
+          0.00000000           0.00000000           0.00000000 
+          California              Florida        Massachusetts 
+          0.02048401           0.03923092           0.06492199 
+            Maryland             New York          Connecticut 
+          0.06937500           0.08060769           0.08568406 
+            Illinois             Colorado              Arizona 
+          0.11221881           0.12991453           0.13154450 
+              Nevada                Texas            Louisiana 
+          0.13308190           0.14370496           0.16137931 
+        Pennsylvania             Michigan           Washington 
+          0.17430025           0.17825661           0.18131868 
+             Georgia             Virginia                 Utah 
+          0.19843249           0.19844226           0.21009772 
+              Oregon             Delaware           New Mexico 
+          0.21821925           0.23396567           0.24500907 
+              Hawaii                 Ohio              Alabama 
+          0.24916627           0.25122349           0.25872093 
+             Indiana            Wisconsin       South Carolina 
+          0.29141717           0.29932986           0.31302774 
+           Minnesota             Oklahoma             Missouri 
+          0.31506849           0.32764281           0.32867133 
+           Tennessee               Kansas       North Carolina 
+          0.35594170           0.36227390           0.37304315 
+                Iowa             Arkansas                Idaho 
+          0.48694620           0.49049965           0.49868248 
+            Kentucky        New Hampshire             Nebraska 
+          0.50678979           0.56874530           0.58132376 
+               Maine              Vermont          Mississippi 
+          0.59832081           0.65238095           0.69430894 
+        South Dakota         North Dakota        West Virginia 
+          0.70250000           0.73738602           0.75585522 
+             Montana               Alaska              Wyoming 
+          0.83607908           1.00000000           1.00000000 </code></pre>
+</div>
+</div>
+<p>Codes like MetroAreaCode and CountryOfBirthCode are a compact way to encode factor variables with text as their possible values, and they are therefore quite common in survey datasets. In fact, all but one of the variables in this dataset were actually stored by a numeric code in the original CPS datafile.</p>
+<p>When analyzing a variable stored by a numeric code, we will often want to convert it into the values the codes represent. To do this, we will use a dictionary, which maps the the code to the actual value of the variable. We have provided dictionaries <a href="https://courses.edx.org/assets/courseware/v1/fd88455abc1b5b69112daf70f3bb0c77/asset-v1:MITx+15.071x+2T2020+type@asset+block/MetroAreaCodes.csv">MetroAreaCodes.csv</a> and <a href="https://courses.edx.org/assets/courseware/v1/763710fa6703caea1cf9c708e31e99a3/asset-v1:MITx+15.071x+2T2020+type@asset+block/CountryCodes.csv">CountryCodes.csv</a>, which respectively map MetroAreaCode and CountryOfBirthCode into their true values. Read these two dictionaries into data frames MetroAreaMap and CountryMap.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb137"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb137-1"><a href="#cb137-1" aria-hidden="true" tabindex="-1"></a>MetroAreaMap <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"MetroAreaCodes.csv"</span>)</span>
+<span id="cb137-2"><a href="#cb137-2" aria-hidden="true" tabindex="-1"></a>CountryMap <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"CountryCodes.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>3.1.1: How many observations (codes for metropolitan areas) are there in MetroAreaMap?</strong><br>
+Answer: 271</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb138"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb138-1"><a href="#cb138-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(MetroAreaMap)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 271</code></pre>
+</div>
+</div>
+<p><strong>3.1.2: How many observations (codes for countries) are there in CountryMap?</strong><br>
+Answer: 149</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb140"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb140-1"><a href="#cb140-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(CountryMap)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 149</code></pre>
+</div>
+</div>
+<p>To merge in the metropolitan areas, we want to connect the field MetroAreaCode from the CPS data frame with the field Code in MetroAreaMap. The following command merges the two data frames on these columns, overwriting the CPS data frame with the result:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb142"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb142-1"><a href="#cb142-1" aria-hidden="true" tabindex="-1"></a>CPS <span class="ot">=</span> <span class="fu">merge</span>(CPS, MetroAreaMap, <span class="at">by.x =</span> <span class="st">"MetroAreaCode"</span>, <span class="at">by.y =</span> <span class="st">"Code"</span>, <span class="at">all.x =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>3.2.1: hat is the name of the variable that was added to the data frame by the merge() operation?</strong><br>
+Answer: MetroArea</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb143"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb143-1"><a href="#cb143-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(CPS)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>'data.frame':   131302 obs. of  15 variables:
+ $ MetroAreaCode     : int  10420 10420 10420 10420 10420 10420 10420 10420 10420 10420 ...
+ $ PeopleInHousehold : int  4 4 2 4 1 3 4 4 2 3 ...
+ $ Region            : chr  "Midwest" "Midwest" "Midwest" "Midwest" ...
+ $ State             : chr  "Ohio" "Ohio" "Ohio" "Ohio" ...
+ $ Age               : int  2 9 73 40 63 19 30 6 60 32 ...
+ $ Married           : chr  NA NA "Married" "Married" ...
+ $ Sex               : chr  "Male" "Male" "Female" "Female" ...
+ $ Education         : chr  NA NA "Some college, no degree" "High school" ...
+ $ Race              : chr  "White" "White" "White" "White" ...
+ $ Hispanic          : int  0 0 0 0 0 0 0 1 0 0 ...
+ $ CountryOfBirthCode: int  57 57 57 362 57 57 203 57 57 57 ...
+ $ Citizenship       : chr  "Citizen, Native" "Citizen, Native" "Citizen, Native" "Citizen, Naturalized" ...
+ $ EmploymentStatus  : chr  NA NA "Retired" "Not in Labor Force" ...
+ $ Industry          : chr  NA NA NA NA ...
+ $ MetroArea         : chr  "Akron, OH" "Akron, OH" "Akron, OH" "Akron, OH" ...</code></pre>
+</div>
+</div>
+<p><strong>3.2.2: How many interviewees have a missing value for the new metropolitan area variable?</strong><br>
+Answer: 34238</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb145"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb145-1"><a href="#cb145-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(CPS<span class="sc">$</span>MetroArea))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 34238</code></pre>
+</div>
+</div>
+<p><strong>3.3: Which of the following metropolitan areas has the largest number of interviewees?</strong><br>
+Answer: Boston-Cambridge-Quincy, MA-NH</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb147"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb147-1"><a href="#cb147-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sort</span>(<span class="fu">table</span>(CPS<span class="sc">$</span>MetroArea), <span class="at">decreasing =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+New York-Northern New Jersey-Long Island, NY-NJ-PA 
+                                              5409 
+      Washington-Arlington-Alexandria, DC-VA-MD-WV 
+                                              4177 
+              Los Angeles-Long Beach-Santa Ana, CA 
+                                              4102 
+          Philadelphia-Camden-Wilmington, PA-NJ-DE 
+                                              2855 
+               Chicago-Naperville-Joliet, IN-IN-WI 
+                                              2772 
+              Providence-Fall River-Warwick, MA-RI 
+                                              2284 
+                    Boston-Cambridge-Quincy, MA-NH 
+                                              2229 
+            Minneapolis-St Paul-Bloomington, MN-WI 
+                                              1942 
+                   Dallas-Fort Worth-Arlington, TX 
+                                              1863 
+                    Houston-Baytown-Sugar Land, TX 
+                                              1649 
+                                      Honolulu, HI 
+                                              1576 
+             Miami-Fort Lauderdale-Miami Beach, FL 
+                                              1554 
+                Atlanta-Sandy Springs-Marietta, GA 
+                                              1552 
+                                 Denver-Aurora, CO 
+                                              1504 
+                              Baltimore-Towson, MD 
+                                              1483 
+                 San Francisco-Oakland-Fremont, CA 
+                                              1386 
+                        Detroit-Warren-Livonia, MI 
+                                              1354 
+                            Las Vegas-Paradise, NV 
+                                              1299 
+                      Riverside-San Bernardino, CA 
+                                              1290 
+                       Seattle-Tacoma-Bellevue, WA 
+                                              1255 
+               Portland-Vancouver-Beaverton, OR-WA 
+                                              1089 
+                       Phoenix-Mesa-Scottsdale, AZ 
+                                               971 
+                                Kansas City, MO-KS 
+                                               962 
+                       Omaha-Council Bluffs, NE-IA 
+                                               957 
+                                  St. Louis, MO-IL 
+                                               956 
+                 San Diego-Carlsbad-San Marcos, CA 
+                                               907 
+          Hartford-West Hartford-East Hartford, CT 
+                                               885 
+               Tampa-St. Petersburg-Clearwater, FL 
+                                               842 
+                                    Pittsburgh, PA 
+                                               732 
+                   Bridgeport-Stamford-Norwalk, CT 
+                                               730 
+                                Salt Lake City, UT 
+                                               723 
+                   Cincinnati-Middletown, OH-KY-IN 
+                                               719 
+                 Milwaukee-Waukesha-West Allis, WI 
+                                               714 
+                       Portland-South Portland, ME 
+                                               701 
+                       Cleveland-Elyria-Mentor, OH 
+                                               681 
+                San Jose-Sunnyvale-Santa Clara, CA 
+                                               670 
+             Sacramento-Arden-Arcade-Roseville, CA 
+                                               667 
+                   Burlington-South Burlington, VT 
+                                               657 
+                              Boise City-Nampa, ID 
+                                               644 
+                                       Orlando, FL 
+                                               610 
+                                   Albuquerque, NM 
+                                               609 
+                                   San Antonio, TX 
+                                               607 
+                                 Oklahoma City, OK 
+                                               604 
+        Virginia Beach-Norfolk-Newport News, VA-NC 
+                                               597 
+                                   Sioux Falls, SD 
+                                               595 
+                                  Indianapolis, IN 
+                                               570 
+                                      Columbus, OH 
+                                               551 
+                                 Louisville, KY-IN 
+                                               519 
+                 Charlotte-Gastonia-Concord, NC-SC 
+                                               517 
+                             Austin-Round Rock, TX 
+                                               516 
+                                     New Haven, CT 
+                                               506 
+               Nashville-Davidson-Murfreesboro, TN 
+                                               505 
+                                    Des Moines, IA 
+                                               501 
+                                      Richmond, VA 
+                                               490 
+                                         Dover, DE 
+                                               456 
+                                      Fargo, ND-MN 
+                                               432 
+                                       Wichita, KS 
+                                               427 
+                              Ogden-Clearfield, UT 
+                                               423 
+                 Little Rock-North Little Rock, AR 
+                                               404 
+                                  Jacksonville, FL 
+                                               393 
+                             Birmingham-Hoover, AL 
+                                               392 
+                              Colorado Springs, CO 
+                                               372 
+                   New Orleans-Metairie-Kenner, LA 
+                                               367 
+                                 Memphis, TN-MS-AR 
+                                               348 
+                         Buffalo-Niagara Falls, NY 
+                                               344 
+                                  Raleigh-Cary, NC 
+                                               336 
+                 Allentown-Bethlehem-Easton, PA-NJ 
+                                               334 
+                                         Tulsa, OK 
+                                               323 
+                                   Reno-Sparks, NV 
+                                               310 
+                                    Provo-Orem, UT 
+                                               309 
+                                     Rochester, NY 
+                                               307 
+                          Grand Rapids-Wyoming, MI 
+                                               304 
+                                        Fresno, CA 
+                                               303 
+                                        Tucson, AZ 
+                                               302 
+                                      Columbia, SC 
+                                               291 
+                                       Madison, WI 
+                                               284 
+                       Albany-Schenectady-Troy, NY 
+                                               268 
+                                        Dayton, OH 
+                                               268 
+                  Oxnard-Thousand Oaks-Ventura, CA 
+                                               267 
+                                   Baton Rouge, LA 
+                                               262 
+                                    Charleston, WV 
+                                               262 
+                            Rochester-Dover, NH-ME 
+                                               262 
+                         Greensboro-High Point, NC 
+                                               251 
+                                   Bakersfield, CA 
+                                               245 
+                                       El Paso, TX 
+                                               244 
+               Davenport-Moline-Rock Island, IA-IL 
+                                               240 
+                                        Toledo, OH 
+                                               235 
+                   Charleston-North Charleston, SC 
+                                               232 
+                                         Akron, OH 
+                                               231 
+                                      Syracuse, NY 
+                                               223 
+                                       Jackson, MS 
+                                               222 
+             Fayetteville-Springdale-Rogers, AR-MO 
+                                               215 
+                                        Bangor, ME 
+                                               208 
+                         Fort Collins-Loveland, CO 
+                                               206 
+                         Norwich-New London, CT-RI 
+                                               203 
+                                      Savannah, GA 
+                                               202 
+              Poughkeepsie-Newburgh-Middletown, NY 
+                                               201 
+                                      Billings, MT 
+                                               199 
+                             Lexington-Fayette, KY 
+                                               198 
+                                  Cedar Rapids, IA 
+                                               196 
+                            Eugene-Springfield, OR 
+                                               196 
+                        McAllen-Edinburg-Pharr, TX 
+                                               195 
+                                      Stockton, CA 
+                                               193 
+                     Sarasota-Bradenton-Venice, FL 
+                                               192 
+                                        Durham, NC 
+                                               189 
+                                    Greenville, SC 
+                                               185 
+                                        Topeka, KS 
+                                               182 
+                                     Lafayette, LA 
+                                               181 
+                                        Monroe, LA 
+                                               179 
+                         Scranton-Wilkes Barre, PA 
+                                               176 
+                           Harrisburg-Carlisle, PA 
+                                               174 
+                                       Boulder, CO 
+                                               171 
+                                         Salem, OR 
+                                               170 
+                                     Knoxville, TN 
+                                               168 
+                 Palm Bay-Melbourne-Titusville, FL 
+                                               168 
+                                Chattanooga, TN-GA 
+                                               167 
+                                       Greeley, CO 
+                                               162 
+                    Augusta-Richmond County, GA-SC 
+                                               161 
+                                   Springfield, MO 
+                                               161 
+                                       Modesto, CA 
+                                               158 
+                                     Waterbury, CT 
+                                               157 
+                                     Lancaster, PA 
+                                               156 
+                                       Spokane, WA 
+                                               156 
+                          Waterloo-Cedar Falls, IA 
+                                               156 
+                                Springfield, MA-CT 
+                                               155 
+                    Youngstown-Warren-Boardman, OH 
+                                               153 
+                         Lakeland-Winter Haven, FL 
+                                               149 
+                         Cape Coral-Fort Myers, FL 
+                                               146 
+                       Shreveport-Bossier City, LA 
+                                               146 
+                                  Worcester, MA-CT 
+                                               144 
+                                       Reading, PA 
+                                               142 
+                                          Bend, OR 
+                                               140 
+            Deltona-Daytona Beach-Ormond Beach, FL 
+                                               140 
+                                    Fort Wayne, IN 
+                                               136 
+                                     Green Bay, WI 
+                                               136 
+                             Vallejo-Fairfield, CA 
+                                               133 
+                                Corpus Christi, TX 
+                                               132 
+              Santa Barbara-Santa Maria-Goleta, CA 
+                                               132 
+                                     Iowa City, IA 
+                                               131 
+                                        Pueblo, CO 
+                                               130 
+                           Santa Rosa-Petaluma, CA 
+                                               129 
+                             Kalamazoo-Portage, MI 
+                                               127 
+                                 Winston-Salem, NC 
+                                               127 
+                                     Duluth, MN-WI 
+                                               126 
+                                       Appleton,WI 
+                                               125 
+                          Beaumont-Port Author, TX 
+                                               123 
+                              Champaign-Urbana, IL 
+                                               122 
+                           Visalia-Porterville, CA 
+                                               121 
+                          Lansing-East Lansing, MI 
+                                               119 
+                                        Racine, WI 
+                                               119 
+                              Canton-Massillon, OH 
+                                               118 
+                                 Coeur d'Alene, ID 
+                                               117 
+                                    Huntsville, AL 
+                                               117 
+                                  York-Hanover, PA 
+                                               117 
+                                     Asheville, NC 
+                                               116 
+                                      Victoria, TX 
+                                               116 
+                                     La Crosse, WI 
+                                               114 
+                                      Rockford, IL 
+                                               114 
+                                       Danbury, CT 
+                                               112 
+                                        Peoria, IL 
+                                               112 
+                                        Yakima, WA 
+                                               112 
+                                 Atlantic City, NJ 
+                                               111 
+                                    Eau Claire, WI 
+                                               110 
+                                        Mobile, AL 
+                                               110 
+                    Port St. Lucie-Fort Pierce, FL 
+                                               109 
+                                    Las Cruses, NM 
+                                               107 
+                    Pensacola-Ferry Pass-Brent, FL 
+                                               107 
+                                        Merced, CA 
+                                               106 
+                                 Fort Smith, AR-OK 
+                                               105 
+                                   Bloomington, IN 
+                                               104 
+                                       Salinas, CA 
+                                               104 
+                                    Montgomery, AL 
+                                               103 
+                                         Flint, MI 
+                                               102 
+        Myrtle Beach-Conway-North Myrtle Beach, SC 
+                                               102 
+                      Killeen-Temple-Fort Hood, TX 
+                                               101 
+                                     El Centro, CA 
+                                                99 
+                                 Evansville, IN-KY 
+                                                99 
+                                    Janesville, WI 
+                                                99 
+                                       Olympia, WA 
+                                                99 
+                                   Spartanburg, SC 
+                                                99 
+                                      Lawrence, KS 
+                                                98 
+                                        Lawton, OK 
+                                                97 
+                                       Decatur, Al 
+                                                96 
+                                        Wausau, WI 
+                                                96 
+                                 Trenton-Ewing, NJ 
+                                                91 
+                                  Harrisonburg, VA 
+                                                90 
+                        Muskegon-Norton Shores, MI 
+                                                90 
+                                        Laredo, TX 
+                                                89 
+                                      Amarillo, TX 
+                                                88 
+                          Bremerton-Silverdale, WA 
+                                                87 
+                                          Erie, PA 
+                                                87 
+                              Kankakee-Bradley, IL 
+                                                87 
+                                      Kingston, NY 
+                                                87 
+                     Hagerstown-Martinsburg, MD-WV 
+                                                86 
+                                     Ann Arbor, MI 
+                                                85 
+                                Oshkosh-Neenah, WI 
+                                                85 
+                                       Altoona, PA 
+                                                82 
+                      Huntington-Ashland, WV-KY-OH 
+                                                82 
+                                       Medford, OR 
+                                                82 
+                           Naples-Marco Island, FL 
+                                                82 
+                                     St. Cloud, MN 
+                                                82 
+                                       Decatur, IL 
+                                                81 
+                                  Lake Charles, LA 
+                                                81 
+                       South Bend-Mishawaka, IN-MI 
+                                                81 
+            Fort Walton Beach-Crestview-Destin, FL 
+                                                80 
+                                    Utica-Rome, NY 
+                                                80 
+                         Brownsville-Harlingen, TX 
+                                                79 
+                                    Vero Beach, FL 
+                                                79 
+                                          Waco, TX 
+                                                79 
+                           Holland-Grand Haven, MI 
+                                                78 
+                                    Tuscaloosa, AL 
+                                                78 
+                                  Fayetteville, NC 
+                                                77 
+                        Michigan City-La Porte, IN 
+                                                77 
+                   San Luis Obispo-Paso Robles, CA 
+                                                77 
+                                         Ocala, FL 
+                                                76 
+                                   Springfield, IL 
+                                                76 
+                               Barnstable Town, MA 
+                                                75 
+                Saginaw-Saginaw Township North, MI 
+                                                74 
+                                     Salisbury, MD 
+                                                74 
+                                    Binghamton, NY 
+                                                73 
+                                     Lynchburg, VA 
+                                                73 
+                                    Bellingham, WA 
+                                                70 
+                                   Gainesville, FL 
+                                                70 
+                                       Jackson, MI 
+                                                70 
+                                        Albany, GA 
+                                                68 
+                          Kingsport-Bristol, TN-VA 
+                                                67 
+                  Leominster-Fitchburg-Gardner, MA 
+                                                66 
+                                       Roanoke, VA 
+                                                66 
+                        Santa-Cruz-Watsonville, CA 
+                                                66 
+                           Athens-Clark County, GA 
+                                                65 
+                               Gulfport-Biloxi, MS 
+                                                65 
+                                      Longview, TX 
+                                                65 
+                                         Macon, GA 
+                                                65 
+                                      Anderson, SC 
+                                                64 
+                                    Farmington, NM 
+                                                64 
+                                      Florence, AL 
+                                                63 
+                                  Jacksonville, NC 
+                                                63 
+                                     Johnstown, PA 
+                                                63 
+                                       Lubbock, TX 
+                                                63 
+                                        Monroe, MI 
+                                                63 
+                                      Anderson, IN 
+                                                62 
+                               Anniston-Oxford, AL 
+                                                61 
+                                          Napa, CA 
+                                                61 
+                                         Chico, CA 
+                                                60 
+                                   Columbus, GA-AL 
+                                                59 
+                                        Joplin, MO 
+                                                59 
+                        Panama City-Lynn Haven, FL 
+                                                59 
+                     Hickory-Morgantown-Lenoir, NC 
+                                                57 
+                                        Madera, CA 
+                                                57 
+                                      Prescott, AZ 
+                                                54 
+                  Vineland-Millville-Bridgeton, NJ 
+                                                54 
+                                  Johnson City, TN 
+                                                52 
+                                      Santa Fe, NM 
+                                                52 
+                                       Midland, TX 
+                                                51 
+                           Niles-Benton Harbor, MI 
+                                                51 
+                                   Punta Gorda, FL 
+                                                48 
+                                      Columbia, MO 
+                                                47 
+                                   Tallahassee, FL 
+                                                43 
+                                      Valdosta, GA 
+                                                42 
+                                 Warner Robins, GA 
+                                                42 
+                             Bloomington-Normal IL 
+                                                40 
+                                   Springfield, OH 
+                                                34 
+                                    Ocean City, NJ 
+                                                30 
+                                 Bowling Green, KY 
+                                                29 </code></pre>
+</div>
+</div>
+<p><strong>3.4: Which metropolitan area has the highest proportion of interviewees of Hispanic ethnicity?</strong><br>
+Answer: Laredo, TX</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb149"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb149-1"><a href="#cb149-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">sort</span>(<span class="fu">tapply</span>(CPS<span class="sc">$</span>Hispanic, CPS<span class="sc">$</span>MetroArea, mean), <span class="at">decreasing =</span> <span class="cn">TRUE</span>), <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Laredo, TX 
+ 0.9662921 </code></pre>
+</div>
+</div>
+<p><strong>3.5: Determine the number of metropolitan areas in the United States from which at least 20% of interviewees are Asian.</strong><br>
+Answer: 4</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb151"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb151-1"><a href="#cb151-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">sort</span>(<span class="fu">tapply</span>(CPS<span class="sc">$</span>Race <span class="sc">==</span> <span class="st">"Asian"</span>, CPS<span class="sc">$</span>MetroArea, mean), <span class="at">decreasing =</span> <span class="cn">TRUE</span>) <span class="sc">&gt;</span> <span class="fl">0.2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 4</code></pre>
+</div>
+</div>
+<p><strong>3.6: Determine which metropolitan area has the smallest proportion of interviewees who have received no high school diploma.</strong><br>
+Answer: Iowa City, IA</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb153"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb153-1"><a href="#cb153-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">sort</span>(<span class="fu">tapply</span>(CPS<span class="sc">$</span>Education <span class="sc">==</span> <span class="st">"No high school diploma"</span>, CPS<span class="sc">$</span>MetroArea, mean, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)), <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Iowa City, IA 
+   0.02912621 </code></pre>
+</div>
+</div>
+<p>Just as we did with the metropolitan area information, merge in the country of birth information from the CountryMap data frame, replacing the CPS data frame with the result.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb155"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb155-1"><a href="#cb155-1" aria-hidden="true" tabindex="-1"></a>CPS <span class="ot">=</span> <span class="fu">merge</span>(CPS, CountryMap, <span class="at">by.x =</span> <span class="st">"CountryOfBirthCode"</span>, <span class="at">by.y =</span> <span class="st">"Code"</span>, <span class="at">all.x =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>4.1.1: What is the name of the variable added to the CPS data frame by this merge operation?</strong><br>
+Answer: Country</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb156"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb156-1"><a href="#cb156-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(CPS)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>'data.frame':   131302 obs. of  16 variables:
+ $ CountryOfBirthCode: int  57 57 57 57 57 57 57 57 57 57 ...
+ $ MetroAreaCode     : int  10420 71650 10420 10420 10420 10420 10420 10420 10420 10420 ...
+ $ PeopleInHousehold : int  2 4 5 2 2 3 1 3 4 4 ...
+ $ Region            : chr  "Midwest" "Northeast" "Midwest" "Midwest" ...
+ $ State             : chr  "Ohio" "New Hampshire" "Ohio" "Ohio" ...
+ $ Age               : int  73 5 10 30 30 0 34 32 6 9 ...
+ $ Married           : chr  "Married" NA NA "Married" ...
+ $ Sex               : chr  "Female" "Female" "Female" "Female" ...
+ $ Education         : chr  "Some college, no degree" NA NA "Associate degree" ...
+ $ Race              : chr  "White" "White" "White" "White" ...
+ $ Hispanic          : int  0 0 0 0 0 0 0 0 1 0 ...
+ $ Citizenship       : chr  "Citizen, Native" "Citizen, Native" "Citizen, Native" "Citizen, Native" ...
+ $ EmploymentStatus  : chr  "Retired" NA NA "Employed" ...
+ $ Industry          : chr  NA NA NA "Trade" ...
+ $ MetroArea         : chr  "Akron, OH" "Boston-Cambridge-Quincy, MA-NH" "Akron, OH" "Akron, OH" ...
+ $ Country           : chr  "United States" "United States" "United States" "United States" ...</code></pre>
+</div>
+</div>
+<p><strong>4.1.2: How many interviewees have a missing value for the new country of birth variable?</strong><br>
+Answer: 176</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb158"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb158-1"><a href="#cb158-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(CPS<span class="sc">$</span>Country))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 176</code></pre>
+</div>
+</div>
+<p><strong>4.2: Among all interviewees born outside of North America, which country was the most common place of birth?</strong><br>
+Answer: Philippines</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb160"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb160-1"><a href="#cb160-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">sort</span>(<span class="fu">table</span>(CPS<span class="sc">$</span>Country), <span class="at">decreasing =</span> <span class="cn">TRUE</span>), <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+United States        Mexico   Philippines 
+       115063          3921           839 </code></pre>
+</div>
+</div>
+<p><strong>4.3: What proportion of the interviewees from the “New York-Northern New Jersey-Long Island, NY-NJ-PA” metropolitan area have a country of birth that is not the United States? For this computation, don’t include people from this metropolitan area who have a missing country of birth.</strong><br>
+Answer: 0.3086603</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb162"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb162-1"><a href="#cb162-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tapply</span>(CPS<span class="sc">$</span>Country <span class="sc">!=</span> <span class="st">"United States"</span>, CPS<span class="sc">$</span>MetroArea <span class="sc">==</span> <span class="st">"New York-Northern New Jersey-Long Island, NY-NJ-PA"</span>, mean, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>    FALSE      TRUE 
+0.1392772 0.3086603 </code></pre>
+</div>
+</div>
+<p><strong>4.4: Which metropolitan area has the largest number (note – not proportion) of interviewees with a country of birth…</strong> <strong>4.4.1: …in India?</strong><br>
+Answer: New York-Northern New Jersey-Long Island, NY-NJ-PA</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb164"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb164-1"><a href="#cb164-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tail</span>(<span class="fu">sort</span>(<span class="fu">tapply</span>(CPS<span class="sc">$</span>Country <span class="sc">==</span> <span class="st">"India"</span>, CPS<span class="sc">$</span>MetroArea, sum, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)), <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>New York-Northern New Jersey-Long Island, NY-NJ-PA 
+                                                96 </code></pre>
+</div>
+</div>
+<p><strong>4.4.2: …in Brazil?</strong><br>
+Answer: Boston-Cambridge-Quincy, MA-NH</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb166"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb166-1"><a href="#cb166-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tail</span>(<span class="fu">sort</span>(<span class="fu">tapply</span>(CPS<span class="sc">$</span>Country <span class="sc">==</span> <span class="st">"Brazil"</span>, CPS<span class="sc">$</span>MetroArea, sum, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)), <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Boston-Cambridge-Quincy, MA-NH 
+                            18 </code></pre>
+</div>
+</div>
+<p><strong>4.4.3: …in Somalia?</strong><br>
+Answer: Minneapolis-St Paul-Bloomington, MN-WI</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb168"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb168-1"><a href="#cb168-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tail</span>(<span class="fu">sort</span>(<span class="fu">tapply</span>(CPS<span class="sc">$</span>Country <span class="sc">==</span> <span class="st">"Somalia"</span>, CPS<span class="sc">$</span>MetroArea, sum, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)), <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Minneapolis-St Paul-Bloomington, MN-WI 
+                                    17 </code></pre>
+</div>
+</div>
+</section>
+<section id="internet-privacy-poll-optional" class="level2">
+<h2 class="anchored" data-anchor-id="internet-privacy-poll-optional">Internet Privacy Poll (OPTIONAL)</h2>
 
 
 </section>
