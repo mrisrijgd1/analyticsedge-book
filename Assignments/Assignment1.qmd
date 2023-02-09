@@ -10,7 +10,7 @@ Please download the file [mvtWeek1.csv](https://courses.edx.org/assets/coursewar
 Read the dataset mvtWeek1.csv into R, using the read.csv function, and call the data frame "mvt".
 
 ```{r}
-mvt <- read.csv("Datasets/mvtWeek1.csv")
+mvt <- read.csv("/cloud/project/analyticsedge/Datasets/mvtWeek1.csv")
 ```
 
 **1.1: How many rows of data (observations) are in this dataset?**\
@@ -192,11 +192,11 @@ Please download the following files: [IBMStock.csv](https://courses.edx.org/asse
 1. Read the datasets into R, using the read.csv function, and call the data frames "IBM", "GE", "ProcterGamble", "CocaCola", and "Boeing", respectively.
 
 ```{r}
-IBM <- read.csv("Datasets/IBMStock.csv")
-GE <- read.csv("Datasets/GEStock.csv")
-ProcterGamble <- read.csv("Datasets/ProcterGambleStock.csv")
-CocaCola <- read.csv("Datasets/CocaColaStock.csv")
-Boeing <- read.csv("Datasets/BoeingStock.csv")
+IBM <- read.csv("/cloud/project/analyticsedge/Datasets/IBMStock.csv")
+GE <- read.csv("/cloud/project/analyticsedge/Datasets/GEStock.csv")
+ProcterGamble <- read.csv("/cloud/project/analyticsedge/Datasets/ProcterGambleStock.csv")
+CocaCola <- read.csv("/cloud/project/analyticsedge/Datasets/CocaColaStock.csv")
+Boeing <- read.csv("/cloud/project/analyticsedge/Datasets/BoeingStock.csv")
 ```
 
 2\. Before working with these data sets, we need to convert the dates into a format that R can understand. Take a look at the structure of one of the datasets using the str function. Right now, the date variable is stored as a factor. We can convert this to a "Date" object in R by using the following five commands (one for each data set):
@@ -382,7 +382,7 @@ Please dowload the following file: [CPSData.csv](https://courses.edx.org/assets/
 Load the dataset from CPSData.csv into a data frame called CPS.
 
 ```{r}
-CPS <- read.csv("Datasets/CPSData.csv")
+CPS <- read.csv("/cloud/project/analyticsedge/Datasets/CPSData.csv")
 ```
 
 **1.1: How many interviewees are in the dataset?**\
@@ -490,8 +490,8 @@ Codes like MetroAreaCode and CountryOfBirthCode are a compact way to encode fact
 When analyzing a variable stored by a numeric code, we will often want to convert it into the values the codes represent. To do this, we will use a dictionary, which maps the the code to the actual value of the variable. We have provided dictionaries [MetroAreaCodes.csv](https://courses.edx.org/assets/courseware/v1/fd88455abc1b5b69112daf70f3bb0c77/asset-v1:MITx+15.071x+2T2020+type@asset+block/MetroAreaCodes.csv) and [CountryCodes.csv](https://courses.edx.org/assets/courseware/v1/763710fa6703caea1cf9c708e31e99a3/asset-v1:MITx+15.071x+2T2020+type@asset+block/CountryCodes.csv), which respectively map MetroAreaCode and CountryOfBirthCode into their true values. Read these two dictionaries into data frames MetroAreaMap and CountryMap.
 
 ```{r}
-MetroAreaMap <- read.csv("Datasets/MetroAreaCodes.csv")
-CountryMap <- read.csv("Datasets/CountryCodes.csv")
+MetroAreaMap <- read.csv("/cloud/project/analyticsedge/Datasets/MetroAreaCodes.csv")
+CountryMap <- read.csv("/cloud/project/analyticsedge/Datasets/CountryCodes.csv")
 ```
 
 **3.1.1: How many observations (codes for metropolitan areas) are there in MetroAreaMap?**\
@@ -619,7 +619,7 @@ Internet privacy has gained widespread attention in recent years. To measure the
 Using read.csv(), load the dataset from AnonymityPoll.csv into a data frame called poll.
 
 ```{r}
-poll <- read.csv("Datasets/AnonymityPoll.csv")
+poll <- read.csv("/cloud/project/analyticsedge/Datasets/AnonymityPoll.csv")
 ```
 
 **1.1: How many people participated in the poll?**\
@@ -828,6 +828,4 @@ Answer: 0.1174377
 ```{r}
 tapply(limited$Tried.Masking.Identity, limited$Smartphone, mean, na.rm = TRUE)
 ```
-
-
 ***And we're done! That was all for Assignment 1!***

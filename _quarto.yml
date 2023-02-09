@@ -8,7 +8,7 @@ book:
   date: "07/02/2023"
   chapters:
     - index.qmd
-    - Assignments and Datasets/Assignment1.qmd
+    - Assignments/Assignment1.qmd
 
 bibliography: references.bib
 
