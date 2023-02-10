@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>analyticsedge - Assignment 1 Answers</title>
+<title>analyticsedge - The Analytics Edge: Assignment 1</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -132,7 +132,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title">Assignment 1 Answers</h1>
+      <h1 class="quarto-secondary-nav-title">The Analytics Edge: Assignment 1</h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -157,12 +157,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../index.html" class="sidebar-item-text sidebar-link">Introduction</a>
+  <a href="../index.html" class="sidebar-item-text sidebar-link">The Analytics Edge: Introduction</a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../Assignments/Assignment1.html" class="sidebar-item-text sidebar-link active">Assignment 1 Answers</a>
+  <a href="../Assignments/Assignment1.html" class="sidebar-item-text sidebar-link active">The Analytics Edge: Assignment 1</a>
   </div>
 </li>
     </ul>
@@ -186,7 +186,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block">Assignment 1 Answers</h1>
+<h1 class="title d-none d-lg-block">The Analytics Edge: Assignment 1</h1>
 </div>
 
 
@@ -200,6 +200,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 </header>
 
+<p>The following link will lead you to the assignment on the edX website: <a href="https://learning.edx.org/course/course-v1:MITx+15.071x+2T2020/block-v1:MITx+15.071x+2T2020+type@sequential+block@a5915d0492804dada5feb1926ba5be7a">https://learning.edx.org/course/course-v1:MITx+15.071x+2T2020/block-v1:MITx+15.071x+2T2020+type@sequential+block@a5915d0492804dada5feb1926ba5be7a</a></p>
 <section id="an-analytical-detective" class="level2">
 <h2 class="anchored" data-anchor-id="an-analytical-detective">An Analytical Detective</h2>
 <p>There are two main types of crimes: violent crimes, and property crimes. In this problem, we’ll focus on one specific type of property crime, called “motor vehicle theft” (sometimes referred to as grand theft auto). This is the act of stealing, or attempting to steal, a car. In this problem, we’ll use some basic data analysis in R to understand the motor vehicle thefts in Chicago.</p>
@@ -207,7 +208,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><strong><em>Start:</em></strong><br>
 Read the dataset mvtWeek1.csv into R, using the read.csv function, and call the data frame “mvt”.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>mvt <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"/cloud/project/analyticsedge/Datasets/mvtWeek1.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>mvt <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"/cloud/project/analyticsedge/Datasets/DatasetsUnit1/mvtWeek1.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><strong>1.1: How many rows of data (observations) are in this dataset?</strong><br>
 Answer: 191641</p>
@@ -599,11 +600,11 @@ Answer: Saturday</p>
 <p><strong><em>Start:</em></strong><br>
 1. Read the datasets into R, using the read.csv function, and call the data frames “IBM”, “GE”, “ProcterGamble”, “CocaCola”, and “Boeing”, respectively.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>IBM <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"/cloud/project/analyticsedge/Datasets/IBMStock.csv"</span>)</span>
-<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>GE <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"/cloud/project/analyticsedge/Datasets/GEStock.csv"</span>)</span>
-<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>ProcterGamble <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"/cloud/project/analyticsedge/Datasets/ProcterGambleStock.csv"</span>)</span>
-<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a>CocaCola <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"/cloud/project/analyticsedge/Datasets/CocaColaStock.csv"</span>)</span>
-<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a>Boeing <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"/cloud/project/analyticsedge/Datasets/BoeingStock.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>IBM <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"/cloud/project/analyticsedge/Datasets/DatasetsUnit1/IBMStock.csv"</span>)</span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>GE <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"/cloud/project/analyticsedge/Datasets/DatasetsUnit1/GEStock.csv"</span>)</span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>ProcterGamble <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"/cloud/project/analyticsedge/Datasets/DatasetsUnit1/ProcterGambleStock.csv"</span>)</span>
+<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a>CocaCola <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"/cloud/project/analyticsedge/Datasets/DatasetsUnit1/CocaColaStock.csv"</span>)</span>
+<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a>Boeing <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"/cloud/project/analyticsedge/Datasets/DatasetsUnit1/BoeingStock.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>2. Before working with these data sets, we need to convert the dates into a format that R can understand. Take a look at the structure of one of the datasets using the str function. Right now, the date variable is stored as a factor. We can convert this to a “Date” object in R by using the following five commands (one for each data set):</p>
 <div class="cell">
@@ -804,7 +805,7 @@ Answer: December</p>
 <p><strong><em>Start:</em></strong><br>
 Load the dataset from CPSData.csv into a data frame called CPS.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb80"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb80-1"><a href="#cb80-1" aria-hidden="true" tabindex="-1"></a>CPS <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"/cloud/project/analyticsedge/Datasets/CPSData.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb80"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb80-1"><a href="#cb80-1" aria-hidden="true" tabindex="-1"></a>CPS <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"/cloud/project/analyticsedge/Datasets/DatasetsUnit1/CPSData.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><strong>1.1: How many interviewees are in the dataset?</strong><br>
 Answer: 131302</p>
@@ -1169,8 +1170,8 @@ Answer: Montana</p>
 <p>Codes like MetroAreaCode and CountryOfBirthCode are a compact way to encode factor variables with text as their possible values, and they are therefore quite common in survey datasets. In fact, all but one of the variables in this dataset were actually stored by a numeric code in the original CPS datafile.</p>
 <p>When analyzing a variable stored by a numeric code, we will often want to convert it into the values the codes represent. To do this, we will use a dictionary, which maps the the code to the actual value of the variable. We have provided dictionaries <a href="https://courses.edx.org/assets/courseware/v1/fd88455abc1b5b69112daf70f3bb0c77/asset-v1:MITx+15.071x+2T2020+type@asset+block/MetroAreaCodes.csv">MetroAreaCodes.csv</a> and <a href="https://courses.edx.org/assets/courseware/v1/763710fa6703caea1cf9c708e31e99a3/asset-v1:MITx+15.071x+2T2020+type@asset+block/CountryCodes.csv">CountryCodes.csv</a>, which respectively map MetroAreaCode and CountryOfBirthCode into their true values. Read these two dictionaries into data frames MetroAreaMap and CountryMap.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb137"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb137-1"><a href="#cb137-1" aria-hidden="true" tabindex="-1"></a>MetroAreaMap <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"/cloud/project/analyticsedge/Datasets/MetroAreaCodes.csv"</span>)</span>
-<span id="cb137-2"><a href="#cb137-2" aria-hidden="true" tabindex="-1"></a>CountryMap <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"/cloud/project/analyticsedge/Datasets/CountryCodes.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb137"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb137-1"><a href="#cb137-1" aria-hidden="true" tabindex="-1"></a>MetroAreaMap <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"/cloud/project/analyticsedge/Datasets/DatasetsUnit1/MetroAreaCodes.csv"</span>)</span>
+<span id="cb137-2"><a href="#cb137-2" aria-hidden="true" tabindex="-1"></a>CountryMap <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"/cloud/project/analyticsedge/Datasets/DatasetsUnit1/CountryCodes.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><strong>3.1.1: How many observations (codes for metropolitan areas) are there in MetroAreaMap?</strong><br>
 Answer: 271</p>
@@ -1874,7 +1875,7 @@ Answer: Minneapolis-St Paul-Bloomington, MN-WI</p>
 <p><strong><em>Start:</em></strong><br>
 Using read.csv(), load the dataset from AnonymityPoll.csv into a data frame called poll.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb170"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb170-1"><a href="#cb170-1" aria-hidden="true" tabindex="-1"></a>poll <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"/cloud/project/analyticsedge/Datasets/AnonymityPoll.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb170"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb170-1"><a href="#cb170-1" aria-hidden="true" tabindex="-1"></a>poll <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"/cloud/project/analyticsedge/Datasets/DatasetsUnit1/AnonymityPoll.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><strong>1.1: How many people participated in the poll?</strong><br>
 Answer: 1002</p>
@@ -2190,7 +2191,7 @@ Answer: jitter adds or subtracts a small amount of random noise to the values pa
 <div class="cell">
 <div class="sourceCode cell-code" id="cb231"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb231-1"><a href="#cb231-1" aria-hidden="true" tabindex="-1"></a><span class="fu">jitter</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.8870507 1.9848760 3.1980776</code></pre>
+<pre><code>[1] 0.8109344 1.9584468 3.0839520</code></pre>
 </div>
 </div>
 <p><strong>4.4: What relationship to you observe between Age and Info.On.Internet?</strong><br>
@@ -2330,7 +2331,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="../index.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Introduction</span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">The Analytics Edge: Introduction</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
