@@ -9,6 +9,7 @@ book:
   chapters:
     - index.qmd
     - Assignments/Assignment1.qmd
+    - Assignments/Assignment2.qmd
 
 bibliography: references.bib
 
