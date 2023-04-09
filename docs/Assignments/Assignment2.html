@@ -483,12 +483,262 @@ Answer: 2414/990 respectively</p>
 </div>
 <p><strong>2.1: Which of the variables <em>grade</em>, <em>male</em> and <em>raceeth</em> is an unordered or ordered factor with a min. of 3 values</strong><br>
 Answer: grade - ordered (ex. 8, 9, 10, 11) male - only has 2 values raceeth - unordered (no way to sepcifically order it)</p>
-<p><br>
-To include unordered factors in a linear regression model, we define one level as the “reference level” and add a binary variable for each of the remaining levels. In this way, a factor with n levels is replaced by n-1 binary variables. The reference level is typically selected to be the most frequently occurring level in the dataset.</p>
+<p><strong>How to include unordered factors in a linear regression model</strong> To include unordered factors in a linear regression model, we define one level as the “reference level” and add a binary variable for each of the remaining levels. In this way, a factor with n levels is replaced by n-1 binary variables. The reference level is typically selected to be the most frequently occurring level in the dataset.</p>
 <p>As an example, consider the unordered factor variable “color”, with levels “red”, “green”, and “blue”. If “green” were the reference level, then we would add binary variables “colorred” and “colorblue” to a linear regression problem. All red examples would have colorred=1 and colorblue=0. All blue examples would have colorred=0 and colorblue=1. All green examples would have colorred=0 and colorblue=0.</p>
 <p>Now, consider the variable “raceeth” in our problem, which has levels “American Indian/Alaska Native”, “Asian”, “Black”, “Hispanic”, “More than one race”, “Native Hawaiian/Other Pacific Islander”, and “White”. Because it is the most common in our population, we will select White as the reference level.</p>
 <p><strong>2.2: Which binary variables will be included in the regression model?</strong><br>
 Answer: We create a binary variable for each level except the reference level, so we would create all these variables except for raceethWhite.</p>
+<p><strong>2.3: For a student who is Asian, which binary variables would be set to 0? What about a student who is white?</strong><br>
+Answer: An Asian student will have raceethAsian set to 1 and all other raceeth binary variables set to 0. Because “White” is the reference level, a white student will have all raceeth binary variables set to 0.</p>
+<p><strong>3:</strong><br>
+Because the race variable takes on text values, it was loaded as a factor variable when we read in the dataset with read.csv() – you can see this when you run str(pisaTrain) or str(pisaTest). However, by default R selects the first level alphabetically (“American Indian/Alaska Native”) as the reference level of our factor instead of the most common level (“White”).</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>pisaTrain<span class="sc">$</span>raceeth <span class="ot">=</span> <span class="fu">relevel</span>(<span class="fu">factor</span>(pisaTrain<span class="sc">$</span>raceeth), <span class="st">"White"</span>)</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>pisaTest<span class="sc">$</span>raceeth <span class="ot">=</span> <span class="fu">relevel</span>(<span class="fu">factor</span>(pisaTest<span class="sc">$</span>raceeth), <span class="st">"White"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Now, build a linear regression model (call it lmScore) using the training set to predict readingScore using all the remaining variables.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>lmScore <span class="ot">&lt;-</span> <span class="fu">lm</span>(readingScore <span class="sc">~</span> ., <span class="at">data =</span> pisaTrain)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>3.1: What is the Multiple R-squared value of lmScore on the training set?</strong><br>
+Answer: 0.3251</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lmScore)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = readingScore ~ ., data = pisaTrain)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-247.44  -48.86    1.86   49.77  217.18 
+
+Coefficients:
+                                                Estimate Std. Error t value
+(Intercept)                                   143.766333  33.841226   4.248
+grade                                          29.542707   2.937399  10.057
+male                                          -14.521653   3.155926  -4.601
+raceethAmerican Indian/Alaska Native          -67.277327  16.786935  -4.008
+raceethAsian                                   -4.110325   9.220071  -0.446
+raceethBlack                                  -67.012347   5.460883 -12.271
+raceethHispanic                               -38.975486   5.177743  -7.528
+raceethMore than one race                     -16.922522   8.496268  -1.992
+raceethNative Hawaiian/Other Pacific Islander  -5.101601  17.005696  -0.300
+preschool                                      -4.463670   3.486055  -1.280
+expectBachelors                                55.267080   4.293893  12.871
+motherHS                                        6.058774   6.091423   0.995
+motherBachelors                                12.638068   3.861457   3.273
+motherWork                                     -2.809101   3.521827  -0.798
+fatherHS                                        4.018214   5.579269   0.720
+fatherBachelors                                16.929755   3.995253   4.237
+fatherWork                                      5.842798   4.395978   1.329
+selfBornUS                                     -3.806278   7.323718  -0.520
+motherBornUS                                   -8.798153   6.587621  -1.336
+fatherBornUS                                    4.306994   6.263875   0.688
+englishAtHome                                   8.035685   6.859492   1.171
+computerForSchoolwork                          22.500232   5.702562   3.946
+read30MinsADay                                 34.871924   3.408447  10.231
+minutesPerWeekEnglish                           0.012788   0.010712   1.194
+studentsInEnglish                              -0.286631   0.227819  -1.258
+schoolHasLibrary                               12.215085   9.264884   1.318
+publicSchool                                  -16.857475   6.725614  -2.506
+urban                                          -0.110132   3.962724  -0.028
+schoolSize                                      0.006540   0.002197   2.977
+                                              Pr(&gt;|t|)    
+(Intercept)                                   2.24e-05 ***
+grade                                          &lt; 2e-16 ***
+male                                          4.42e-06 ***
+raceethAmerican Indian/Alaska Native          6.32e-05 ***
+raceethAsian                                   0.65578    
+raceethBlack                                   &lt; 2e-16 ***
+raceethHispanic                               7.29e-14 ***
+raceethMore than one race                      0.04651 *  
+raceethNative Hawaiian/Other Pacific Islander  0.76421    
+preschool                                      0.20052    
+expectBachelors                                &lt; 2e-16 ***
+motherHS                                       0.32001    
+motherBachelors                                0.00108 ** 
+motherWork                                     0.42517    
+fatherHS                                       0.47147    
+fatherBachelors                               2.35e-05 ***
+fatherWork                                     0.18393    
+selfBornUS                                     0.60331    
+motherBornUS                                   0.18182    
+fatherBornUS                                   0.49178    
+englishAtHome                                  0.24153    
+computerForSchoolwork                         8.19e-05 ***
+read30MinsADay                                 &lt; 2e-16 ***
+minutesPerWeekEnglish                          0.23264    
+studentsInEnglish                              0.20846    
+schoolHasLibrary                               0.18749    
+publicSchool                                   0.01226 *  
+urban                                          0.97783    
+schoolSize                                     0.00294 ** 
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 73.81 on 2385 degrees of freedom
+Multiple R-squared:  0.3251,    Adjusted R-squared:  0.3172 
+F-statistic: 41.04 on 28 and 2385 DF,  p-value: &lt; 2.2e-16</code></pre>
+</div>
+</div>
+<p><strong>3.2: What is the training-set root-mean squared error (RMSE) of lmScore?</strong><br>
+Answer: 73.36555</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sqrt</span>(<span class="fu">mean</span>(lmScore<span class="sc">$</span>residuals<span class="sc">^</span><span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 73.36555</code></pre>
+</div>
+</div>
+<p><strong>3.3: Consider two students A and B. They have all variable values the same, except that student A is in grade 11 and student B is in grade 9. What is the predicted reading score of student A minus the predicted reading score of student B?</strong><br>
+Answer: 59.08541</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fl">29.542707</span><span class="sc">*</span><span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 59.08541</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co"># The coefficient of the variable grade is 29.542707, meaning that it affects the reading score by that value, if someone is a grade higher or lower. Since student A is 2 grades higher than student B, we have to multiply this value by 2.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>3.4: What is the meaning of the coefficient associated with variable raceethAsian?</strong><br>
+Answer: Predicted difference in the reading score between an Asian student and a white student who is otherwise identical</p>
+<p><strong>3.5: Based on the significance codes, which variables are candidates for removal from the model?</strong><br>
+Answer: preschool, expectBachelors, motherHS, motherWork, fatherHS, fatherWork, selfBornUS, motherBornUS, fatherBornUS, englishAtHome, minutesPerWeekEnglish, studentsInEnglish, schoolHasLibrary, urban</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lmScore)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = readingScore ~ ., data = pisaTrain)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-247.44  -48.86    1.86   49.77  217.18 
+
+Coefficients:
+                                                Estimate Std. Error t value
+(Intercept)                                   143.766333  33.841226   4.248
+grade                                          29.542707   2.937399  10.057
+male                                          -14.521653   3.155926  -4.601
+raceethAmerican Indian/Alaska Native          -67.277327  16.786935  -4.008
+raceethAsian                                   -4.110325   9.220071  -0.446
+raceethBlack                                  -67.012347   5.460883 -12.271
+raceethHispanic                               -38.975486   5.177743  -7.528
+raceethMore than one race                     -16.922522   8.496268  -1.992
+raceethNative Hawaiian/Other Pacific Islander  -5.101601  17.005696  -0.300
+preschool                                      -4.463670   3.486055  -1.280
+expectBachelors                                55.267080   4.293893  12.871
+motherHS                                        6.058774   6.091423   0.995
+motherBachelors                                12.638068   3.861457   3.273
+motherWork                                     -2.809101   3.521827  -0.798
+fatherHS                                        4.018214   5.579269   0.720
+fatherBachelors                                16.929755   3.995253   4.237
+fatherWork                                      5.842798   4.395978   1.329
+selfBornUS                                     -3.806278   7.323718  -0.520
+motherBornUS                                   -8.798153   6.587621  -1.336
+fatherBornUS                                    4.306994   6.263875   0.688
+englishAtHome                                   8.035685   6.859492   1.171
+computerForSchoolwork                          22.500232   5.702562   3.946
+read30MinsADay                                 34.871924   3.408447  10.231
+minutesPerWeekEnglish                           0.012788   0.010712   1.194
+studentsInEnglish                              -0.286631   0.227819  -1.258
+schoolHasLibrary                               12.215085   9.264884   1.318
+publicSchool                                  -16.857475   6.725614  -2.506
+urban                                          -0.110132   3.962724  -0.028
+schoolSize                                      0.006540   0.002197   2.977
+                                              Pr(&gt;|t|)    
+(Intercept)                                   2.24e-05 ***
+grade                                          &lt; 2e-16 ***
+male                                          4.42e-06 ***
+raceethAmerican Indian/Alaska Native          6.32e-05 ***
+raceethAsian                                   0.65578    
+raceethBlack                                   &lt; 2e-16 ***
+raceethHispanic                               7.29e-14 ***
+raceethMore than one race                      0.04651 *  
+raceethNative Hawaiian/Other Pacific Islander  0.76421    
+preschool                                      0.20052    
+expectBachelors                                &lt; 2e-16 ***
+motherHS                                       0.32001    
+motherBachelors                                0.00108 ** 
+motherWork                                     0.42517    
+fatherHS                                       0.47147    
+fatherBachelors                               2.35e-05 ***
+fatherWork                                     0.18393    
+selfBornUS                                     0.60331    
+motherBornUS                                   0.18182    
+fatherBornUS                                   0.49178    
+englishAtHome                                  0.24153    
+computerForSchoolwork                         8.19e-05 ***
+read30MinsADay                                 &lt; 2e-16 ***
+minutesPerWeekEnglish                          0.23264    
+studentsInEnglish                              0.20846    
+schoolHasLibrary                               0.18749    
+publicSchool                                   0.01226 *  
+urban                                          0.97783    
+schoolSize                                     0.00294 ** 
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 73.81 on 2385 degrees of freedom
+Multiple R-squared:  0.3251,    Adjusted R-squared:  0.3172 
+F-statistic: 41.04 on 28 and 2385 DF,  p-value: &lt; 2.2e-16</code></pre>
+</div>
+</div>
+<p><strong>4:</strong><br>
+Using the “predict” function and supplying the “newdata” argument, use the lmScore model to predict the reading scores of students in pisaTest. Call this vector of predictions “predTest”. Do not change the variables in the model (for example, do not remove variables that we found were not significant in the previous part of this problem).</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>predTest <span class="ot">&lt;-</span> <span class="fu">predict</span>(lmScore, <span class="at">newdata =</span> pisaTest)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>4.1: What is the range between the maximum and minimum predicted reading score on the test set?</strong><br>
+Answer: 284.4683</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">max</span>(predTest) <span class="sc">-</span> <span class="fu">min</span>(predTest)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 284.4683</code></pre>
+</div>
+</div>
+<p><strong>4.2.1: What is the sum of squared errors (SSE) of lmScore on the testing set?</strong><br>
+Answer: 5762082</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>SSE <span class="ot">&lt;-</span> <span class="fu">sum</span>((predTest <span class="sc">-</span> pisaTest<span class="sc">$</span>readingScore)<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>SSE</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 5762082</code></pre>
+</div>
+</div>
+<p><strong>4.2.2: What is the root-mean squared error (RMSE) of lmScore on the testing set?</strong><br>
+Answer: 76.29079</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sqrt</span>(SSE<span class="sc">/</span><span class="fu">nrow</span>(pisaTest))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 76.29079</code></pre>
+</div>
+</div>
+<p><strong>4.3.1: What is the predicted test score used in the baseline model?</strong><br>
+Answer: 517.9629</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(pisaTrain<span class="sc">$</span>readingScore)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 517.9629</code></pre>
+</div>
+</div>
+<p><strong>4.3.2: What is the total sum of squares (SST) on the testing-set?</strong><br>
+Answer: 7802354</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>SST <span class="ot">&lt;-</span> <span class="fu">sum</span>((<span class="fu">mean</span>(pisaTrain<span class="sc">$</span>readingScore)<span class="sc">-</span>pisaTest<span class="sc">$</span>readingScore)<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>SST</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 7802354</code></pre>
+</div>
+</div>
+<p><strong>4.4: What is the test-set R-squared value of lmScore?</strong><br>
+Answer: 0.2614944</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>R2 <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">-</span> SSE<span class="sc">/</span>SST</span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>R2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.2614944</code></pre>
+</div>
+</div>
 
 
 </section>

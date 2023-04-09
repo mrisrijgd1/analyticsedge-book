@@ -155,7 +155,7 @@ grade - ordered (ex. 8, 9, 10, 11)
 male - only has 2 values
 raceeth - unordered (no way to sepcifically order it)
 
-\
+**How to include unordered factors in a linear regression model**
 To include unordered factors in a linear regression model, we define one level as the "reference level" and add a binary variable for each of the remaining levels. In this way, a factor with n levels is replaced by n-1 binary variables. The reference level is typically selected to be the most frequently occurring level in the dataset.
 
 As an example, consider the unordered factor variable "color", with levels "red", "green", and "blue". If "green" were the reference level, then we would add binary variables "colorred" and "colorblue" to a linear regression problem. All red examples would have colorred=1 and colorblue=0. All blue examples would have colorred=0 and colorblue=1. All green examples would have colorred=0 and colorblue=0.
@@ -164,4 +164,92 @@ Now, consider the variable "raceeth" in our problem, which has levels "American 
 
 **2.2: Which binary variables will be included in the regression model?**\
 Answer: We create a binary variable for each level except the reference level, so we would create all these variables except for raceethWhite.
+
+**2.3: For a student who is Asian, which binary variables would be set to 0? What about a student who is white?**\
+Answer: An Asian student will have raceethAsian set to 1 and all other raceeth binary variables set to 0. Because "White" is the reference level, a white student will have all raceeth binary variables set to 0.
+
+**3:**\
+Because the race variable takes on text values, it was loaded as a factor variable when we read in the dataset with read.csv() -- you can see this when you run str(pisaTrain) or str(pisaTest). However, by default R selects the first level alphabetically ("American Indian/Alaska Native") as the reference level of our factor instead of the most common level ("White").
+```{r}
+pisaTrain$raceeth = relevel(factor(pisaTrain$raceeth), "White")
+pisaTest$raceeth = relevel(factor(pisaTest$raceeth), "White")
+```
+
+Now, build a linear regression model (call it lmScore) using the training set to predict readingScore using all the remaining variables.
+```{r}
+lmScore <- lm(readingScore ~ ., data = pisaTrain)
+```
+
+**3.1: What is the Multiple R-squared value of lmScore on the training set?**\
+Answer: 0.3251
+```{r}
+summary(lmScore)
+```
+
+**3.2: What is the training-set root-mean squared error (RMSE) of lmScore?**\
+Answer: 73.36555
+```{r}
+sqrt(mean(lmScore$residuals^2))
+```
+
+**3.3: Consider two students A and B. They have all variable values the same, except that student A is in grade 11 and student B is in grade 9. What is the predicted reading score of student A minus the predicted reading score of student B?**\
+Answer: 59.08541
+```{r}
+29.542707*2
+# The coefficient of the variable grade is 29.542707, meaning that it affects the reading score by that value, if someone is a grade higher or lower. Since student A is 2 grades higher than student B, we have to multiply this value by 2.
+```
+
+**3.4: What is the meaning of the coefficient associated with variable raceethAsian?**\
+Answer: Predicted difference in the reading score between an Asian student and a white student who is otherwise identical
+
+**3.5: Based on the significance codes, which variables are candidates for removal from the model?**\
+Answer: preschool, expectBachelors, motherHS, motherWork, fatherHS, fatherWork, selfBornUS, motherBornUS, fatherBornUS, englishAtHome, minutesPerWeekEnglish, studentsInEnglish, schoolHasLibrary, urban
+```{r}
+summary(lmScore)
+```
+
+**4:**\
+Using the "predict" function and supplying the "newdata" argument, use the lmScore model to predict the reading scores of students in pisaTest. Call this vector of predictions "predTest". Do not change the variables in the model (for example, do not remove variables that we found were not significant in the previous part of this problem).
+```{r}
+predTest <- predict(lmScore, newdata = pisaTest)
+```
+
+**4.1: What is the range between the maximum and minimum predicted reading score on the test set?**\
+Answer: 284.4683
+```{r}
+max(predTest) - min(predTest)
+```
+
+**4.2.1: What is the sum of squared errors (SSE) of lmScore on the testing set?**\
+Answer: 5762082
+```{r}
+SSE <- sum((predTest - pisaTest$readingScore)^2)
+SSE
+```
+
+**4.2.2: What is the root-mean squared error (RMSE) of lmScore on the testing set?**\
+Answer: 76.29079
+```{r}
+sqrt(SSE/nrow(pisaTest))
+```
+
+**4.3.1: What is the predicted test score used in the baseline model?**\
+Answer: 517.9629
+```{r}
+mean(pisaTrain$readingScore)
+```
+
+**4.3.2: What is the total sum of squares (SST) on the testing-set?**\
+Answer: 7802354
+```{r}
+SST <- sum((mean(pisaTrain$readingScore)-pisaTest$readingScore)^2)
+SST
+```
+
+**4.4: What is the test-set R-squared value of lmScore?**\
+Answer: 0.2614944
+```{r}
+R2 <- 1 - SSE/SST
+R2
+```
 
