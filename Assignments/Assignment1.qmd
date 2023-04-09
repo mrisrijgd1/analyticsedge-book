@@ -146,7 +146,7 @@ Answer: STREET, PARKING LOT/GARAGE(NON.RESID.), ALLEY, GAS STATION, DRIVEWAY - R
 sort(table(mvt$LocationDescription), decreasing = TRUE)
 ```
 
-**Create a subset of your data, only taking observations for which the theft happened in one of these five locations, and call this new data set "Top5".**
+**Create a subset of your data, only taking observations for which the theft happened in one of these five locations, and call this new data set "Top5":**
 
 ```{r}
 Top5 <- subset(mvt, mvt$LocationDescription == "STREET"
@@ -192,7 +192,7 @@ A stock market is where buyers and sellers trade shares of a company, and is one
 Please download the following files: [IBMStock.csv](https://courses.edx.org/assets/courseware/v1/4fc08d10f171aacf2ef61c6b4b5bb4d8/asset-v1:MITx+15.071x+2T2020+type@asset+block/IBMStock.csv), [GEStock.csv](https://courses.edx.org/assets/courseware/v1/448b8be4693d913c2b5153be0c0e25d6/asset-v1:MITx+15.071x+2T2020+type@asset+block/GEStock.csv), [ProcterGambleStock.csv](https://courses.edx.org/assets/courseware/v1/bb6ed54230b5b2e29fb66819ed535da0/asset-v1:MITx+15.071x+2T2020+type@asset+block/ProcterGambleStock.csv), [CocaColaStock.csv](https://courses.edx.org/assets/courseware/v1/4c30fd7f4f55e537989ca13a6db36289/asset-v1:MITx+15.071x+2T2020+type@asset+block/CocaColaStock.csv), [BoeingStock.csv](https://courses.edx.org/assets/courseware/v1/2e8c9fb294db48e5a999c747b317722d/asset-v1:MITx+15.071x+2T2020+type@asset+block/BoeingStock.csv) (do not open these files in any spreadsheet software before completing this problem because it might change the format of the Date field).
 
 ***Start:***\
-1. Read the datasets into R, using the read.csv function, and call the data frames "IBM", "GE", "ProcterGamble", "CocaCola", and "Boeing", respectively.
+Read the datasets into R, using the read.csv function, and call the data frames "IBM", "GE", "ProcterGamble", "CocaCola", and "Boeing", respectively.
 
 ```{r}
 IBM <- read.csv("/cloud/project/analyticsedge/Datasets/DatasetsUnit1/IBMStock.csv")
@@ -202,7 +202,7 @@ CocaCola <- read.csv("/cloud/project/analyticsedge/Datasets/DatasetsUnit1/CocaCo
 Boeing <- read.csv("/cloud/project/analyticsedge/Datasets/DatasetsUnit1/BoeingStock.csv")
 ```
 
-2\. Before working with these data sets, we need to convert the dates into a format that R can understand. Take a look at the structure of one of the datasets using the str function. Right now, the date variable is stored as a factor. We can convert this to a "Date" object in R by using the following five commands (one for each data set):
+Before working with these data sets, we need to convert the dates into a format that R can understand. Take a look at the structure of one of the datasets using the str function. Right now, the date variable is stored as a factor. We can convert this to a "Date" object in R by using the following five commands (one for each data set):
 
 ```{r}
 IBM$Date = as.Date(IBM$Date, "%m/%d/%y")
@@ -217,8 +217,6 @@ Answer: 480
 
 ```{r}
 nrow(IBM)
-# According to the assignment, use: str(IBM)
-# We only need to use the command for one of the datasets, since they all have the same number of obs.
 ```
 
 **1.2: What is the earliest year in our datasets?**\
@@ -226,8 +224,6 @@ Answer: 1970
 
 ```{r}
 min(IBM$Date)
-# According to the assignment, use: summary(IBM$Date)
-# Again, we only need to use the command for one of the datsets, since the observations started on the same date.
 ```
 
 **1.3: What is the latest year in our datasets?**\
@@ -235,8 +231,6 @@ Answer: 2009
 
 ```{r}
 max(IBM$Date)
-# According to the assignment, use: summary(IBM$Date)
-# Again, we only need to use the command for one of the datsets, since the observations ended on the same date.
 ```
 
 **1.4: What is the mean stock price of IBM over this time period?**\
@@ -244,7 +238,6 @@ Answer: 144.375
 
 ```{r}
 mean(IBM$StockPrice)
-# According to the assignment, use: summary(IBM$StockPrice)
 ```
 
 **1.5: What is the minimum stock price of General Electric (GE) over this time period?**\
@@ -252,7 +245,6 @@ Answer: 9.293636
 
 ```{r}
 min(GE$StockPrice)
-# According to the assignment, use: summary(GE$StockPrice)
 ```
 
 **1.6: What is the maximum stock price of Coca-Cola over this time period?**\
@@ -260,7 +252,6 @@ Answer: 146.5843
 
 ```{r}
 max(CocaCola$StockPrice)
-# According to the assignment, use: summary(CocaCola$StockPrice)
 ```
 
 **1.7: What is the median stock price of Boeing over this time period?**\
@@ -268,7 +259,6 @@ Answer:
 
 ```{r}
 median(Boeing$StockPrice)
-# According to the assignment, use: summary(Boeing$StockPrice)
 ```
 
 **1.8: What is the standard deviation of the stock price of Procter & Gamble over this time period?**\
@@ -421,7 +411,7 @@ Answer: 0.9421943
 
 ```{r}
 table(CPS$Citizenship)
-(116639+7073)/nrow(CPS)
+(116639 + 7073)/nrow(CPS)
 ```
 
 **1.5: For which races are there at least 250 interviewees in the CPS dataset of Hispanic ethnicity?**\
@@ -465,10 +455,10 @@ Answer: Midwest
 table(CPS$Region, is.na(CPS$MetroAreaCode))
 ```
 
-**2.5.1:**\
+**2.5.1: Which state has a proportion of interviewees living in a non-metropolitan area closest to 30%?**\
 Answer: Wisconsin
 
-**2.5.2:**\
+**2.5.2: Which state has the largest proportion of non-metropolitan interviewees, ignoring states where all interviewees were non-metropolitan?**\
 Answer: Montana
 
 ```{r}
@@ -477,7 +467,8 @@ sort(tapply(is.na(CPS$MetroAreaCode), CPS$State, mean))
 
 Codes like MetroAreaCode and CountryOfBirthCode are a compact way to encode factor variables with text as their possible values, and they are therefore quite common in survey datasets. In fact, all but one of the variables in this dataset were actually stored by a numeric code in the original CPS datafile.
 
-When analyzing a variable stored by a numeric code, we will often want to convert it into the values the codes represent. To do this, we will use a dictionary, which maps the the code to the actual value of the variable. We have provided dictionaries [MetroAreaCodes.csv](https://courses.edx.org/assets/courseware/v1/fd88455abc1b5b69112daf70f3bb0c77/asset-v1:MITx+15.071x+2T2020+type@asset+block/MetroAreaCodes.csv) and [CountryCodes.csv](https://courses.edx.org/assets/courseware/v1/763710fa6703caea1cf9c708e31e99a3/asset-v1:MITx+15.071x+2T2020+type@asset+block/CountryCodes.csv), which respectively map MetroAreaCode and CountryOfBirthCode into their true values. Read these two dictionaries into data frames MetroAreaMap and CountryMap.
+When analyzing a variable stored by a numeric code, we will often want to convert it into the values the codes represent. To do this, we will use a dictionary, which maps the the code to the actual value of the variable. We have provided dictionaries [MetroAreaCodes.csv](https://courses.edx.org/assets/courseware/v1/fd88455abc1b5b69112daf70f3bb0c77/asset-v1:MITx+15.071x+2T2020+type@asset+block/MetroAreaCodes.csv) and [CountryCodes.csv](https://courses.edx.org/assets/courseware/v1/763710fa6703caea1cf9c708e31e99a3/asset-v1:MITx+15.071x+2T2020+type@asset+block/CountryCodes.csv), which respectively map MetroAreaCode and CountryOfBirthCode into their true values. 
+**Read these two dictionaries into data frames MetroAreaMap and CountryMap:**
 
 ```{r}
 MetroAreaMap <- read.csv("/cloud/project/analyticsedge/Datasets/DatasetsUnit1/MetroAreaCodes.csv")
@@ -498,7 +489,7 @@ Answer: 149
 nrow(CountryMap)
 ```
 
-To merge in the metropolitan areas, we want to connect the field MetroAreaCode from the CPS data frame with the field Code in MetroAreaMap. The following command merges the two data frames on these columns, overwriting the CPS data frame with the result:
+**To merge in the metropolitan areas, we want to connect the field MetroAreaCode from the CPS data frame with the field Code in MetroAreaMap. The following command merges the two data frames on these columns, overwriting the CPS data frame with the result:**
 
 ```{r}
 CPS = merge(CPS, MetroAreaMap, by.x = "MetroAreaCode", by.y = "Code", all.x = TRUE)
@@ -546,7 +537,7 @@ Answer: Iowa City, IA
 head(sort(tapply(CPS$Education == "No high school diploma", CPS$MetroArea, mean, na.rm = TRUE)), 1)
 ```
 
-Just as we did with the metropolitan area information, merge in the country of birth information from the CountryMap data frame, replacing the CPS data frame with the result.
+**Just as we did with the metropolitan area information, merge in the country of birth information from the CountryMap data frame, replacing the CPS data frame with the result:**
 
 ```{r}
 CPS = merge(CPS, CountryMap, by.x = "CountryOfBirthCode", by.y = "Code", all.x = TRUE)
@@ -693,7 +684,7 @@ Answer: 43
 sum(is.na(poll$Smartphone))
 ```
 
-Use the subset function to obtain a data frame called "limited", which is limited to interviewees who reported Internet use or who reported smartphone use.
+**Use the subset function to obtain a data frame called "limited", which is limited to interviewees who reported Internet use or who reported smartphone use:**
 
 ```{r}
 limited <- subset(poll, poll$Internet.Use == 1
@@ -709,13 +700,10 @@ nrow(limited)
 ```
 
 **3.1: Which variables have missing values in the limited data frame?**\
-Answer: Smartphone, Age, Conservativeness, Worry.About.Info, Privacy.Importance, Anonymity.Possible, Tried.Masking.Identity, Privacy.Laws.Effective
+Answer: *Check output*
 
 ```{r}
-summary(limited)
-sum(is.na(limited$Sex))
-sum(is.na(limited$State))
-sum(is.na(limited$Region))
+names(which(colSums(is.na(limited)) > 0))
 ```
 
 **3.2: What is the average number of pieces of personal information on the Internet, according to the Info.On.Internet variable?**\
@@ -744,7 +732,7 @@ Answer: 0.4886076
 
 ```{r}
 table(limited$Worry.About.Info)
-386/(404+386)
+386/(404 + 386)
 ```
 
 **3.5: What proportion of interviewees who answered the Anonymity.Possible question think it is possible to be completely anonymous on the Internet?**\
@@ -752,7 +740,7 @@ Answer: 0.3691899
 
 ```{r}
 table(limited$Anonymity.Possible)
-278/(475+278)
+278/(475 + 278)
 ```
 
 **3.6: What proportion of interviewees who answered the Tried.Masking.Identity question have tried masking their identity on the Internet?**\
@@ -760,7 +748,7 @@ Answer: 0.1632653
 
 ```{r}
 table(limited$Tried.Masking.Identity)
-128/(656+128)
+128/(656 + 128)
 ```
 
 **3.7: What proportion of interviewees who answered the Privacy.Laws.Effective question find United States privacy laws effective?**\
@@ -768,7 +756,7 @@ Answer: 0.2558459
 
 ```{r}
 table(limited$Privacy.Laws.Effective)
-186/(541+186)
+186/(541 + 186)
 ```
 
 **4.1: Build a histogram of the age of interviewees. What is the best represented age group in the population?**\
@@ -778,11 +766,16 @@ Answer: People aged about 60 years old.
 hist(limited$Age)
 ```
 
+Both Age and Info.On.Internet are variables that take on many values, so a good way to observe their relationship is through a graph. We learned in lecture that we can plot Age against Info.On.Internet with the command `plot(limited$Age, limited$Info.On.Internet)`. However, because Info.On.Internet takes on a small number of values, multiple points will be plotted in exactly the same location on this graph, making the distribution hard to see:
+```{r}
+plot(limited$Age, limited$Info.On.Internet)
+```
+
+
 **4.2: What is the largest number of interviewees that have exactly the same value in their Age variable AND the same value in their Info.On.Internet variable?**\
 Answer: 6
 
 ```{r}
-plot(limited$Age, limited$Info.On.Internet)
 max(table(limited$Age, limited$Info.On.Internet))
 ```
 
@@ -803,7 +796,7 @@ plot(jitter(limited$Age), jitter(limited$Info.On.Internet))
 **4.5.1: What is the average Info.On.Internet value for smartphone users?**\
 Answer: 4.367556
 
-**4.5.2:**\
+**4.5.2: What is the average Info.On.Internet value for non-smartphone users?**\
 Answer: 2.922807
 
 ```{r}

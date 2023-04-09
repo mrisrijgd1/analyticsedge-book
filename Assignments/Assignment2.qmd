@@ -42,7 +42,7 @@ summary(climateModel1)
 
 Current scientific opinion is that nitrous oxide and CFC-11 are greenhouse gases: gases that are able to trap heat from the sun and contribute to the heating of the Earth. However, the regression coefficients of both the N2O and CFC-11 variables are *negative*, indicating that increasing atmospheric concentrations of either of these two compounds is associated with lower global temperatures.
 
-**2.1: Which of the following is the simplest correct explanation for this contradiction?**\
+**2.1: What is the simplest correct explanation for this contradiction?**\
 Answer: All of the gas concentration variables reflect human development - N2O and CFC.11 are correlated with other variables in the data set.
 
 **2.2.1: Which of the following independent variables is N2O highly correlated with (absolute correlation greater than 0.7)?**\
@@ -55,7 +55,7 @@ Answer: CH4, CFC.12
 cor(climateTrain)
 ```
 
-Given that the correlations are so high, let us focus on the N2O variable and build a model with only MEI, TSI, Aerosols and N2O as independent variables. Remember to use the training set to build the model.
+**Given that the correlations are so high, let us focus on the N2O variable and build a model with only MEI, TSI, Aerosols and N2O as independent variables. Remember to use the training set to build the model:**
 
 ```{r}
 climateModel2 <- lm(Temp ~ MEI + N2O + TSI + Aerosols, data = climateTrain)
@@ -73,7 +73,7 @@ summary(climateModel2)
 
 We have many variables in this problem, and as we have seen above, dropping some from the model does not decrease model quality. R provides a function, step, that will automate the procedure of trying different combinations of variables to find a good compromise of model simplicity and R2. This trade-off is formalized by the Akaike information criterion (AIC) - it can be informally thought of as the quality of the model with a penalty for the number of variables in the model. 
 
-Use the step function in R to derive a new model, with the full model as the initial model.
+**Use the step function in R to derive a new model, with the full model as the initial model:**
 
 ```{r}
 climateModel <- step(climateModel1)
@@ -135,7 +135,7 @@ Answer: *Check output*
 names(which(colSums(is.na(pisaTrain)) > 0))
 ```
 
-Linear regression discards observations with missing data, so we will remove all such observations from the training and testing sets.
+**Linear regression discards observations with missing data, so we will remove all such observations from the training and testing sets:**
 ```{r}
 pisaTrain <- na.omit(pisaTrain)
 pisaTest <- na.omit(pisaTest)
@@ -155,7 +155,7 @@ grade - ordered (ex. 8, 9, 10, 11)
 male - only has 2 values
 raceeth - unordered (no way to sepcifically order it)
 
-**How to include unordered factors in a linear regression model**
+**How to include unordered factors in a linear regression model**\
 To include unordered factors in a linear regression model, we define one level as the "reference level" and add a binary variable for each of the remaining levels. In this way, a factor with n levels is replaced by n-1 binary variables. The reference level is typically selected to be the most frequently occurring level in the dataset.
 
 As an example, consider the unordered factor variable "color", with levels "red", "green", and "blue". If "green" were the reference level, then we would add binary variables "colorred" and "colorblue" to a linear regression problem. All red examples would have colorred=1 and colorblue=0. All blue examples would have colorred=0 and colorblue=1. All green examples would have colorred=0 and colorblue=0.
@@ -167,15 +167,15 @@ Answer: We create a binary variable for each level except the reference level, s
 
 **2.3: For a student who is Asian, which binary variables would be set to 0? What about a student who is white?**\
 Answer: An Asian student will have raceethAsian set to 1 and all other raceeth binary variables set to 0. Because "White" is the reference level, a white student will have all raceeth binary variables set to 0.
-
-**3:**\
+`---------------------------------------------------------------------`
 Because the race variable takes on text values, it was loaded as a factor variable when we read in the dataset with read.csv() -- you can see this when you run str(pisaTrain) or str(pisaTest). However, by default R selects the first level alphabetically ("American Indian/Alaska Native") as the reference level of our factor instead of the most common level ("White").
+**Set the reference level of the factor by typing the following two lines in your R console:**
 ```{r}
 pisaTrain$raceeth = relevel(factor(pisaTrain$raceeth), "White")
 pisaTest$raceeth = relevel(factor(pisaTest$raceeth), "White")
 ```
 
-Now, build a linear regression model (call it lmScore) using the training set to predict readingScore using all the remaining variables.
+**Now, build a linear regression model (call it lmScore) using the training set to predict readingScore using all the remaining variables:**
 ```{r}
 lmScore <- lm(readingScore ~ ., data = pisaTrain)
 ```
@@ -208,8 +208,8 @@ Answer: preschool, expectBachelors, motherHS, motherWork, fatherHS, fatherWork, 
 summary(lmScore)
 ```
 
-**4:**\
-Using the "predict" function and supplying the "newdata" argument, use the lmScore model to predict the reading scores of students in pisaTest. Call this vector of predictions "predTest". Do not change the variables in the model (for example, do not remove variables that we found were not significant in the previous part of this problem).
+
+**Using the "predict" function and supplying the "newdata" argument, use the lmScore model to predict the reading scores of students in pisaTest. Call this vector of predictions "predTest"** (Do not change the variables in the model (for example, do not remove variables that we found were not significant in the previous part of this problem))**:**
 ```{r}
 predTest <- predict(lmScore, newdata = pisaTest)
 ```
