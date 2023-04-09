@@ -1,4 +1,4 @@
-# The Analytics Edge: Assignment 2 {.unnumbered}
+# The Analytics Edge: Assignment 2 - Linear Regression {.unnumbered}
 
 The following link will lead you to the assignment on the edX website: [https://learning.edx.org/course/course-v1:MITx+15.071x+2T2020/block-v1:MITx+15.071x+2T2020+type\@sequential+block\@60d93a44280348d7a0a16663f92af0f7](https://learning.edx.org/course/course-v1:MITx+15.071x+2T2020/block-v1:MITx+15.071x+2T2020+type@sequential+block@60d93a44280348d7a0a16663f92af0f7)
 
@@ -167,6 +167,7 @@ Answer: We create a binary variable for each level except the reference level, s
 
 **2.3: For a student who is Asian, which binary variables would be set to 0? What about a student who is white?**\
 Answer: An Asian student will have raceethAsian set to 1 and all other raceeth binary variables set to 0. Since "White" is the reference level, a white student will have all raceeth binary variables set to 0.
+\
 \
 Because the race variable takes on text values, it was loaded as a factor variable when we read in the dataset with read.csv() -- you can see this when you run str(pisaTrain) or str(pisaTest). However, by default R selects the first level alphabetically ("American Indian/Alaska Native") as the reference level of our factor instead of the most common level ("White").
 **Set the reference level of the factor by typing the following two lines in your R console:**

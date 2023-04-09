@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>analyticsedge - The Analytics Edge: Assignment 2</title>
+<title>analyticsedge - The Analytics Edge: Assignment 2 - Linear Regression</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -132,7 +132,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title">The Analytics Edge: Assignment 2</h1>
+      <h1 class="quarto-secondary-nav-title">The Analytics Edge: Assignment 2 - Linear Regression</h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -162,12 +162,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../Assignments/Assignment1.html" class="sidebar-item-text sidebar-link">The Analytics Edge: Assignment 1</a>
+  <a href="../Assignments/Assignment1.html" class="sidebar-item-text sidebar-link">The Analytics Edge: Assignment 1 - An Introduction to Analytics</a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../Assignments/Assignment2.html" class="sidebar-item-text sidebar-link active">The Analytics Edge: Assignment 2</a>
+  <a href="../Assignments/Assignment2.html" class="sidebar-item-text sidebar-link active">The Analytics Edge: Assignment 2 - Linear Regression</a>
   </div>
 </li>
     </ul>
@@ -189,7 +189,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block">The Analytics Edge: Assignment 2</h1>
+<h1 class="title d-none d-lg-block">The Analytics Edge: Assignment 2 - Linear Regression</h1>
 </div>
 
 
@@ -491,6 +491,7 @@ To include unordered factors in a linear regression model, we define one level a
 Answer: We create a binary variable for each level except the reference level, so we would create all these variables except for raceethWhite.</p>
 <p><strong>2.3: For a student who is Asian, which binary variables would be set to 0? What about a student who is white?</strong><br>
 Answer: An Asian student will have raceethAsian set to 1 and all other raceeth binary variables set to 0. Since “White” is the reference level, a white student will have all raceeth binary variables set to 0.<br>
+<br>
 Because the race variable takes on text values, it was loaded as a factor variable when we read in the dataset with read.csv() – you can see this when you run str(pisaTrain) or str(pisaTest). However, by default R selects the first level alphabetically (“American Indian/Alaska Native”) as the reference level of our factor instead of the most common level (“White”). <strong>Set the reference level of the factor by typing the following two lines in your R console:</strong></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>pisaTrain<span class="sc">$</span>raceeth <span class="ot">=</span> <span class="fu">relevel</span>(<span class="fu">factor</span>(pisaTrain<span class="sc">$</span>raceeth), <span class="st">"White"</span>)</span>
@@ -878,7 +879,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="../Assignments/Assignment1.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">The Analytics Edge: Assignment 1</span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">The Analytics Edge: Assignment 1 - An Introduction to Analytics</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
