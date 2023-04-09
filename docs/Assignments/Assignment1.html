@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.335">
+<meta name="generator" content="quarto-1.2.475">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -884,67 +884,16 @@ Answer: American Indian, Black, Multiracial, White</p>
 <p><strong>2.1: Which variables have at least one interviewee with a missing (NA) value?</strong><br>
 Answer: MetroAreaCode, Married, Education, EmploymentStatus, Industry</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb95"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb95-1"><a href="#cb95-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(CPS<span class="sc">$</span>PeopleInHousehold)) <span class="sc">&gt;</span> <span class="dv">0</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb95"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb95-1"><a href="#cb95-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(<span class="fu">which</span>(<span class="fu">colSums</span>(<span class="fu">is.na</span>(CPS)) <span class="sc">&gt;</span> <span class="dv">0</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] FALSE</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb97"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb97-1"><a href="#cb97-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(CPS<span class="sc">$</span>Region)) <span class="sc">&gt;</span> <span class="dv">0</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] FALSE</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb99"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb99-1"><a href="#cb99-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(CPS<span class="sc">$</span>State)) <span class="sc">&gt;</span> <span class="dv">0</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] FALSE</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb101"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb101-1"><a href="#cb101-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(CPS<span class="sc">$</span>MetroAreaCode)) <span class="sc">&gt;</span> <span class="dv">0</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] TRUE</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb103"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb103-1"><a href="#cb103-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(CPS<span class="sc">$</span>Age)) <span class="sc">&gt;</span> <span class="dv">0</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] FALSE</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb105"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb105-1"><a href="#cb105-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(CPS<span class="sc">$</span>Married)) <span class="sc">&gt;</span> <span class="dv">0</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] TRUE</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb107"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb107-1"><a href="#cb107-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(CPS<span class="sc">$</span>Sex)) <span class="sc">&gt;</span> <span class="dv">0</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] FALSE</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb109"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb109-1"><a href="#cb109-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(CPS<span class="sc">$</span>Education)) <span class="sc">&gt;</span> <span class="dv">0</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] TRUE</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb111"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb111-1"><a href="#cb111-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(CPS<span class="sc">$</span>Race)) <span class="sc">&gt;</span> <span class="dv">0</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] FALSE</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb113"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb113-1"><a href="#cb113-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(CPS<span class="sc">$</span>Hispanic)) <span class="sc">&gt;</span> <span class="dv">0</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] FALSE</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb115"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb115-1"><a href="#cb115-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(CPS<span class="sc">$</span>CountryOfBirthCode)) <span class="sc">&gt;</span> <span class="dv">0</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] FALSE</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb117"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb117-1"><a href="#cb117-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(CPS<span class="sc">$</span>Citizenship)) <span class="sc">&gt;</span> <span class="dv">0</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] FALSE</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb119"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb119-1"><a href="#cb119-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(CPS<span class="sc">$</span>EmploymentStatus)) <span class="sc">&gt;</span> <span class="dv">0</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] TRUE</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb121"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb121-1"><a href="#cb121-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(CPS<span class="sc">$</span>Industry)) <span class="sc">&gt;</span> <span class="dv">0</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] TRUE</code></pre>
+<pre><code>[1] "MetroAreaCode"    "Married"          "Education"        "EmploymentStatus"
+[5] "Industry"        </code></pre>
 </div>
 </div>
 <p><strong>2.2: We will try to determine if there is a pattern in the missing values of the Married variable.</strong><br>
 Answer: The Married variable being missing is related to the Age value for the interviewee.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb123"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb123-1"><a href="#cb123-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(CPS<span class="sc">$</span>Region, <span class="fu">is.na</span>(CPS<span class="sc">$</span>Married))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb97"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb97-1"><a href="#cb97-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(CPS<span class="sc">$</span>Region, <span class="fu">is.na</span>(CPS<span class="sc">$</span>Married))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>           
             FALSE  TRUE
@@ -953,14 +902,14 @@ Answer: The Married variable being missing is related to the Age value for the i
   South     33535  7967
   West      26388  6789</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb125"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb125-1"><a href="#cb125-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(CPS<span class="sc">$</span>Sex, <span class="fu">is.na</span>(CPS<span class="sc">$</span>Married))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb99"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb99-1"><a href="#cb99-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(CPS<span class="sc">$</span>Sex, <span class="fu">is.na</span>(CPS<span class="sc">$</span>Married))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>        
          FALSE  TRUE
   Female 55264 12217
   Male   50700 13121</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb127"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb127-1"><a href="#cb127-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(CPS<span class="sc">$</span>Age, <span class="fu">is.na</span>(CPS<span class="sc">$</span>Married))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb101"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb101-1"><a href="#cb101-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(CPS<span class="sc">$</span>Age, <span class="fu">is.na</span>(CPS<span class="sc">$</span>Married))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>    
      FALSE TRUE
@@ -1047,7 +996,7 @@ Answer: The Married variable being missing is related to the Age value for the i
   80  2664    0
   85  2446    0</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb129"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb129-1"><a href="#cb129-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(CPS<span class="sc">$</span>Citizenship, <span class="fu">is.na</span>(CPS<span class="sc">$</span>Married))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb103"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb103-1"><a href="#cb103-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(CPS<span class="sc">$</span>Citizenship, <span class="fu">is.na</span>(CPS<span class="sc">$</span>Married))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>                      
                        FALSE  TRUE
@@ -1061,7 +1010,7 @@ Answer: 2</p>
 <p><strong>2.3.2: How many states had all interviewees living in a metropolitan area? Again, treat the District of Columbia as a state.</strong><br>
 Answer: 3</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb131"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb131-1"><a href="#cb131-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(CPS<span class="sc">$</span>State, <span class="fu">is.na</span>(CPS<span class="sc">$</span>MetroAreaCode))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb105"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb105-1"><a href="#cb105-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(CPS<span class="sc">$</span>State, <span class="fu">is.na</span>(CPS<span class="sc">$</span>MetroAreaCode))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>                      
                        FALSE  TRUE
@@ -1121,7 +1070,7 @@ Answer: 3</p>
 <p><strong>2.4: Which region of the United States has the largest proportion of interviewees living in a non-metropolitan area?</strong><br>
 Answer: Midwest</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb133"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb133-1"><a href="#cb133-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(CPS<span class="sc">$</span>Region, <span class="fu">is.na</span>(CPS<span class="sc">$</span>MetroAreaCode))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb107"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb107-1"><a href="#cb107-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(CPS<span class="sc">$</span>Region, <span class="fu">is.na</span>(CPS<span class="sc">$</span>MetroAreaCode))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>           
             FALSE  TRUE
@@ -1136,7 +1085,7 @@ Answer: Wisconsin</p>
 <p><strong>2.5.2:</strong><br>
 Answer: Montana</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb135"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb135-1"><a href="#cb135-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sort</span>(<span class="fu">tapply</span>(<span class="fu">is.na</span>(CPS<span class="sc">$</span>MetroAreaCode), CPS<span class="sc">$</span>State, mean))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb109"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb109-1"><a href="#cb109-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sort</span>(<span class="fu">tapply</span>(<span class="fu">is.na</span>(CPS<span class="sc">$</span>MetroAreaCode), CPS<span class="sc">$</span>State, mean))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>District of Columbia           New Jersey         Rhode Island 
           0.00000000           0.00000000           0.00000000 
@@ -1177,13 +1126,13 @@ Answer: Montana</p>
 <p>Codes like MetroAreaCode and CountryOfBirthCode are a compact way to encode factor variables with text as their possible values, and they are therefore quite common in survey datasets. In fact, all but one of the variables in this dataset were actually stored by a numeric code in the original CPS datafile.</p>
 <p>When analyzing a variable stored by a numeric code, we will often want to convert it into the values the codes represent. To do this, we will use a dictionary, which maps the the code to the actual value of the variable. We have provided dictionaries <a href="https://courses.edx.org/assets/courseware/v1/fd88455abc1b5b69112daf70f3bb0c77/asset-v1:MITx+15.071x+2T2020+type@asset+block/MetroAreaCodes.csv">MetroAreaCodes.csv</a> and <a href="https://courses.edx.org/assets/courseware/v1/763710fa6703caea1cf9c708e31e99a3/asset-v1:MITx+15.071x+2T2020+type@asset+block/CountryCodes.csv">CountryCodes.csv</a>, which respectively map MetroAreaCode and CountryOfBirthCode into their true values. Read these two dictionaries into data frames MetroAreaMap and CountryMap.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb137"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb137-1"><a href="#cb137-1" aria-hidden="true" tabindex="-1"></a>MetroAreaMap <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"/cloud/project/analyticsedge/Datasets/DatasetsUnit1/MetroAreaCodes.csv"</span>)</span>
-<span id="cb137-2"><a href="#cb137-2" aria-hidden="true" tabindex="-1"></a>CountryMap <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"/cloud/project/analyticsedge/Datasets/DatasetsUnit1/CountryCodes.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb111"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb111-1"><a href="#cb111-1" aria-hidden="true" tabindex="-1"></a>MetroAreaMap <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"/cloud/project/analyticsedge/Datasets/DatasetsUnit1/MetroAreaCodes.csv"</span>)</span>
+<span id="cb111-2"><a href="#cb111-2" aria-hidden="true" tabindex="-1"></a>CountryMap <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"/cloud/project/analyticsedge/Datasets/DatasetsUnit1/CountryCodes.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><strong>3.1.1: How many observations (codes for metropolitan areas) are there in MetroAreaMap?</strong><br>
 Answer: 271</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb138"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb138-1"><a href="#cb138-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(MetroAreaMap)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb112"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb112-1"><a href="#cb112-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(MetroAreaMap)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 271</code></pre>
 </div>
@@ -1191,19 +1140,19 @@ Answer: 271</p>
 <p><strong>3.1.2: How many observations (codes for countries) are there in CountryMap?</strong><br>
 Answer: 149</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb140"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb140-1"><a href="#cb140-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(CountryMap)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb114"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb114-1"><a href="#cb114-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(CountryMap)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 149</code></pre>
 </div>
 </div>
 <p>To merge in the metropolitan areas, we want to connect the field MetroAreaCode from the CPS data frame with the field Code in MetroAreaMap. The following command merges the two data frames on these columns, overwriting the CPS data frame with the result:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb142"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb142-1"><a href="#cb142-1" aria-hidden="true" tabindex="-1"></a>CPS <span class="ot">=</span> <span class="fu">merge</span>(CPS, MetroAreaMap, <span class="at">by.x =</span> <span class="st">"MetroAreaCode"</span>, <span class="at">by.y =</span> <span class="st">"Code"</span>, <span class="at">all.x =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb116"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb116-1"><a href="#cb116-1" aria-hidden="true" tabindex="-1"></a>CPS <span class="ot">=</span> <span class="fu">merge</span>(CPS, MetroAreaMap, <span class="at">by.x =</span> <span class="st">"MetroAreaCode"</span>, <span class="at">by.y =</span> <span class="st">"Code"</span>, <span class="at">all.x =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><strong>3.2.1: hat is the name of the variable that was added to the data frame by the merge() operation?</strong><br>
 Answer: MetroArea</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb143"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb143-1"><a href="#cb143-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(CPS)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb117"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb117-1"><a href="#cb117-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(CPS)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>'data.frame':   131302 obs. of  15 variables:
  $ MetroAreaCode     : int  10420 10420 10420 10420 10420 10420 10420 10420 10420 10420 ...
@@ -1226,7 +1175,7 @@ Answer: MetroArea</p>
 <p><strong>3.2.2: How many interviewees have a missing value for the new metropolitan area variable?</strong><br>
 Answer: 34238</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb145"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb145-1"><a href="#cb145-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(CPS<span class="sc">$</span>MetroArea))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb119"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb119-1"><a href="#cb119-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(CPS<span class="sc">$</span>MetroArea))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 34238</code></pre>
 </div>
@@ -1234,7 +1183,7 @@ Answer: 34238</p>
 <p><strong>3.3: Which of the following metropolitan areas has the largest number of interviewees?</strong><br>
 Answer: Boston-Cambridge-Quincy, MA-NH</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb147"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb147-1"><a href="#cb147-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sort</span>(<span class="fu">table</span>(CPS<span class="sc">$</span>MetroArea), <span class="at">decreasing =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb121"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb121-1"><a href="#cb121-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sort</span>(<span class="fu">table</span>(CPS<span class="sc">$</span>MetroArea), <span class="at">decreasing =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 New York-Northern New Jersey-Long Island, NY-NJ-PA 
@@ -1770,7 +1719,7 @@ New York-Northern New Jersey-Long Island, NY-NJ-PA
 <p><strong>3.4: Which metropolitan area has the highest proportion of interviewees of Hispanic ethnicity?</strong><br>
 Answer: Laredo, TX</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb149"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb149-1"><a href="#cb149-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">sort</span>(<span class="fu">tapply</span>(CPS<span class="sc">$</span>Hispanic, CPS<span class="sc">$</span>MetroArea, mean), <span class="at">decreasing =</span> <span class="cn">TRUE</span>), <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb123"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb123-1"><a href="#cb123-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">sort</span>(<span class="fu">tapply</span>(CPS<span class="sc">$</span>Hispanic, CPS<span class="sc">$</span>MetroArea, mean), <span class="at">decreasing =</span> <span class="cn">TRUE</span>), <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Laredo, TX 
  0.9662921 </code></pre>
@@ -1779,7 +1728,7 @@ Answer: Laredo, TX</p>
 <p><strong>3.5: Determine the number of metropolitan areas in the United States from which at least 20% of interviewees are Asian.</strong><br>
 Answer: 4</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb151"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb151-1"><a href="#cb151-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">sort</span>(<span class="fu">tapply</span>(CPS<span class="sc">$</span>Race <span class="sc">==</span> <span class="st">"Asian"</span>, CPS<span class="sc">$</span>MetroArea, mean), <span class="at">decreasing =</span> <span class="cn">TRUE</span>) <span class="sc">&gt;</span> <span class="fl">0.2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb125"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb125-1"><a href="#cb125-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">sort</span>(<span class="fu">tapply</span>(CPS<span class="sc">$</span>Race <span class="sc">==</span> <span class="st">"Asian"</span>, CPS<span class="sc">$</span>MetroArea, mean), <span class="at">decreasing =</span> <span class="cn">TRUE</span>) <span class="sc">&gt;</span> <span class="fl">0.2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 4</code></pre>
 </div>
@@ -1787,7 +1736,7 @@ Answer: 4</p>
 <p><strong>3.6: Determine which metropolitan area has the smallest proportion of interviewees who have received no high school diploma.</strong><br>
 Answer: Iowa City, IA</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb153"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb153-1"><a href="#cb153-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">sort</span>(<span class="fu">tapply</span>(CPS<span class="sc">$</span>Education <span class="sc">==</span> <span class="st">"No high school diploma"</span>, CPS<span class="sc">$</span>MetroArea, mean, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)), <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb127"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb127-1"><a href="#cb127-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">sort</span>(<span class="fu">tapply</span>(CPS<span class="sc">$</span>Education <span class="sc">==</span> <span class="st">"No high school diploma"</span>, CPS<span class="sc">$</span>MetroArea, mean, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)), <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Iowa City, IA 
    0.02912621 </code></pre>
@@ -1795,12 +1744,12 @@ Answer: Iowa City, IA</p>
 </div>
 <p>Just as we did with the metropolitan area information, merge in the country of birth information from the CountryMap data frame, replacing the CPS data frame with the result.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb155"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb155-1"><a href="#cb155-1" aria-hidden="true" tabindex="-1"></a>CPS <span class="ot">=</span> <span class="fu">merge</span>(CPS, CountryMap, <span class="at">by.x =</span> <span class="st">"CountryOfBirthCode"</span>, <span class="at">by.y =</span> <span class="st">"Code"</span>, <span class="at">all.x =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb129"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb129-1"><a href="#cb129-1" aria-hidden="true" tabindex="-1"></a>CPS <span class="ot">=</span> <span class="fu">merge</span>(CPS, CountryMap, <span class="at">by.x =</span> <span class="st">"CountryOfBirthCode"</span>, <span class="at">by.y =</span> <span class="st">"Code"</span>, <span class="at">all.x =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><strong>4.1.1: What is the name of the variable added to the CPS data frame by this merge operation?</strong><br>
 Answer: Country</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb156"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb156-1"><a href="#cb156-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(CPS)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb130"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb130-1"><a href="#cb130-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(CPS)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>'data.frame':   131302 obs. of  16 variables:
  $ CountryOfBirthCode: int  57 57 57 57 57 57 57 57 57 57 ...
@@ -1824,7 +1773,7 @@ Answer: Country</p>
 <p><strong>4.1.2: How many interviewees have a missing value for the new country of birth variable?</strong><br>
 Answer: 176</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb158"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb158-1"><a href="#cb158-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(CPS<span class="sc">$</span>Country))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb132"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb132-1"><a href="#cb132-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(CPS<span class="sc">$</span>Country))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 176</code></pre>
 </div>
@@ -1832,7 +1781,7 @@ Answer: 176</p>
 <p><strong>4.2: Among all interviewees born outside of North America, which country was the most common place of birth?</strong><br>
 Answer: Philippines</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb160"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb160-1"><a href="#cb160-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">sort</span>(<span class="fu">table</span>(CPS<span class="sc">$</span>Country), <span class="at">decreasing =</span> <span class="cn">TRUE</span>), <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb134"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb134-1"><a href="#cb134-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">sort</span>(<span class="fu">table</span>(CPS<span class="sc">$</span>Country), <span class="at">decreasing =</span> <span class="cn">TRUE</span>), <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 United States        Mexico   Philippines 
@@ -1842,7 +1791,7 @@ United States        Mexico   Philippines
 <p><strong>4.3: What proportion of the interviewees from the “New York-Northern New Jersey-Long Island, NY-NJ-PA” metropolitan area have a country of birth that is not the United States? For this computation, don’t include people from this metropolitan area who have a missing country of birth.</strong><br>
 Answer: 0.3086603</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb162"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb162-1"><a href="#cb162-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tapply</span>(CPS<span class="sc">$</span>Country <span class="sc">!=</span> <span class="st">"United States"</span>, CPS<span class="sc">$</span>MetroArea <span class="sc">==</span> <span class="st">"New York-Northern New Jersey-Long Island, NY-NJ-PA"</span>, mean, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb136"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb136-1"><a href="#cb136-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tapply</span>(CPS<span class="sc">$</span>Country <span class="sc">!=</span> <span class="st">"United States"</span>, CPS<span class="sc">$</span>MetroArea <span class="sc">==</span> <span class="st">"New York-Northern New Jersey-Long Island, NY-NJ-PA"</span>, mean, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>    FALSE      TRUE 
 0.1392772 0.3086603 </code></pre>
@@ -1851,7 +1800,7 @@ Answer: 0.3086603</p>
 <p><strong>4.4: Which metropolitan area has the largest number (note – not proportion) of interviewees with a country of birth…</strong> <strong>4.4.1: …in India?</strong><br>
 Answer: New York-Northern New Jersey-Long Island, NY-NJ-PA</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb164"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb164-1"><a href="#cb164-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tail</span>(<span class="fu">sort</span>(<span class="fu">tapply</span>(CPS<span class="sc">$</span>Country <span class="sc">==</span> <span class="st">"India"</span>, CPS<span class="sc">$</span>MetroArea, sum, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)), <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb138"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb138-1"><a href="#cb138-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tail</span>(<span class="fu">sort</span>(<span class="fu">tapply</span>(CPS<span class="sc">$</span>Country <span class="sc">==</span> <span class="st">"India"</span>, CPS<span class="sc">$</span>MetroArea, sum, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)), <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>New York-Northern New Jersey-Long Island, NY-NJ-PA 
                                                 96 </code></pre>
@@ -1860,7 +1809,7 @@ Answer: New York-Northern New Jersey-Long Island, NY-NJ-PA</p>
 <p><strong>4.4.2: …in Brazil?</strong><br>
 Answer: Boston-Cambridge-Quincy, MA-NH</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb166"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb166-1"><a href="#cb166-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tail</span>(<span class="fu">sort</span>(<span class="fu">tapply</span>(CPS<span class="sc">$</span>Country <span class="sc">==</span> <span class="st">"Brazil"</span>, CPS<span class="sc">$</span>MetroArea, sum, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)), <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb140"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb140-1"><a href="#cb140-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tail</span>(<span class="fu">sort</span>(<span class="fu">tapply</span>(CPS<span class="sc">$</span>Country <span class="sc">==</span> <span class="st">"Brazil"</span>, CPS<span class="sc">$</span>MetroArea, sum, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)), <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Boston-Cambridge-Quincy, MA-NH 
                             18 </code></pre>
@@ -1869,7 +1818,7 @@ Answer: Boston-Cambridge-Quincy, MA-NH</p>
 <p><strong>4.4.3: …in Somalia?</strong><br>
 Answer: Minneapolis-St Paul-Bloomington, MN-WI</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb168"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb168-1"><a href="#cb168-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tail</span>(<span class="fu">sort</span>(<span class="fu">tapply</span>(CPS<span class="sc">$</span>Country <span class="sc">==</span> <span class="st">"Somalia"</span>, CPS<span class="sc">$</span>MetroArea, sum, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)), <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb142"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb142-1"><a href="#cb142-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tail</span>(<span class="fu">sort</span>(<span class="fu">tapply</span>(CPS<span class="sc">$</span>Country <span class="sc">==</span> <span class="st">"Somalia"</span>, CPS<span class="sc">$</span>MetroArea, sum, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)), <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Minneapolis-St Paul-Bloomington, MN-WI 
                                     17 </code></pre>
@@ -1882,12 +1831,12 @@ Answer: Minneapolis-St Paul-Bloomington, MN-WI</p>
 <p><strong><em>Start:</em></strong><br>
 Using read.csv(), load the dataset from AnonymityPoll.csv into a data frame called poll.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb170"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb170-1"><a href="#cb170-1" aria-hidden="true" tabindex="-1"></a>poll <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"/cloud/project/analyticsedge/Datasets/DatasetsUnit1/AnonymityPoll.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb144"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb144-1"><a href="#cb144-1" aria-hidden="true" tabindex="-1"></a>poll <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"/cloud/project/analyticsedge/Datasets/DatasetsUnit1/AnonymityPoll.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><strong>1.1: How many people participated in the poll?</strong><br>
 Answer: 1002</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb171"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb171-1"><a href="#cb171-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(poll)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb145"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb145-1"><a href="#cb145-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(poll)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1002</code></pre>
 </div>
@@ -1895,7 +1844,7 @@ Answer: 1002</p>
 <p><strong>1.2.1: How many interviewees responded that they use a smartphone?</strong><br>
 Answer: 487</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb173"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb173-1"><a href="#cb173-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(poll<span class="sc">$</span>Smartphone, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb147"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb147-1"><a href="#cb147-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(poll<span class="sc">$</span>Smartphone, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 487</code></pre>
 </div>
@@ -1903,7 +1852,7 @@ Answer: 487</p>
 <p><strong>1.2.2: How many interviewees responded that they don’t use a smartphone?</strong><br>
 Answer: 472</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb175"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb175-1"><a href="#cb175-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(poll<span class="sc">$</span>Smartphone)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb149"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb149-1"><a href="#cb149-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(poll<span class="sc">$</span>Smartphone)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
   0   1 
@@ -1913,7 +1862,7 @@ Answer: 472</p>
 <p><strong>1.2.3: How many interviewees did not respond to the question, resulting in a missing value, or NA, in the summary() output?</strong><br>
 Answer: 43</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb177"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb177-1"><a href="#cb177-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(poll<span class="sc">$</span>Smartphone))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb151"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb151-1"><a href="#cb151-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(poll<span class="sc">$</span>Smartphone))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 43</code></pre>
 </div>
@@ -1923,7 +1872,7 @@ Answer: Kansas, Missouri, Ohio</p>
 <p><strong>1.3.2: Which was the state in the South census region with the largest number of interviewees?</strong><br>
 Answer: Texas</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb179"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb179-1"><a href="#cb179-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(poll<span class="sc">$</span>Region, poll<span class="sc">$</span>State)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb153"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb153-1"><a href="#cb153-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(poll<span class="sc">$</span>Region, poll<span class="sc">$</span>State)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>           
             Alabama Arizona Arkansas California Colorado Connecticut Delaware
@@ -1978,7 +1927,7 @@ Answer: Texas</p>
 <p><strong>2.1.1: How many interviewees reported not having used the Internet and not having used a smartphone?</strong><br>
 Answer: 186</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb181"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb181-1"><a href="#cb181-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tapply</span>(poll<span class="sc">$</span>Internet.Use <span class="sc">==</span> <span class="dv">0</span>, poll<span class="sc">$</span>Smartphone <span class="sc">==</span> <span class="dv">0</span>, sum, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb155"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb155-1"><a href="#cb155-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tapply</span>(poll<span class="sc">$</span>Internet.Use <span class="sc">==</span> <span class="dv">0</span>, poll<span class="sc">$</span>Smartphone <span class="sc">==</span> <span class="dv">0</span>, sum, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>FALSE  TRUE 
    17   186 </code></pre>
@@ -1987,7 +1936,7 @@ Answer: 186</p>
 <p><strong>2.1.2: How many interviewees reported having used the Internet and having used a smartphone?</strong><br>
 Answer: 470</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb183"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb183-1"><a href="#cb183-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tapply</span>(poll<span class="sc">$</span>Internet.Use, poll<span class="sc">$</span>Smartphone, sum, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb157"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb157-1"><a href="#cb157-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tapply</span>(poll<span class="sc">$</span>Internet.Use, poll<span class="sc">$</span>Smartphone, sum, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  0   1 
 285 470 </code></pre>
@@ -1996,7 +1945,7 @@ Answer: 470</p>
 <p><strong>2.1.3: How many interviewees reported having used the Internet but not having used a smartphone?</strong><br>
 Answer: 285</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb185"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb185-1"><a href="#cb185-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tapply</span>(poll<span class="sc">$</span>Internet.Use <span class="sc">==</span> <span class="dv">1</span>, poll<span class="sc">$</span>Smartphone <span class="sc">==</span> <span class="dv">0</span>, sum, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb159"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb159-1"><a href="#cb159-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tapply</span>(poll<span class="sc">$</span>Internet.Use <span class="sc">==</span> <span class="dv">1</span>, poll<span class="sc">$</span>Smartphone <span class="sc">==</span> <span class="dv">0</span>, sum, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>FALSE  TRUE 
   470   285 </code></pre>
@@ -2005,17 +1954,17 @@ Answer: 285</p>
 <p><strong>2.1.4: How many interviewees reported having used a smartphone but not having used the Internet?</strong><br>
 Answer: 17</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb187"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb187-1"><a href="#cb187-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tapply</span>(poll<span class="sc">$</span>Internet.Use <span class="sc">==</span> <span class="dv">0</span>, poll<span class="sc">$</span>Smartphone <span class="sc">==</span> <span class="dv">1</span>, sum, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb161"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb161-1"><a href="#cb161-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tapply</span>(poll<span class="sc">$</span>Internet.Use <span class="sc">==</span> <span class="dv">0</span>, poll<span class="sc">$</span>Smartphone <span class="sc">==</span> <span class="dv">1</span>, sum, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>FALSE  TRUE 
   186    17 </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb189"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb189-1"><a href="#cb189-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Alternative to all 4 above questions: table(poll$Internet.Use, poll$Smartphone)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb163"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb163-1"><a href="#cb163-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Alternative to all 4 above questions: table(poll$Internet.Use, poll$Smartphone)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><strong>2.2.1: How many interviewees have a missing value for their Internet use?</strong><br>
 Answer: 1</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb190"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb190-1"><a href="#cb190-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(poll<span class="sc">$</span>Internet.Use))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb164"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb164-1"><a href="#cb164-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(poll<span class="sc">$</span>Internet.Use))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1</code></pre>
 </div>
@@ -2023,21 +1972,21 @@ Answer: 1</p>
 <p><strong>2.2.2: How many interviewees have a missing value for their smartphone use?</strong><br>
 Answer: 43</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb192"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb192-1"><a href="#cb192-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(poll<span class="sc">$</span>Smartphone))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb166"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb166-1"><a href="#cb166-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(poll<span class="sc">$</span>Smartphone))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 43</code></pre>
 </div>
 </div>
 <p>Use the subset function to obtain a data frame called “limited”, which is limited to interviewees who reported Internet use or who reported smartphone use.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb194"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb194-1"><a href="#cb194-1" aria-hidden="true" tabindex="-1"></a>limited <span class="ot">&lt;-</span> <span class="fu">subset</span>(poll, poll<span class="sc">$</span>Internet.Use <span class="sc">==</span> <span class="dv">1</span></span>
-<span id="cb194-2"><a href="#cb194-2" aria-hidden="true" tabindex="-1"></a>                        <span class="sc">|</span>poll<span class="sc">$</span>Smartphone <span class="sc">==</span> <span class="dv">1</span>)</span>
-<span id="cb194-3"><a href="#cb194-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Alternative: limited = subset(poll, Internet.Use == 1 | Smartphone == 1)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb168"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb168-1"><a href="#cb168-1" aria-hidden="true" tabindex="-1"></a>limited <span class="ot">&lt;-</span> <span class="fu">subset</span>(poll, poll<span class="sc">$</span>Internet.Use <span class="sc">==</span> <span class="dv">1</span></span>
+<span id="cb168-2"><a href="#cb168-2" aria-hidden="true" tabindex="-1"></a>                        <span class="sc">|</span>poll<span class="sc">$</span>Smartphone <span class="sc">==</span> <span class="dv">1</span>)</span>
+<span id="cb168-3"><a href="#cb168-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Alternative: limited = subset(poll, Internet.Use == 1 | Smartphone == 1)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><strong>2.3: How many interviewees are in the new data frame?</strong><br>
 Answer: 792</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb195"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb195-1"><a href="#cb195-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(limited)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb169"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb169-1"><a href="#cb169-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(limited)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 792</code></pre>
 </div>
@@ -2045,7 +1994,7 @@ Answer: 792</p>
 <p><strong>3.1: Which variables have missing values in the limited data frame?</strong><br>
 Answer: Smartphone, Age, Conservativeness, Worry.About.Info, Privacy.Importance, Anonymity.Possible, Tried.Masking.Identity, Privacy.Laws.Effective</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb197"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb197-1"><a href="#cb197-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(limited)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb171"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb171-1"><a href="#cb171-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(limited)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  Internet.Use      Smartphone         Sex                 Age       
  Min.   :0.0000   Min.   :0.0000   Length:792         Min.   :18.00  
@@ -2080,15 +2029,15 @@ Answer: Smartphone, Age, Conservativeness, Worry.About.Info, Privacy.Importance,
  Max.   :1.0000        
  NA's   :65            </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb199"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb199-1"><a href="#cb199-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(limited<span class="sc">$</span>Sex))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb173"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb173-1"><a href="#cb173-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(limited<span class="sc">$</span>Sex))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb201"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb201-1"><a href="#cb201-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(limited<span class="sc">$</span>State))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb175"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb175-1"><a href="#cb175-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(limited<span class="sc">$</span>State))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb203"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb203-1"><a href="#cb203-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(limited<span class="sc">$</span>Region))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb177"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb177-1"><a href="#cb177-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(limited<span class="sc">$</span>Region))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0</code></pre>
 </div>
@@ -2096,7 +2045,7 @@ Answer: Smartphone, Age, Conservativeness, Worry.About.Info, Privacy.Importance,
 <p><strong>3.2: What is the average number of pieces of personal information on the Internet, according to the Info.On.Internet variable?</strong><br>
 Answer: 3.795455</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb205"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb205-1"><a href="#cb205-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(limited<span class="sc">$</span>Info.On.Internet)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb179"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb179-1"><a href="#cb179-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(limited<span class="sc">$</span>Info.On.Internet)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 3.795455</code></pre>
 </div>
@@ -2104,7 +2053,7 @@ Answer: 3.795455</p>
 <p><strong>3.3.1: How many interviewees reported a value of 0 for Info.On.Internet?</strong><br>
 Answer: 105</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb207"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb207-1"><a href="#cb207-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(limited<span class="sc">$</span>Info.On.Internet <span class="sc">==</span> <span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb181"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb181-1"><a href="#cb181-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(limited<span class="sc">$</span>Info.On.Internet <span class="sc">==</span> <span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 105</code></pre>
 </div>
@@ -2112,7 +2061,7 @@ Answer: 105</p>
 <p><strong>3.3.2: How many interviewees reported the maximum value of 11 for Info.On.Internet?</strong><br>
 Answer: 8</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb209"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb209-1"><a href="#cb209-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(limited<span class="sc">$</span>Info.On.Internet <span class="sc">==</span> <span class="dv">11</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb183"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb183-1"><a href="#cb183-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(limited<span class="sc">$</span>Info.On.Internet <span class="sc">==</span> <span class="dv">11</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 8</code></pre>
 </div>
@@ -2120,13 +2069,13 @@ Answer: 8</p>
 <p><strong>3.4: What proportion of interviewees who answered the Worry.About.Info question worry about how much information is available about them on the Internet?</strong><br>
 Answer: 0.4886076</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb211"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb211-1"><a href="#cb211-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(limited<span class="sc">$</span>Worry.About.Info)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb185"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb185-1"><a href="#cb185-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(limited<span class="sc">$</span>Worry.About.Info)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
   0   1 
 404 386 </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb213"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb213-1"><a href="#cb213-1" aria-hidden="true" tabindex="-1"></a><span class="dv">386</span><span class="sc">/</span>(<span class="dv">404</span><span class="sc">+</span><span class="dv">386</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb187"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb187-1"><a href="#cb187-1" aria-hidden="true" tabindex="-1"></a><span class="dv">386</span><span class="sc">/</span>(<span class="dv">404</span><span class="sc">+</span><span class="dv">386</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.4886076</code></pre>
 </div>
@@ -2134,13 +2083,13 @@ Answer: 0.4886076</p>
 <p><strong>3.5: What proportion of interviewees who answered the Anonymity.Possible question think it is possible to be completely anonymous on the Internet?</strong><br>
 Answer: 0.3691899</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb215"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb215-1"><a href="#cb215-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(limited<span class="sc">$</span>Anonymity.Possible)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb189"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb189-1"><a href="#cb189-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(limited<span class="sc">$</span>Anonymity.Possible)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
   0   1 
 475 278 </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb217"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb217-1"><a href="#cb217-1" aria-hidden="true" tabindex="-1"></a><span class="dv">278</span><span class="sc">/</span>(<span class="dv">475</span><span class="sc">+</span><span class="dv">278</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb191"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb191-1"><a href="#cb191-1" aria-hidden="true" tabindex="-1"></a><span class="dv">278</span><span class="sc">/</span>(<span class="dv">475</span><span class="sc">+</span><span class="dv">278</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.3691899</code></pre>
 </div>
@@ -2148,13 +2097,13 @@ Answer: 0.3691899</p>
 <p><strong>3.6: What proportion of interviewees who answered the Tried.Masking.Identity question have tried masking their identity on the Internet?</strong><br>
 Answer: 0.1632653</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb219"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb219-1"><a href="#cb219-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(limited<span class="sc">$</span>Tried.Masking.Identity)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb193"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb193-1"><a href="#cb193-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(limited<span class="sc">$</span>Tried.Masking.Identity)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
   0   1 
 656 128 </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb221"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb221-1"><a href="#cb221-1" aria-hidden="true" tabindex="-1"></a><span class="dv">128</span><span class="sc">/</span>(<span class="dv">656</span><span class="sc">+</span><span class="dv">128</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb195"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb195-1"><a href="#cb195-1" aria-hidden="true" tabindex="-1"></a><span class="dv">128</span><span class="sc">/</span>(<span class="dv">656</span><span class="sc">+</span><span class="dv">128</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.1632653</code></pre>
 </div>
@@ -2162,13 +2111,13 @@ Answer: 0.1632653</p>
 <p><strong>3.7: What proportion of interviewees who answered the Privacy.Laws.Effective question find United States privacy laws effective?</strong><br>
 Answer: 0.2558459</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb223"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb223-1"><a href="#cb223-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(limited<span class="sc">$</span>Privacy.Laws.Effective)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb197"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb197-1"><a href="#cb197-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(limited<span class="sc">$</span>Privacy.Laws.Effective)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
   0   1 
 541 186 </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb225"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb225-1"><a href="#cb225-1" aria-hidden="true" tabindex="-1"></a><span class="dv">186</span><span class="sc">/</span>(<span class="dv">541</span><span class="sc">+</span><span class="dv">186</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb199"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb199-1"><a href="#cb199-1" aria-hidden="true" tabindex="-1"></a><span class="dv">186</span><span class="sc">/</span>(<span class="dv">541</span><span class="sc">+</span><span class="dv">186</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.2558459</code></pre>
 </div>
@@ -2176,7 +2125,7 @@ Answer: 0.2558459</p>
 <p><strong>4.1: Build a histogram of the age of interviewees. What is the best represented age group in the population?</strong><br>
 Answer: People aged about 60 years old.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb227"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb227-1"><a href="#cb227-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(limited<span class="sc">$</span>Age)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb201"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb201-1"><a href="#cb201-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(limited<span class="sc">$</span>Age)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="Assignment1_files/figure-html/unnamed-chunk-95-1.png" class="img-fluid" width="672"></p>
 </div>
@@ -2184,11 +2133,11 @@ Answer: People aged about 60 years old.</p>
 <p><strong>4.2: What is the largest number of interviewees that have exactly the same value in their Age variable AND the same value in their Info.On.Internet variable?</strong><br>
 Answer: 6</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb228"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb228-1"><a href="#cb228-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(limited<span class="sc">$</span>Age, limited<span class="sc">$</span>Info.On.Internet)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb202"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb202-1"><a href="#cb202-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(limited<span class="sc">$</span>Age, limited<span class="sc">$</span>Info.On.Internet)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="Assignment1_files/figure-html/unnamed-chunk-96-1.png" class="img-fluid" width="672"></p>
 </div>
-<div class="sourceCode cell-code" id="cb229"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb229-1"><a href="#cb229-1" aria-hidden="true" tabindex="-1"></a><span class="fu">max</span>(<span class="fu">table</span>(limited<span class="sc">$</span>Age, limited<span class="sc">$</span>Info.On.Internet))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb203"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb203-1"><a href="#cb203-1" aria-hidden="true" tabindex="-1"></a><span class="fu">max</span>(<span class="fu">table</span>(limited<span class="sc">$</span>Age, limited<span class="sc">$</span>Info.On.Internet))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 6</code></pre>
 </div>
@@ -2196,15 +2145,15 @@ Answer: 6</p>
 <p><strong>4.3: Experimenting with the command jitter(c(1, 2, 3)), what appears to be the functionality of the jitter command?</strong><br>
 Answer: jitter adds or subtracts a small amount of random noise to the values passed to it, and two runs will yield different results.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb231"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb231-1"><a href="#cb231-1" aria-hidden="true" tabindex="-1"></a><span class="fu">jitter</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb205"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb205-1"><a href="#cb205-1" aria-hidden="true" tabindex="-1"></a><span class="fu">jitter</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 1.123709 2.139128 3.026751</code></pre>
+<pre><code>[1] 0.9475063 1.8681568 3.1617067</code></pre>
 </div>
 </div>
 <p><strong>4.4: What relationship to you observe between Age and Info.On.Internet?</strong><br>
 Answer: Older age seems moderately associated with a smaller value for Info.On.Internet.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb233"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb233-1"><a href="#cb233-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">jitter</span>(limited<span class="sc">$</span>Age), <span class="fu">jitter</span>(limited<span class="sc">$</span>Info.On.Internet))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb207"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb207-1"><a href="#cb207-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">jitter</span>(limited<span class="sc">$</span>Age), <span class="fu">jitter</span>(limited<span class="sc">$</span>Info.On.Internet))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="Assignment1_files/figure-html/unnamed-chunk-98-1.png" class="img-fluid" width="672"></p>
 </div>
@@ -2214,7 +2163,7 @@ Answer: 4.367556</p>
 <p><strong>4.5.2:</strong><br>
 Answer: 2.922807</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb234"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb234-1"><a href="#cb234-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tapply</span>(limited<span class="sc">$</span>Info.On.Internet, limited<span class="sc">$</span>Smartphone, mean, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb208"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb208-1"><a href="#cb208-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tapply</span>(limited<span class="sc">$</span>Info.On.Internet, limited<span class="sc">$</span>Smartphone, mean, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>       0        1 
 2.922807 4.367556 </code></pre>
@@ -2225,7 +2174,7 @@ Answer: 0.1925466</p>
 <p><strong>4.6.2: What proportion of non-smartphone users who answered the Tried.Masking.Identity question have tried masking their identity when using the Internet?</strong><br>
 Answer: 0.1174377</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb236"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb236-1"><a href="#cb236-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tapply</span>(limited<span class="sc">$</span>Tried.Masking.Identity, limited<span class="sc">$</span>Smartphone, mean, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb210"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb210-1"><a href="#cb210-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tapply</span>(limited<span class="sc">$</span>Tried.Masking.Identity, limited<span class="sc">$</span>Smartphone, mean, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>        0         1 
 0.1174377 0.1925466 </code></pre>

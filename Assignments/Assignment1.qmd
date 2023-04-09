@@ -435,20 +435,7 @@ table(CPS$Race, CPS$Hispanic) > 250
 Answer: MetroAreaCode, Married, Education, EmploymentStatus, Industry
 
 ```{r}
-sum(is.na(CPS$PeopleInHousehold)) > 0
-sum(is.na(CPS$Region)) > 0
-sum(is.na(CPS$State)) > 0
-sum(is.na(CPS$MetroAreaCode)) > 0
-sum(is.na(CPS$Age)) > 0
-sum(is.na(CPS$Married)) > 0
-sum(is.na(CPS$Sex)) > 0
-sum(is.na(CPS$Education)) > 0
-sum(is.na(CPS$Race)) > 0
-sum(is.na(CPS$Hispanic)) > 0
-sum(is.na(CPS$CountryOfBirthCode)) > 0
-sum(is.na(CPS$Citizenship)) > 0
-sum(is.na(CPS$EmploymentStatus)) > 0
-sum(is.na(CPS$Industry)) > 0
+names(which(colSums(is.na(CPS)) > 0))
 ```
 
 **2.2: We will try to determine if there is a pattern in the missing values of the Married variable.**\
