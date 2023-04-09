@@ -1,4 +1,4 @@
-# The Analytics Edge: Assignment 1 - An Introduction to Analytics {.unnumbered}
+# Assignment 1 - An Introduction to Analytics {.unnumbered}
 
 The following link will lead you to the assignment on the edX website:
 [https://learning.edx.org/course/course-v1:MITx+15.071x+2T2020/block-v1:MITx+15.071x+2T2020+type@sequential+block@a5915d0492804dada5feb1926ba5be7a](https://learning.edx.org/course/course-v1:MITx+15.071x+2T2020/block-v1:MITx+15.071x+2T2020+type@sequential+block@a5915d0492804dada5feb1926ba5be7a)
