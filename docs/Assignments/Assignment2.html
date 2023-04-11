@@ -181,6 +181,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <ul>
   <li><a href="#climate-change" id="toc-climate-change" class="nav-link active" data-scroll-target="#climate-change">Climate Change</a></li>
   <li><a href="#reading-test-scores" id="toc-reading-test-scores" class="nav-link" data-scroll-target="#reading-test-scores">Reading Test Scores</a></li>
+  <li><a href="#detecting-flu-epidemics-via-search-engine-query-data" id="toc-detecting-flu-epidemics-via-search-engine-query-data" class="nav-link" data-scroll-target="#detecting-flu-epidemics-via-search-engine-query-data">Detecting Flu Epidemics via Search Engine Query Data</a></li>
   </ul>
 </nav>
     </div>
@@ -736,6 +737,40 @@ Answer: 0.2614944</p>
 <span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>R2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.2614944</code></pre>
+</div>
+</div>
+</section>
+<section id="detecting-flu-epidemics-via-search-engine-query-data" class="level2">
+<h2 class="anchored" data-anchor-id="detecting-flu-epidemics-via-search-engine-query-data">Detecting Flu Epidemics via Search Engine Query Data</h2>
+<p>Flu epidemics constitute a major public health concern causing respiratory illnesses, hospitalizations, and deaths. According to the National Vital Statistics Reports published in October 2012, influenza ranked as the eighth leading cause of death in 2011 in the United States. Each year, 250,000 to 500,000 deaths are attributed to influenza related diseases throughout the world.</p>
+<p>The U.S. Centers for Disease Control and Prevention (CDC) and the European Influenza Surveillance Scheme (EISS) detect influenza activity through virologic and clinical data, including Influenza-like Illness (ILI) physician visits. Reporting national and regional data, however, are published with a 1-2 week lag.</p>
+<p>The <a href="https://www.google.org/flutrends/us/#US">Google Flu</a> Trends project was initiated to see if faster reporting can be made possible by considering flu-related online search queries – data that is available almost immediately.</p>
+<p>We would like to estimate influenza-like illness (ILI) activity using Google web search logs. Fortunately, one can easily access this data online:</p>
+<p>ILI Data - The <a href="http://www.cdc.gov/flu/weekly/fluactivitysurv.htm">CDC</a> publishes on its website the official regional and state-level percentage of patient visits to healthcare providers for ILI purposes on a weekly basis.</p>
+<p>Google Search Queries - <a href="http://www.google.com/trends/">Google Trends</a> allows public retrieval of weekly counts for every query searched by users around the world. For each location, the counts are normalized by dividing the count for each query in a particular week by the total number of online search queries submitted in that location during the week. Then, the values are adjusted to be between 0 and 1.</p>
+<p>The csv file <a href="https://courses.edx.org/assets/courseware/v1/df331a605387ca8382972c88d2853ddf/asset-v1:MITx+15.071x+2T2020+type@asset+block/FluTrain.csv">FluTrain.csv</a> aggregates this data from January 1, 2004 until December 31, 2011 as follows:</p>
+<p>“Week” - The range of dates represented by this observation, in year/month/day format.</p>
+<p>“ILI” - This column lists the percentage of ILI-related physician visits for the corresponding week.</p>
+<p>“Queries” - This column lists the fraction of queries that are ILI-related for the corresponding week, adjusted to be between 0 and 1 (higher values correspond to more ILI-related search queries).</p>
+<p><strong><em>Start:</em></strong><br>
+Before applying analytics tools on the training set, we first need to understand the data at hand. Load “FluTrain.csv” into a data frame called FluTrain.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>FluTrain <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"/cloud/project/analyticsedge/Datasets/DatasetsUnit2/FluTrain.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>1.1.1: Looking at the time period 2004-2011, which week corresponds to the highest percentage of ILI-related physician visits? Select the day of the month corresponding to the start of this week.</strong><br>
+Answer: October 18, 2009</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>FluTrain<span class="sc">$</span>Week[<span class="fu">which.max</span>(FluTrain<span class="sc">$</span>ILI)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "2009-10-18 - 2009-10-24"</code></pre>
+</div>
+</div>
+<p><strong>1.1.2: Which week corresponds to the highest percentage of ILI-related query fraction?</strong><br>
+Answer: October 18, 2009</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a>FluTrain<span class="sc">$</span>Week[<span class="fu">which.max</span>(FluTrain<span class="sc">$</span>Queries)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "2009-10-18 - 2009-10-24"</code></pre>
 </div>
 </div>
 
